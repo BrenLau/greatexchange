@@ -28,21 +28,23 @@ const NavBar = () => {
           <NavLink to='/offers' className='navlinknav'>Offers</NavLink>
         </li>
       </ul> : null}
-      <li className='navbarli'>
+
+      <li className='navbarli housebox'>
         <NavLink className='navlinknav' to='/' exact={true} activeClassName='active'>
           <img className='boximage2' src={house}></img>
         </NavLink>
       </li>
+      <li className='navbarli housebox2'>
+        <NavLink className='navlinknav' to='/users' exact={true} activeClassName='active'>
+          Users
+        </NavLink>
+      </li>
+
       <li className='navbarli bagicon' onClick={(e) => {
         e.preventDefault()
         setOpenBag(!openBag)
       }} id='bagicon'>
         <img className='boximage' src={openBag ? open : box} ></img>
-      </li>
-      <li className='navbarli'>
-        <NavLink className='navlinknav' to='/users' exact={true} activeClassName='active'>
-          Users
-        </NavLink>
       </li>
       {!user ? <li className='navbarli userbuttonsli'
         onClick={(e) => {

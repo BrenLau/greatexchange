@@ -150,3 +150,12 @@
 /* .active {
     box-shadow: 0 0 3px 3px rgba(255, 255, 0, .3);
 } */
+.housebox {
+    position: absolute;
+    left: 10px;
+}
+
+.housebox2 {
+    position: absolute;
+    right: 70px;
+}
