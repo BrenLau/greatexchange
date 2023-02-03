@@ -6,6 +6,10 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import box from './treasure.png'
 import open from './open.png'
+import house from './house.png'
+import userimage from './user.png'
+import auction from './auction.png'
+import marketplace from './online-shopping.png'
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
@@ -14,17 +18,19 @@ const NavBar = () => {
 
   return (
     <nav className='navbar-container'>
-      {openBag ? <ul id='dropdown'>
-        <li className='navbarli'>
-          market
+      {openBag ? <ul id='dropdown' className={openBag ? 'dropdown' : null}>
+        <li className='navbarli2'>
+          <img className='boximage2' src={marketplace}></img>
+          <div>Market</div>
         </li>
-        <li className='navbarli'>
-          offers
+        <li className='navbarli2'>
+          <img className='boximage2' src={auction}></img>
+          <div>Offers</div>
         </li>
       </ul> : null}
       <li className='navbarli'>
-        <NavLink className='navlinknav' to='/' exact={true} activeclassname='active'>
-          Home
+        <NavLink className='navlinknav' to='/' exact={true} activeClassName='active'>
+          <img className='boximage2' src={house}></img>
         </NavLink>
       </li>
       <li className='navbarli bagicon' onClick={(e) => {
@@ -34,7 +40,7 @@ const NavBar = () => {
         <img className='boximage' src={openBag ? open : box} ></img>
       </li>
       <li className='navbarli'>
-        <NavLink className='navlinknav' to='/users' exact={true} activeclassname='active'>
+        <NavLink className='navlinknav' to='/users' exact={true} activeClassName='active'>
           Users
         </NavLink>
       </li>
@@ -47,7 +53,7 @@ const NavBar = () => {
         {loginbutts ? <div>
           <UserButtons />
         </div> : null}
-        Login
+        <img className='boximage2' src={userimage}></img>
 
       </li> :
         <li className='navbarli'>
