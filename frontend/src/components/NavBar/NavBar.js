@@ -21,11 +21,11 @@ const NavBar = () => {
       {openBag ? <ul id='dropdown' className={openBag ? 'dropdown' : null}>
         <li className='navbarli2'>
           <img className='boximage2' src={marketplace}></img>
-          <div>Market</div>
+          <NavLink to='/marketplace' className='navlinknav'>Market</NavLink>
         </li>
         <li className='navbarli2'>
           <img className='boximage2' src={auction}></img>
-          <div>Offers</div>
+          <NavLink to='/offers' className='navlinknav'>Offers</NavLink>
         </li>
       </ul> : null}
       <li className='navbarli'>

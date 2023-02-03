@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "greatexbren",
+    "password": "password",
+    "database": "thegreatexchange",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "greatexbren",
+    "password": "password",
+    "database": "thegreatexchange",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "greatexbren",
+    "password": "password",
+    "database": "thegreatexchange",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

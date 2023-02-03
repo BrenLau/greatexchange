@@ -59,6 +59,7 @@
     width: 100%;
     align-items: center;
     justify-content: center;
+    color: yellow;
 }
 
 .userbuttonsli {
@@ -118,6 +119,7 @@
     border: groove rgb(232, 156, 15) 1px;
     border-top: 0;
 
+
 }
 
 
@@ -139,4 +141,12 @@
 .loginsignupele {
     margin: 3px;
     border: groove rgb(232, 156, 15) 1px;
+    background-color: rgb(93, 92, 92);
+    height: 30px;
+    width: 90%;
+
 }
+
+/* .active {
+    box-shadow: 0 0 3px 3px rgba(255, 255, 0, .3);
+} */
