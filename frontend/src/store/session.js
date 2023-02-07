@@ -25,7 +25,7 @@ export const authenticate = () => async (dispatch) => {
       return;
     }
 
-    dispatch(setUser(data));
+    dispatch(setUser(data.user));
   }
 }
 
@@ -36,7 +36,7 @@ export const login = (email, password) => async (dispatch) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      email,
+      credential: email,
       password
     })
   });
@@ -44,7 +44,7 @@ export const login = (email, password) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    dispatch(setUser(data))
+    dispatch(setUser(data.user))
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -59,6 +59,7 @@ export const login = (email, password) => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
   const response = await fetch('/api/auth/logout', {
+    method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     }
@@ -85,7 +86,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    dispatch(setUser(data))
+    dispatch(setUser(data.user))
     return null;
   } else if (response.status < 500) {
     const data = await response.json();

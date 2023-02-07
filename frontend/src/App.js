@@ -1,14 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import * as sessionActions from "./store/session.js";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from 'react-redux';
 import NavBar from './components/NavBar/NavBar'
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
+import AddItem from './components/items/addItem';
 
 function App() {
+  const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(false);
+  useEffect(() => {
+    dispatch(sessionActions.authenticate()).then(() => setIsLoaded(true));
+  }, [dispatch]);
   return (
     <BrowserRouter className="App">
-      <NavBar />
+      <NavBar isLoaded={isLoaded} />
+      <AddItem />
       <Routes>
         <Route path='/login' exact={true} element={<LoginForm />} />
         <Route path='/sign-up' exact={true} element={<SignUpForm />} />

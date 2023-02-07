@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { login } from '../../store/session';
+import { redirect } from 'react-router';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -26,7 +27,7 @@ const LoginForm = () => {
   };
 
   if (user) {
-    // return <Redirect to='/' />;
+    return <redirect to='/' />;
   }
 
   return (
@@ -37,7 +38,7 @@ const LoginForm = () => {
         ))}
       </div>
       <div>
-        <label htmlFor='email'>Email</label>
+        <label htmlFor='email'>Username/Email</label>
         <input
           name='email'
           type='text'

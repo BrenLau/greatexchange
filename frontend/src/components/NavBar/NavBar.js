@@ -11,7 +11,7 @@ import userimage from './user.png'
 import auction from './auction.png'
 import marketplace from './online-shopping.png'
 
-const NavBar = () => {
+const NavBar = ({ isLoaded }) => {
   const user = useSelector(state => state.session.user)
   const [loginbutts, setloginbutts] = useState(false)
   const [openBag, setOpenBag] = useState(false)
@@ -46,7 +46,7 @@ const NavBar = () => {
       }} id='bagicon'>
         <img className='boximage' src={openBag ? open : box} ></img>
       </li>
-      {!user ? <li className='navbarli userbuttonsli'
+      <li className='navbarli userbuttonsli'
         onClick={(e) => {
           e.preventDefault()
           setloginbutts(!loginbutts)
@@ -56,11 +56,7 @@ const NavBar = () => {
           <UserButtons />
         </div> : null}
         <img className='boximage2' src={userimage}></img>
-
-      </li> :
-        <li className='navbarli'>
-          <LogoutButton />
-        </li>}
+      </li>
     </nav>
   );
 }
