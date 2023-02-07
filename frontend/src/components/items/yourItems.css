@@ -1,0 +1,19 @@
+.itemimage {
+    height: 250px;
+    width: 250px;
+}
+
+.itemframe {
+    text-align: center;
+    width: 300px;
+    height: 300px;
+    flex-wrap: wrap;
+}
+
+.itemsstorage {
+    width: 100%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

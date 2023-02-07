@@ -23,6 +23,7 @@ const UserButtons = () => {
                 <li className='loginsignupele'>
                     <LogoutButton />
                 </li>
+                <NavLink className='navlinknav' to={`/user/${user.id}`}>Profile</NavLink>
 
             </>}
         </div>

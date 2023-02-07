@@ -25,4 +25,16 @@ router.post('/',
     })
 )
 
+router.get('/user/:userId',
+    asyncHandler(async (req, res) => {
+        console.log('made it')
+        const { userId } = req.params
+        console.log(userId)
+        const items = await Item.findAll({ userId })
+        console.log(items)
+        return res.json({ items })
+    })
+
+)
+
 module.exports = router

@@ -7,6 +7,7 @@ import NavBar from './components/NavBar/NavBar'
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import AddItem from './components/items/addItem';
+import YourItems from './components/items/yourItems';
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ function App() {
         <Route path='/login' exact={true} element={<LoginForm />} />
         <Route path='/sign-up' exact={true} element={<SignUpForm />} />
         <Route path='/' exact={true} />
+        <Route path='/user/:userId' exact={true} element={<YourItems />} />
       </Routes>
     </BrowserRouter>
   );
