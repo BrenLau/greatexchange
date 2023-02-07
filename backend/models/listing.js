@@ -11,10 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.User)
-      this.hasMany(models.Offer)
-      this.hasMany(models.Comment)
-      this.hasMany(models.Item)
+      this.belongsTo(models.User, { foreignKey: 'userId' })
+      this.hasMany(models.Offer, { foreignKey: 'listingId' })
+      this.hasMany(models.Comment, { foreignKey: 'listingId' })
+      this.hasMany(models.Item, { foreignKey: 'listingId' })
     }
   }
   Listing.init({

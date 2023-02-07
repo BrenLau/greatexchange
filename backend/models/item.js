@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.User)
-      this.belongsTo(models.Listing)
-      this.belongsTo(models.Offer)
+      this.belongsTo(models.User, { foreignKey: 'userId' })
+      this.belongsTo(models.Listing, { foreignKey: 'listingId' })
+      this.belongsTo(models.Offer, { foreignKey: 'offerId' })
     }
   }
   Item.init({

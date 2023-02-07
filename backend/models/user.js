@@ -14,9 +14,9 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       // define association here
-      this.hasMany(models.Listing)
-      this.hasMany(models.Offer)
-      this.hasMany(models.Item)
+      this.hasMany(models.Listing, { foreignKey: 'userId' })
+      this.hasMany(models.Offer, { foreignKey: 'userId' })
+      this.hasMany(models.Item, { foreignKey: 'userId' })
     }
   }
 
@@ -52,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   User.prototype.validatePassword = function (password) {
-    return bcrypt.compareSync(password, this.hashedPassword.toString());
+    return bcrypt.compareSync(password, this.password.toString());
   };
 
   User.getCurrentUserById = async function (id) {
