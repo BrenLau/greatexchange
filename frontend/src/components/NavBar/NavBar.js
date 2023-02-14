@@ -17,8 +17,17 @@ const NavBar = ({ isLoaded }) => {
   const [openBag, setOpenBag] = useState(false)
 
   return (
-    <nav className='navbar-container'>
-      {openBag ? <ul id='dropdown' className={openBag ? 'dropdown' : null}>
+    <nav className='navbar-container' >
+      {openBag ? <ul onMouseOver={(e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        setOpenBag(true)
+      }} onMouseOut={(e) => {
+        e.stopPropagation()
+        e.preventDefault()
+        setOpenBag(false)
+      }
+      } id='dropdown' className={openBag ? 'dropdown' : null}>
         <li className='navbarli2'>
           <img className='boximage2' src={marketplace}></img>
           <NavLink to='/marketplace' className='navlinknav'>Market</NavLink>
@@ -40,20 +49,30 @@ const NavBar = ({ isLoaded }) => {
         </NavLink>
       </li>
 
-      <li className='navbarli bagicon' onClick={(e) => {
+      <li className='navbarli bagicon' onMouseOver={(e) => {
         e.preventDefault()
-        setOpenBag(!openBag)
-      }} id='bagicon'>
+        e.stopPropagation()
+        setOpenBag(true)
+        setloginbutts(false)
+      }}
+        onMouseOut={(e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          setOpenBag(false)
+        }}
+        id='bagicon'>
         <img className='boximage' src={openBag ? open : box} ></img>
       </li>
       <li className='navbarli userbuttonsli'
-        onClick={(e) => {
+        onMouseOver={(e) => {
           e.preventDefault()
-          setloginbutts(!loginbutts)
+          e.stopPropagation()
+          setloginbutts(true)
+          setOpenBag(false)
         }}
       >
         {loginbutts ? <div>
-          <UserButtons />
+          <UserButtons setloginbutts={setloginbutts} />
         </div> : null}
         <img className='boximage2' src={userimage}></img>
       </li>

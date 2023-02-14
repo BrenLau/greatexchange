@@ -27,14 +27,21 @@ router.post('/',
 
 router.get('/user/:userId',
     asyncHandler(async (req, res) => {
-        console.log('made it')
         const { userId } = req.params
-        console.log(userId)
-        const items = await Item.findAll({ userId })
+        const items = await Item.findAll({ where: { userId } })
         console.log(items)
         return res.json({ items })
     })
 
 )
+
+router.delete(`/:itemId`,
+    asyncHandler(async (req, res) => {
+        const { itemId } = req.params
+        const item = await Item.destroy({ where: { id: itemId } })
+        console.log(item)
+        res.json({ message: 'deleted' })
+
+    }))
 
 module.exports = router

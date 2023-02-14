@@ -53,6 +53,20 @@
 .navlinknav {
     color: black;
     text-decoration: none;
+    position: absolute;
+    height: 100%;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    color: yellow;
+    backdrop-filter: blur(.60px);
+
+}
+
+.navlinknav2 {
+    color: black;
+    text-decoration: none;
     position: relative;
     height: 100%;
     display: flex;
@@ -60,6 +74,8 @@
     align-items: center;
     justify-content: center;
     color: yellow;
+    backdrop-filter: blur(.60px);
+
 }
 
 .userbuttonsli {
