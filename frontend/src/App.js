@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 import NavBar from './components/NavBar/NavBar'
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import AddItem from './components/items/addItem';
 import YourItems from './components/items/yourItems';
 
 function App() {
@@ -18,7 +17,6 @@ function App() {
   return (
     <BrowserRouter className="App">
       <NavBar isLoaded={isLoaded} />
-      <AddItem />
       <Routes>
         <Route path='/login' exact={true} element={<LoginForm />} />
         <Route path='/sign-up' exact={true} element={<SignUpForm />} />

@@ -5,8 +5,11 @@
 
 .itemframe {
     text-align: center;
-    width: 300px;
-    height: 300px;
+    width: 25%;
+    height: 25%;
+    margin: 20px;
+    min-width: 250px;
+    min-height: 250px;
     flex-wrap: wrap;
 }
 
@@ -30,4 +33,21 @@
     flex-direction: column;
     padding: 20px;
     width: 300px;
+}
+
+.additembutton {
+    position: fixed;
+    right: 30px;
+    cursor: pointer;
+    border-radius: 24px;
+    color: yellow;
+    background-color: rgb(93, 92, 92);
+    padding: 10px;
+    border: rgb(98, 74, 63) solid 2px;
+    outline: rgb(232, 156, 15) solid 1px;
+    margin: 5px;
+}
+
+.additembutton:hover {
+    background-color: rgb(130, 128, 128);
 }

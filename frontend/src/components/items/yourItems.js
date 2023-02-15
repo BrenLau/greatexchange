@@ -4,6 +4,7 @@ import { useParams } from 'react-router'
 import { getItemsThunk, deleteItemThunk } from '../../store/item'
 import './yourItems.css'
 import UpdateItemsForm from './updateItemForm'
+import AddItemButton from './addItemButton'
 
 const YourItems = () => {
     const dispatch = useDispatch()
@@ -24,6 +25,7 @@ const YourItems = () => {
 
     return (
         Object.values(items).length ? <div className='itemsstorage'>
+            <AddItemButton />
             {Object.values(items).map(item => {
                 return (
                     <div className='itemframe'>
