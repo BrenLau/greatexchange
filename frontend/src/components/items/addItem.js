@@ -1,6 +1,7 @@
 import { addItemThunk } from "../../store/item"
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import './yourItems.css'
 
 
 function AddItem() {
@@ -21,7 +22,7 @@ function AddItem() {
     }
 
     return (
-        <form onSubmit={onSubmit}>
+        <form className='itemform' onSubmit={onSubmit}>
             <label>Item name</label>
             <input value={name} onChange={(e) => {
                 e.preventDefault()

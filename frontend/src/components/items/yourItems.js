@@ -37,7 +37,7 @@ const YourItems = () => {
                             itemUpdateOpen()
                         }}> Edit</button> : null}
                         <img className='itemimage' src={item?.image}></img>
-                        {itemUpdateModalOpen ? <UpdateItemsForm onClick={itemUpdateClose}></UpdateItemsForm> : null}
+                        {itemUpdateModalOpen ? <UpdateItemsForm item={item} onClick={itemUpdateClose}></UpdateItemsForm> : null}
                     </div>
                 )
             })}</div > : null

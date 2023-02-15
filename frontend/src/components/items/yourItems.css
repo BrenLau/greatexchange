@@ -17,3 +17,17 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.itemform {
+    background-color: whitesmoke;
+    border: rgb(98, 74, 63) solid 2px;
+    outline: rgb(232, 156, 15) solid 2px;
+    border-radius: 5px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    width: 300px;
+}
