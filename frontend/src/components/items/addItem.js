@@ -24,18 +24,25 @@ function AddItem({ onClick }) {
 
     return (
         <BackDrop onClick={onClick}>
-            <form className='itemform' onSubmit={onSubmit}>
+            <form className='itemform' onSubmit={onSubmit} onClick={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+            }}>
                 <label>Item name</label>
                 <input value={name} onChange={(e) => {
                     e.preventDefault()
                     setName(e.target.value)
                 }} placeholder="item name"></input>
                 <label>Image</label>
-                <input onChange={(e) => {
+                <input onClick={(e) => {
+                    e.stopPropagation()
+                }} onChange={(e) => {
                     const file = e.target.files[0];
                     if (file) setImage(file)
-                }} type='file'></input>
-                <button>Submit</button>
+                }} type='file' ></input>
+                <button onClick={(e) => {
+                    e.stopPropagation()
+                }}>Submit</button>
             </form>
         </BackDrop>
 

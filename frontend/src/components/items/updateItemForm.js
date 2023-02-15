@@ -13,12 +13,10 @@ const UpdateItemsForm = ({ user, item, onClick }) => {
     const onSubmit = async (e) => {
         e.preventDefault()
         const payload = { name, file: image }
-
-        await dispatch(updateItemThunk(payload)).then((e) => {
-            e.preventDefault()
-            setName('')
-            setImage(null)
-        })
+        const res = await dispatch(updateItemThunk({ payload, itemId: item.id }))
+        if (res) {
+            onClick()
+        }
         return
     }
 
@@ -37,8 +35,12 @@ const UpdateItemsForm = ({ user, item, onClick }) => {
                 <input onChange={(e) => {
                     const file = e.target.files[0];
                     if (file) setImage(file)
-                }} type='file'></input>
-                <button>Submit</button>
+                }} type='file' onClick={(e) => {
+                    e.stopPropagation()
+                }}></input>
+                <button onClick={(e) => {
+                    e.stopPropagation()
+                }}>Submit</button>
             </form>
         </BackDrop>
     )

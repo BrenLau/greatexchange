@@ -4,6 +4,8 @@ import { csrfFetch } from './csrf';
 const ADD_ITEM = 'items/addItem';
 const GET_ITEMS = 'items/getitems'
 const DEL_ITEM = 'items/delitem'
+const UPDATE_ITEM = 'items/updateitem'
+
 
 
 const addaItem = (items) => ({
@@ -19,6 +21,10 @@ const deleteTheItem = (itemId) => ({
     type: DEL_ITEM,
     payload: itemId
 })
+const updateAnItem = (item) => ({
+    type: UPDATE_ITEM,
+    payload: item
+});
 
 const initialState = {};
 
@@ -54,8 +60,9 @@ export const deleteItemThunk = (itemId) => async (dispatch) => {
     const res = await csrfFetch(`/api/items/${itemId}`, {
         method: 'DELETE'
     })
-    console.log('item')
-    dispatch(deleteTheItem(itemId))
+    if (res.ok) {
+        dispatch(deleteTheItem(itemId))
+    }
 
     return
 }
@@ -77,6 +84,12 @@ export const updateItemThunk = ({ itemId, payload }) => async (dispatch) => {
         },
         body: formData
     })
+    if (res.ok) {
+        const item = await res.json()
+        dispatch(updateAnItem(item))
+        return item
+    }
+
 }
 
 export default function reducer(state = initialState, action) {
@@ -95,6 +108,10 @@ export default function reducer(state = initialState, action) {
         case DEL_ITEM:
             newState = { ...state }
             delete newState[action.payload]
+            return newState
+        case UPDATE_ITEM:
+            newState = { ...state }
+            newState[action.payload.id] = action.payload
             return newState
 
         default:

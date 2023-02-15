@@ -11,6 +11,7 @@ const YourItems = () => {
     const { userId } = useParams()
     const user = useSelector(state => state.session.user)
     const items = useSelector(state => state.items)
+    const [itemMode, setItemMode] = useState({})
 
     const [itemUpdateModalOpen, setItemUpdateModalOpen] = useState(false);
 
@@ -21,29 +22,31 @@ const YourItems = () => {
         dispatch(getItemsThunk({ userId: userId }))
 
     }, [dispatch])
-    console.log(items)
 
     return (
-        Object.values(items).length ? <div className='itemsstorage'>
-            <AddItemButton />
-            {Object.values(items).map(item => {
-                return (
-                    <div className='itemframe'>
-                        <div>{item?.name}</div>
-                        {item?.userId === user?.id ? < button onClick={async (e) => {
-                            e.preventDefault()
-                            await dispatch(deleteItemThunk(item.id))
-                        }}> Delete</button> : null}
-                        {item?.userId === user?.id ? < button onClick={async (e) => {
-                            e.preventDefault()
-                            itemUpdateOpen()
-                        }}> Edit</button> : null}
-                        <img className='itemimage' src={item?.image}></img>
-                        {itemUpdateModalOpen ? <UpdateItemsForm item={item} onClick={itemUpdateClose}></UpdateItemsForm> : null}
-                    </div>
-                )
-            })}</div > : null
+        <>
+            {Object.values(items).length ? <div className='itemsstorage'>
+                <AddItemButton />
+                {Object.values(items).map(item => {
+                    return (
+                        <div className='itemframe'>
+                            <div>{item?.name}</div>
+                            {item?.userId === user?.id ? < button onClick={async (e) => {
+                                e.preventDefault()
+                                await dispatch(deleteItemThunk(item.id))
+                            }}> Delete</button> : null}
+                            {item?.userId === user?.id ? < button onClick={async (e) => {
+                                e.preventDefault()
+                                setItemMode(item)
+                                itemUpdateOpen()
+                            }}> Edit</button> : null}
+                            <img className='itemimage' src={item?.image}></img>
+                        </div>
+                    )
+                })}</div > : null}
+            {itemUpdateModalOpen ? <UpdateItemsForm item={itemMode} onClick={itemUpdateClose}></UpdateItemsForm> : null}
 
+        </>
     )
 }
 

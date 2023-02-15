@@ -41,7 +41,33 @@ router.delete(`/:itemId`,
         const item = await Item.destroy({ where: { id: itemId } })
         console.log(item)
         res.json({ message: 'deleted' })
+        return
+    })
+)
 
-    }))
+router.put(`/:itemId`,
+    awss3.singleMulterUpload('file'),
+    asyncHandler(async (req, res) => {
+        const { itemId } = req.params
+        const { name } = req.body
+
+        const item = await Item.findOne({ where: { id: itemId } })
+        if (item && name) {
+            item.name = name
+            await item.save()
+        }
+
+        const imageURL = await awss3.singlePublicFileUpload(req.file);
+
+        if (imageURL) {
+            item.image = imageURL
+            await item.save()
+        }
+        return res.json(item)
+
+    })
+)
+
+
 
 module.exports = router
