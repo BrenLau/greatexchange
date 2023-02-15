@@ -1,0 +1,15 @@
+#backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #3d3d3de1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 9;
+    position: fixed;
+    cursor: default;
+}

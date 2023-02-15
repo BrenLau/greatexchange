@@ -60,6 +60,25 @@ export const deleteItemThunk = (itemId) => async (dispatch) => {
     return
 }
 
+export const updateItemThunk = ({ itemId, payload }) => async (dispatch) => {
+    const { name, file } = payload
+    const formData = new FormData()
+    if (name) {
+        formData.append("name", name)
+    }
+    if (file) {
+        formData.append("file", file)
+    }
+
+    const res = await csrfFetch(`/api/items/${itemId}`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+        body: formData
+    })
+}
+
 export default function reducer(state = initialState, action) {
     let newState = {}
     switch (action.type) {
