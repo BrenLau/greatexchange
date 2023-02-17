@@ -43,7 +43,7 @@ const YourItems = () => {
                             <img className='itemimage' src={item?.image}></img>
                         </div>
                     )
-                })}</div > : null}
+                })}</div > : <AddItemButton />}
             {itemUpdateModalOpen ? <UpdateItemsForm item={itemMode} onClick={itemUpdateClose}></UpdateItemsForm> : null}
 
         </>
