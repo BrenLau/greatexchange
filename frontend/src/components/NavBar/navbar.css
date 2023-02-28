@@ -176,6 +176,11 @@
     right: 70px;
 }
 
+.housebox3 {
+    position: absolute;
+    right: 130px;
+}
+
 .closer {
     position: absolute;
     width: 100%;

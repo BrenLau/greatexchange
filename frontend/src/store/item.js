@@ -53,7 +53,7 @@ export const getItemsThunk = ({ userId }) => async (dispatch) => {
     const res = await csrfFetch(`/api/items/user/${userId}`)
     const items = await res.json()
     dispatch(getTheItems(items.items))
-    return
+    return items.items
 }
 
 export const deleteItemThunk = (itemId) => async (dispatch) => {

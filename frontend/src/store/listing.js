@@ -26,7 +26,7 @@ const updateAnListing = (listing) => ({
     payload: listing
 });
 
-export const addListingThunk = ({ request, item }) => async (dispatch) => {
+export const addListingThunk = ({ request, itemId }) => async (dispatch) => {
 
     const res = await csrfFetch(`/api/items`, {
         method: 'POST',
@@ -36,13 +36,13 @@ export const addListingThunk = ({ request, item }) => async (dispatch) => {
         body:
             JSON.stringify({
                 request,
-                item
+                itemId
             })
     })
     const listing = await res.json()
     dispatch(addaListing(listing))
 
-    return item
+    return listing
 }
 
 

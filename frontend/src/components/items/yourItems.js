@@ -15,6 +15,7 @@ const YourItems = () => {
 
     const [itemUpdateModalOpen, setItemUpdateModalOpen] = useState(false);
 
+
     const itemUpdateClose = () => setItemUpdateModalOpen(false);
     const itemUpdateOpen = () => setItemUpdateModalOpen(true);
 
@@ -45,6 +46,7 @@ const YourItems = () => {
                     )
                 })}</div > : <AddItemButton />}
             {itemUpdateModalOpen ? <UpdateItemsForm item={itemMode} onClick={itemUpdateClose}></UpdateItemsForm> : null}
+
 
         </>
     )

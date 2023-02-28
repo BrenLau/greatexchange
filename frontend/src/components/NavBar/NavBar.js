@@ -11,7 +11,7 @@ import userimage from './user.png'
 import auction from './auction.png'
 import marketplace from './online-shopping.png'
 
-const NavBar = ({ isLoaded }) => {
+const NavBar = ({ isLoaded, setOpenListingForm }) => {
   const user = useSelector(state => state.session.user)
   const [loginbutts, setloginbutts] = useState(false)
   const [openBag, setOpenBag] = useState(false)
@@ -51,6 +51,10 @@ const NavBar = ({ isLoaded }) => {
           <img className='boximage2' src={house}></img>
         </NavLink>
       </li>
+      <li className='navbarli housebox3' ><button onClick={(e) => {
+        e.preventDefault()
+        setOpenListingForm(true)
+      }}>Create Listing</button></li>
       <li className='navbarli housebox2'>
         <NavLink className='navlinknav' to='/users'  >
           Users
