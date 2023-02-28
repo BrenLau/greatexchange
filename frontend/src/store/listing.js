@@ -26,6 +26,26 @@ const updateAnListing = (listing) => ({
     payload: listing
 });
 
+export const addListingThunk = ({ request, item }) => async (dispatch) => {
+
+    const res = await csrfFetch(`/api/items`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body:
+            JSON.stringify({
+                request,
+                item
+            })
+    })
+    const listing = await res.json()
+    dispatch(addaListing(listing))
+
+    return item
+}
+
+
 const initialState = {};
 
 

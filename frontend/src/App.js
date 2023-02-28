@@ -18,10 +18,10 @@ function App() {
     <BrowserRouter className="App">
       <NavBar isLoaded={isLoaded} />
       <Routes>
-        <Route path='/login' exact={true} element={<LoginForm />} />
-        <Route path='/sign-up' exact={true} element={<SignUpForm />} />
-        <Route path='/' exact={true} />
-        <Route path='/user/:userId' exact={true} element={<YourItems />} />
+        <Route exact path='/login' element={<LoginForm />} />
+        <Route exact path='/sign-up' element={<SignUpForm />} />
+        <Route exact path='/' />
+        <Route exact path='/user/:userId' element={<YourItems />} />
       </Routes>
     </BrowserRouter>
   );

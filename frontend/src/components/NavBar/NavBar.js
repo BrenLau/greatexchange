@@ -39,12 +39,12 @@ const NavBar = ({ isLoaded }) => {
       </ul> : null}
 
       <li className='navbarli housebox'>
-        <NavLink className='navlinknav' to='/' exact={true} activeClassName='active'>
+        <NavLink className='navlinknav' to='/' >
           <img className='boximage2' src={house}></img>
         </NavLink>
       </li>
       <li className='navbarli housebox2'>
-        <NavLink className='navlinknav' to='/users' exact={true} activeClassName='active'>
+        <NavLink className='navlinknav' to='/users'  >
           Users
         </NavLink>
       </li>
