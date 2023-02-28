@@ -4,8 +4,8 @@ const auth = require('./auth')
 const item = require('./item')
 
 
-router.use('/users', users)
 router.use('/auth', auth)
+router.use('/users', users)
 router.use('/items', item)
 
 
