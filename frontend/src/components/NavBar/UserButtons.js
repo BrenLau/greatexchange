@@ -12,23 +12,23 @@ const UserButtons = ({ setloginbutts }) => {
             setloginbutts(false)
         }} className='loginsignup'>
             {!user ? <>
-                <li className='loginsignupele'>
-                    <NavLink className='navlinknav2' to='/login' exact={true} activeClassName='active'>
+                <div className='loginsignupele'>
+                    <NavLink className='navlinknav2' to='/login' >
                         Login
                     </NavLink>
-                </li>
-                <li className='loginsignupele'>
-                    <NavLink className='navlinknav2' to='/sign-up' exact={true} activeClassName='active'>
+                </div>
+                <div className='loginsignupele'>
+                    <NavLink className='navlinknav2' to='/sign-up' >
                         Sign up
                     </NavLink>
-                </li>
+                </div>
             </> : <>
-                <li className='loginsignupele'>
+                <div className='loginsignupele'>
                     <LogoutButton />
-                </li>
-                <li className='loginsignupele'>
+                </div>
+                <div className='loginsignupele'>
                     <NavLink className='navlinknav2' to={`/user/${user.id}`}>Profile</NavLink>
-                </li>
+                </div>
             </>}
         </div>
     );
