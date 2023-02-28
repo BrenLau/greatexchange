@@ -18,6 +18,14 @@ const NavBar = ({ isLoaded }) => {
 
   return (
     <nav className='navbar-container' >
+      <div className='closer'
+        onMouseOver={(e) => {
+          e.preventDefault()
+          setloginbutts(false)
+          setOpenBag(false)
+        }}
+      ></div>
+
       {openBag ? <ul onMouseOver={(e) => {
         e.preventDefault()
         e.stopPropagation()
