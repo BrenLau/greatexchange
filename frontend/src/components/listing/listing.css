@@ -54,3 +54,13 @@
     color: red;
     font-size: 13px;
 }
+
+.h2listingform {
+    color: rgb(255, 255, 0);
+    justify-self: center;
+    align-self: center;
+    background-color: rgba(98, 74, 63, 1);
+    border-radius: 25px;
+    padding: 5px 12px;
+    border: solid rgba(89, 55, 55, 0.714) 1px;
+}

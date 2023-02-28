@@ -47,6 +47,7 @@ const ListingForm = ({ onClick, user }) => {
             } onClick={(e) => {
                 e.stopPropagation()
             }} className="listingform">
+                <h2 className="h2listingform">Create a listing</h2>
                 <label className="listingformlabel">What do you want?{requestError ? <div className="listingerror">Request must be a length of at least 5 characters and less than 500 characters</div> : null}<input value={request} onChange={(e) => {
                     setRequest(e.target.value)
                 }} className="listingforminput1"></input></label>
