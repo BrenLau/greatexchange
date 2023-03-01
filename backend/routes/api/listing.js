@@ -16,9 +16,12 @@ router.post('/',
         const { user } = req
         const { request, itemId } = req.body
         const userId = user.id
+        const updatedItem = await Item.findOne({ where: { id: itemId } })
+        if (updatedItem.listingId) {
+            return res.json({ error: 'Item already listed' })
+        }
 
         const listing = await Listing.create({ userId, request, status: true })
-        const updatedItem = await Item.findOne({ where: { id: itemId } })
         updatedItem.listingId = listing.id
         await updatedItem.save()
         listing.item = updatedItem

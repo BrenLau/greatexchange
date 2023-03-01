@@ -32,6 +32,7 @@ export const getListingsThunk = () => async (dispatch) => {
     })
     const listings = await res.json()
     dispatch(getTheListing(listings))
+    return listings
 }
 
 export const addListingThunk = ({ request, itemId }) => async (dispatch) => {
@@ -48,6 +49,7 @@ export const addListingThunk = ({ request, itemId }) => async (dispatch) => {
             })
     })
     const listing = await res.json()
+    if (listing.error) return listing
     dispatch(addaListing(listing))
     return listing
 }

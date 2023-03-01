@@ -14,6 +14,7 @@ const ListingForm = ({ onClick, user }) => {
 
     const [itemIdError, setItemIdError] = useState(false)
     const [requestError, setRequestError] = useState(false)
+    const [errorMes, setErrorMes] = useState('')
 
     useEffect((e) => {
         dispatch(getItemsThunk({ userId: user.id }))
@@ -32,7 +33,18 @@ const ListingForm = ({ onClick, user }) => {
         } else {
             setRequestError(false)
         }
-        dispatch(addListingThunk({ itemId, request }))
+
+        const res = await dispatch(addListingThunk({ itemId, request }))
+
+        if (res.listing) {
+            onClick()
+            return
+        }
+        if (res.error) {
+            setErrorMes(res.error)
+            return
+        }
+
 
     }
 
@@ -49,6 +61,7 @@ const ListingForm = ({ onClick, user }) => {
                 e.stopPropagation()
             }} className="listingform">
                 <h2 className="h2listingform">Create a listing</h2>
+                {errorMes ? <div className="listingerror">{errorMes}</div> : null}
                 <label className="listingformlabel">What do you want?{requestError ? <div className="listingerror">Request must be a length of at least 5 characters and less than 500 characters</div> : null}<input value={request} onChange={(e) => {
                     setRequest(e.target.value)
                 }} className="listingforminput1"></input></label>
@@ -65,7 +78,7 @@ const ListingForm = ({ onClick, user }) => {
                         }
                     }) : null}
                 </select></label>
-                <button type='submit' className="listingformsubmit">Submit</button>
+                <button type='submit' className="listingformsubmit" >Submit</button>
             </form>
         </BackDrop>
     )
