@@ -41,7 +41,7 @@ const YourItems = () => {
                                 setItemMode(item)
                                 itemUpdateOpen()
                             }}> Edit</button> : null}
-                            <img className='itemimage' src={item?.image}></img>
+                            {item.image ? <img className='itemimage' src={item?.image}></img> : <img className='itemimage' src='https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg'></img>}
                         </div>
                     )
                 })}</div > : <AddItemButton />}
