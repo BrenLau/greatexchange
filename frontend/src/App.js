@@ -8,6 +8,7 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import YourItems from './components/items/yourItems';
 import ListingForm from './components/listing/ListingForm';
+import Listings from './components/listing/Listings';
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ function App() {
         <Route exact path='/sign-up' element={<SignUpForm />} />
         <Route exact path='/' />
         <Route exact path='/user/:userId' element={<YourItems />} />
+        <Route exact path='/marketplace' element={<Listings />} />
       </Routes>
     </BrowserRouter>
   );

@@ -14,8 +14,7 @@ function AddItem({ onClick }) {
         e.preventDefault()
         const formData = { name, file: image }
 
-        await dispatch(addItemThunk(formData)).then((e) => {
-            e.preventDefault()
+        await dispatch(addItemThunk(formData)).then(() => {
             setName('')
             setImage(null)
         })

@@ -12,9 +12,9 @@ const addaListing = (listing) => ({
     type: ADD_LISTING,
     payload: listing
 });
-const getTheListing = (listing) => ({
+const getTheListing = (listings) => ({
     type: GET_LISTING,
-    payload: listing
+    payload: listings
 })
 
 const deleteTheListing = (listingId) => ({
@@ -25,6 +25,14 @@ const updateAnListing = (listing) => ({
     type: UPDATE_LISTING,
     payload: listing
 });
+
+export const getListingsThunk = () => async (dispatch) => {
+    const res = await csrfFetch(`/api/listings`, {
+        method: 'GET'
+    })
+    const listings = await res.json()
+    dispatch(getTheListing(listings))
+}
 
 export const addListingThunk = ({ request, itemId }) => async (dispatch) => {
 
@@ -41,7 +49,6 @@ export const addListingThunk = ({ request, itemId }) => async (dispatch) => {
     })
     const listing = await res.json()
     dispatch(addaListing(listing))
-
     return listing
 }
 
@@ -55,10 +62,13 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case ADD_LISTING:
             newState = { ...state }
-            newState[action.payload.id] = action.payload
+            newState[action.payload.listing.id] = action.payload.listing
             return newState;
-
-
+        case GET_LISTING:
+            action.payload.listings.forEach(list => {
+                newState[list.id] = list
+            })
+            return newState
         default:
             return state;
     }

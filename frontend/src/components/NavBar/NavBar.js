@@ -51,7 +51,7 @@ const NavBar = ({ isLoaded, setOpenListingForm }) => {
           <img className='boximage2' src={house}></img>
         </NavLink>
       </li>
-      <li className='navbarli housebox3' ><button onClick={(e) => {
+      <li className='navbarli housebox3' ><button className='navlinknav' onClick={(e) => {
         e.preventDefault()
         setOpenListingForm(true)
       }}>Create Listing</button></li>
