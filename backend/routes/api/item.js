@@ -29,7 +29,6 @@ router.get('/user/:userId',
     asyncHandler(async (req, res) => {
         const { userId } = req.params
         const items = await Item.findAll({ where: { userId } })
-        console.log(items)
         return res.json({ items })
     })
 
@@ -39,7 +38,6 @@ router.delete(`/:itemId`,
     asyncHandler(async (req, res) => {
         const { itemId } = req.params
         const item = await Item.destroy({ where: { id: itemId } })
-        console.log(item)
         res.json({ message: 'deleted' })
         return
     })

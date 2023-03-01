@@ -11,13 +11,14 @@ const Listing = db.Listing
 const User = db.User
 
 router.post('/',
+    restoreUser,
     asyncHandler(async (req, res) => {
         const { user } = req
-        const { request, item } = req.body
+        const { request, itemId } = req.body
         const userId = user.id
 
         const listing = await Listing.create({ userId, request, status: true })
-        const updatedItem = await Item.findOne({ where: { id: item.id } })
+        const updatedItem = await Item.findOne({ where: { id: itemId } })
         updatedItem.listingId = listing.id
         await updatedItem.save()
 

@@ -28,7 +28,7 @@ const updateAnListing = (listing) => ({
 
 export const addListingThunk = ({ request, itemId }) => async (dispatch) => {
 
-    const res = await csrfFetch(`/api/items`, {
+    const res = await csrfFetch(`/api/listings`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json",

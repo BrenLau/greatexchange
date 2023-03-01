@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getItemsThunk } from "../../store/item";
+import { addListingThunk } from "../../store/listing";
 import BackDrop from "../modal/backdrop";
 import './listing.css'
 
@@ -31,7 +32,7 @@ const ListingForm = ({ onClick, user }) => {
         } else {
             setRequestError(false)
         }
-
+        dispatch(addListingThunk({ itemId, request }))
 
     }
 
