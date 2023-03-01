@@ -26,7 +26,8 @@ module.exports = {
       },
       offerId: {
         type: Sequelize.INTEGER,
-        references: { model: 'Offers' }
+        references: { model: 'Offers' },
+        onDelete: 'CASCADE',
       },
       userId: {
         type: Sequelize.INTEGER,
@@ -35,7 +36,8 @@ module.exports = {
       },
       listingId: {
         type: Sequelize.INTEGER,
-        references: { model: 'Listings' }
+        references: { model: 'Listings' },
+        onDelete: 'CASCADE',
       },
       createdAt: {
         allowNull: false,
