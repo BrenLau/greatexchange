@@ -24,15 +24,15 @@ router.post('/',
         const listing = await Listing.create({ userId, request, status: true })
         updatedItem.listingId = listing.id
         await updatedItem.save()
-        listing.item = updatedItem
-        return res.json({ listing, item: updatedItem })
+        const listToSend = await Listing.findOne({ where: { id: listing.id }, include: [User, Item] })
+        return res.json({ listing: listToSend })
 
     })
 )
 
 router.get('/',
     asyncHandler(async (req, res) => {
-        const listings = await Listing.findAll({ include: Item })
+        const listings = await Listing.findAll({ include: [Item, User] })
         return res.json({ listings })
     }))
 

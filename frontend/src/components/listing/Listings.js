@@ -5,18 +5,23 @@ import { useSelector, useDispatch } from "react-redux"
 const Listings = () => {
     const dispatch = useDispatch()
     const listings = useSelector(state => state.listings)
-    console.log(listings)
+
     useEffect(() => {
         dispatch(getListingsThunk())
     }, [dispatch])
     return (
-        Object.values(listings).length > 0 ? <ul>
+        Object.values(listings).length > 0 ? <ul className="listingul">
             {Object.values(listings).map(listing => {
                 return (
-                    <li>
-                        <div>{listing?.Item?.name}</div>
-                        <div>Requesting: {listing.request}</div>
-                        {listing?.Item?.image ? <img src={listing?.Item?.image}></img> : <img src='https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg'></img>}
+                    <li className="listingli">
+                        <div className="infolisting">
+                            <h3>{listing?.Item?.name}</h3>
+                            <div>Requesting: {listing.request}</div>
+                        </div>
+                        <div className="listingimg">
+
+                            {listing?.Item?.image ? <img className='listingimage' src={listing?.Item?.image}></img> : <img className='listingimage' src='https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg'></img>}
+                        </div>
 
                     </li>
                 )
