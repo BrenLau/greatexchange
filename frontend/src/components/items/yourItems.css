@@ -14,30 +14,81 @@
 }
 
 .itemsstorage {
-    width: 100%;
-    border: 1px solid black;
+    /* width: 100%; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    list-style: none;
+    border: solid 1px rgba(26, 17, 0, 0.5);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: inset 0 0 15px rgba(33, 22, 1, 0.8);
+    background-color: rgba(89, 55, 55, 0.54);
+    position: relative;
+    padding-top: 100px;
 }
 
 .itemform {
-    background-color: whitesmoke;
-    border: rgb(98, 74, 63) solid 2px;
-    outline: rgb(232, 156, 15) solid 2px;
-    border-radius: 5px;
-    height: 350px;
+    height: 300px;
+    width: 300px;
+    background-color: rgba(98, 74, 63, .98);
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
     padding: 20px;
-    width: 300px;
+    border: black 1px solid;
+    border-radius: 25px;
+    justify-content: space-around;
 }
 
+.itemformh2 {
+    color: rgb(255, 255, 0);
+    justify-self: center;
+    align-self: center;
+    background-color: rgba(98, 74, 63, 1);
+    border-radius: 25px;
+    padding: 5px 12px;
+    border: solid rgba(89, 55, 55, 0.714) 1px;
+}
+
+.itemformlabel {
+    background-color: rgb(203, 199, 199);
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    text-align: center;
+    border: solid black 1px;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: large;
+    font-weight: bold;
+}
+
+.itemforminput {
+    width: 90%;
+    padding: 5%;
+    border: groove rgb(232, 156, 15) 1px;
+    border-width: 1px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.itemforminput2 {
+
+    width: 90%;
+    padding: 5%;
+    border: groove rgb(232, 156, 15) 1px;
+    border-width: 1px;
+    border-radius: 5px;
+    background-color: rgb(185, 177, 177);
+    color: rgb(31, 30, 30);
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
 .additembutton {
-    position: fixed;
-    right: 30px;
+    position: absolute;
+    right: 20px;
     cursor: pointer;
     border-radius: 24px;
     color: yellow;
@@ -46,8 +97,33 @@
     border: rgb(98, 74, 63) solid 2px;
     outline: rgb(232, 156, 15) solid 1px;
     margin: 5px;
+    margin-top: -80px;
 }
 
 .additembutton:hover {
     background-color: rgb(130, 128, 128);
+}
+
+.additemsubmit {
+    width: 100px;
+    background-color: rgb(93, 92, 92);
+    border: groove rgb(232, 156, 15) 1px;
+    color: yellow;
+    padding: 5px;
+    border-radius: 5px;
+    align-self: center;
+    cursor: pointer;
+}
+
+.h1foryouritems {
+    position: absolute;
+    left: calc(50% - 125px);
+    margin-top: -80px;
+    width: 250px;
+    background-color: rgb(54, 40, 50);
+    border-radius: 12px;
+    border: groove rgb(232, 156, 15) 1px;
+    color: yellow;
+
+    text-align: center;
 }

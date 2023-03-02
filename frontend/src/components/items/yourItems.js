@@ -28,6 +28,7 @@ const YourItems = () => {
         <>
             {Object.values(items).length ? <div className='itemsstorage'>
                 <AddItemButton />
+                <h1 className='h1foryouritems'>Your Items</h1>
                 {Object.values(items).map(item => {
                     return (
                         <div className='itemframe'>

@@ -27,19 +27,22 @@ function AddItem({ onClick }) {
                 e.preventDefault()
                 e.stopPropagation()
             }}>
-                <label>Item name</label>
-                <input value={name} onChange={(e) => {
-                    e.preventDefault()
-                    setName(e.target.value)
-                }} placeholder="item name"></input>
-                <label>Image</label>
-                <input onClick={(e) => {
-                    e.stopPropagation()
-                }} onChange={(e) => {
-                    const file = e.target.files[0];
-                    if (file) setImage(file)
-                }} type='file' ></input>
-                <button onClick={(e) => {
+                <h2 className="itemformh2">Add Item</h2>
+                <label className="itemformlabel">Item name
+                    <input className='itemforminput' value={name} onChange={(e) => {
+                        e.preventDefault()
+                        setName(e.target.value)
+                    }} placeholder="item name"></input>
+                </label>
+                <label className="itemformlabel">Image
+                    <input className='itemforminput2' onClick={(e) => {
+                        e.stopPropagation()
+                    }} onChange={(e) => {
+                        const file = e.target.files[0];
+                        if (file) setImage(file)
+                    }} type='file' ></input>
+                </label>
+                <button className='additemsubmit' onClick={(e) => {
                     e.stopPropagation()
                 }}>Submit</button>
             </form>
