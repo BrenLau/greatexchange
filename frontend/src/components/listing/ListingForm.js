@@ -4,6 +4,7 @@ import { getItemsThunk } from "../../store/item";
 import { addListingThunk } from "../../store/listing";
 import BackDrop from "../modal/backdrop";
 import './listing.css'
+import AddItemButton from "../items/addItemButton";
 
 const ListingForm = ({ onClick, user }) => {
     const dispatch = useDispatch()
@@ -65,10 +66,11 @@ const ListingForm = ({ onClick, user }) => {
                 <label className="listingformlabel">What do you want?{requestError ? <div className="listingerror">Request must be a length of at least 5 characters and less than 500 characters</div> : null}<input value={request} onChange={(e) => {
                     setRequest(e.target.value)
                 }} className="listingforminput1"></input></label>
-                <label className="listingformlabel">What are you listing?{itemIdError ? <div className="listingerror">Please select valid item</div> : null}<select value={itemId} className="listingforminput2" type='select' name='SelectItem' onChange={async (e) => {
+                <label className="listingformlabel">What are you listing?{itemIdError ? <div className="listingerror">Please select valid item</div> : null}<div className="divforselect"><select value={itemId} className="listingforminput2" type='select' name='SelectItem' onChange={async (e) => {
                     e.preventDefault()
                     await setItemId(e.target.value)
                 }}>
+
                     <option value={0}>Select item</option>
                     {Object.values(items).length > 0 ? Object.values(items).map(item => {
                         if (!item.listingId) {
@@ -77,10 +79,11 @@ const ListingForm = ({ onClick, user }) => {
                             )
                         }
                     }) : null}
-                </select></label>
+                </select>            <AddItemButton newClass='additembutton2' /></div>
+                </label >
                 <button type='submit' className="listingformsubmit" >Submit</button>
-            </form>
-        </BackDrop>
+            </form >
+        </BackDrop >
     )
 }
 

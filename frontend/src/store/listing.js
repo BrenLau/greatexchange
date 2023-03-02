@@ -30,11 +30,9 @@ export const deleteListingThunk = ({ listingId }) => async (dispatch) => {
     const res = csrfFetch(`/api/listings/${listingId}`, {
         method: 'DELETE'
     })
-    const listing = await res.json()
-    if (listing.ok) {
-        dispatch(deleteTheListing(listingId))
-        return
-    }
+
+    dispatch(deleteTheListing(listingId))
+
 }
 
 export const editListingThunk = ({ listingId, request }) => async (dispatch) => {

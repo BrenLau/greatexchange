@@ -82,6 +82,13 @@
     background-color: rgba(89, 55, 55, 0.77);
 }
 
+
+.divforselect {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .listingli {
     border: groove rgb(232, 156, 15) 1px;
     outline: solid 1px black;
