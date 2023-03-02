@@ -15,7 +15,7 @@ const Listings = () => {
                 return (
                     <li className="listingli">
                         <div className="infolisting">
-                            <h3>{listing?.Item?.name}</h3>
+                            <h3 className="h3listing">{listing?.Item?.name}</h3>
                             <div>Requesting: {listing.request}</div>
                         </div>
                         <div className="listingimg">
