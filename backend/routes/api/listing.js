@@ -50,11 +50,13 @@ router.delete('/:listingId',
     asyncHandler(async (req, res) => {
 
         const { listingId } = req.params
-
-        const listing = await Listing.destroy({ where: { id: listingId } })
-        const item = await Item.findOne({ where: { listingId: listing.id } })
-        item.listingId = null
-        await item.save()
+        const listing = await Listing.findOne({ where: { id: listingId } })
+        if (listing) {
+            const item = await Item.findOne({ where: { listingId: listing.id } })
+            item.listingId = null
+            await item.save()
+            await Listing.destroy({ where: { id: listingId } })
+        }
         return res.json({ message: 'list has been deleted' })
     }))
 
