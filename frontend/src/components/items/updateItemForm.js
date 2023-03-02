@@ -26,19 +26,23 @@ const UpdateItemsForm = ({ user, item, onClick }) => {
                 e.stopPropagation()
                 e.preventDefault()
             }}>
-                <label>Item name</label>
-                <input value={name} onChange={(e) => {
-                    e.preventDefault()
-                    setName(e.target.value)
-                }} placeholder="item name"></input>
-                <label>New Image?</label>
-                <input onChange={(e) => {
-                    const file = e.target.files[0];
-                    if (file) setImage(file)
-                }} type='file' onClick={(e) => {
-                    e.stopPropagation()
-                }}></input>
-                <button onClick={(e) => {
+                <h2 className="itemformh2">Edit Item</h2>
+
+                <label className="itemformlabel">Item name
+                    <input className='itemforminput' value={name} onChange={(e) => {
+                        e.preventDefault()
+                        setName(e.target.value)
+                    }} placeholder="item name"></input>
+                </label>
+                <label className="itemformlabel">New Image?
+                    <input className='itemforminput2' onChange={(e) => {
+                        const file = e.target.files[0];
+                        if (file) setImage(file)
+                    }} type='file' onClick={(e) => {
+                        e.stopPropagation()
+                    }}></input>
+                </label>
+                <button className='additemsubmit' onClick={(e) => {
                     e.stopPropagation()
                 }}>Submit</button>
             </form>

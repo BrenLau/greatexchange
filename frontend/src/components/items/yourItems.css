@@ -74,13 +74,14 @@
 }
 
 .itemformh2 {
-    color: rgb(255, 255, 0);
+    color: rgb(0, 0, 0);
     justify-self: center;
     align-self: center;
     background-color: rgba(98, 74, 63, 1);
     border-radius: 25px;
     padding: 5px 12px;
-    border: solid rgba(89, 55, 55, 0.714) 1px;
+    border: groove rgb(232, 156, 15) 1px;
+    background-color: rgb(185, 177, 177);
 }
 
 .itemformlabel {
