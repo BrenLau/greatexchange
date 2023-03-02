@@ -1,5 +1,5 @@
 .itemimage {
-    max-height: 100%;
+    max-height: 250px;
     max-width: 100%;
     border: groove rgba(232, 156, 15, .1) 1px;
     background-color: white;
