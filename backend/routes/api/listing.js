@@ -1,9 +1,6 @@
 const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
-const { check } = require('express-validator');
-const { handleValidationErrors } = require('../../utils/validation');
 const { restoreUser } = require('../../utils/auth');
-const awss3 = require('../../awsS3')
 
 const db = require('../../models')
 const Item = db.Item
@@ -36,6 +33,17 @@ router.get('/',
         return res.json({ listings })
     }))
 
+
+router.put('/:listingId',
+    asyncHandler(async (req, res) => {
+        const { listingId } = req.params
+        const { request } = req.body
+        const listing = await Listing.findOne({ where: { id: listingId } })
+        listing.request = request
+        await listing.save()
+        const listToSend = await Listing.findOne({ where: { id: listing.id }, include: [User, Item] })
+        return res.json(listToSend)
+    }))
 
 
 

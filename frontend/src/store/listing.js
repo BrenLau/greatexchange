@@ -26,6 +26,22 @@ const updateAnListing = (listing) => ({
     payload: listing
 });
 
+export const editListingThunk = ({ listingId, request }) => async (dispatch) => {
+    const res = await csrfFetch(`/api/listings/${listingId}`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            request
+        })
+    })
+    const listing = await res.json()
+    if (listing.error) return listing
+    dispatch(updateAnListing(listing))
+    return listing
+}
+
 export const getListingsThunk = () => async (dispatch) => {
     const res = await csrfFetch(`/api/listings`, {
         method: 'GET'
@@ -70,6 +86,10 @@ export default function reducer(state = initialState, action) {
             action.payload.listings.forEach(list => {
                 newState[list.id] = list
             })
+            return newState
+        case UPDATE_LISTING:
+            newState = { ...state }
+            newState[action.payload.id] = action.payload
             return newState
         default:
             return state;

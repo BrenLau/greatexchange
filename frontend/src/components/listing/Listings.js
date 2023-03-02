@@ -1,6 +1,8 @@
 import { getListingsThunk } from "../../store/listing"
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
+import DeleteListing from "./DeleteListing"
+import EditListing from "./EditListing"
 
 const Listings = () => {
     const dispatch = useDispatch()
@@ -14,6 +16,10 @@ const Listings = () => {
             {Object.values(listings).map(listing => {
                 return (
                     <li className="listingli">
+                        <div className="divforeditanddel">
+                            <DeleteListing listingId={listing.id} />
+                            <EditListing currentRequest={listing.request} listingId={listing.id} />
+                        </div>
                         <div className="infolisting">
                             <h3 className="h3listing">{listing?.Item?.name}</h3>
                             <div>Requesting: {listing.request}</div>
