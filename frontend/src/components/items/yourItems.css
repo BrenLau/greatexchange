@@ -1,16 +1,49 @@
 .itemimage {
-    height: 100%;
-    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    border: groove rgba(232, 156, 15, .1) 1px;
+    background-color: white;
 }
 
 .itemframe {
     text-align: center;
     width: 25%;
+    max-width: 300px;
     height: 25%;
+    max-height: 350px;
     margin: 20px;
     min-width: 250px;
     min-height: 250px;
     flex-wrap: wrap;
+    background-color: beige;
+    border-radius: 24px;
+    padding: 12px;
+    border: groove rgba(232, 156, 15, 1) 1px;
+
+}
+
+.itemname {
+    font-size: large;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    margin: 5px;
+    background-color: whitesmoke;
+    border-radius: 12px;
+    border: groove rgba(232, 156, 15, .1) 1px;
+}
+
+.editdelbutt {
+    width: 60px;
+    background-color: rgb(93, 92, 92);
+    border: groove rgb(232, 156, 15) 1px;
+    color: yellow;
+    padding: 5px;
+    border-radius: 5px;
+    align-self: center;
+    cursor: pointer;
+    margin: 3px;
+    margin-bottom: 9px;
 }
 
 .itemsstorage {

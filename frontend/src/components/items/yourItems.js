@@ -32,16 +32,20 @@ const YourItems = () => {
                 {Object.values(items).map(item => {
                     return (
                         <div className='itemframe'>
-                            <div>{item?.name}</div>
-                            {item?.userId === user?.id ? < button onClick={async (e) => {
-                                e.preventDefault()
-                                await dispatch(deleteItemThunk(item.id))
-                            }}> Delete</button> : null}
-                            {item?.userId === user?.id ? < button onClick={async (e) => {
-                                e.preventDefault()
-                                setItemMode(item)
-                                itemUpdateOpen()
-                            }}> Edit</button> : null}
+                            <div className='itemname'>{item?.name}</div>
+
+                            <div>
+                                {item?.userId === user?.id ? < button className='editdelbutt' onClick={async (e) => {
+                                    e.preventDefault()
+                                    await dispatch(deleteItemThunk(item.id))
+                                }}> Delete</button> : null}
+                                {item?.userId === user?.id ? < button className='editdelbutt' onClick={async (e) => {
+                                    e.preventDefault()
+                                    setItemMode(item)
+                                    itemUpdateOpen()
+                                }}> Edit</button> : null}
+                            </div>
+
                             {item.image ? <img className='itemimage' src={item?.image}></img> : <img className='itemimage' src='https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg'></img>}
                         </div>
                     )
