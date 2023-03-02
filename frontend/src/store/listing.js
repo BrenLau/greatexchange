@@ -26,6 +26,17 @@ const updateAnListing = (listing) => ({
     payload: listing
 });
 
+export const deleteListingThunk = ({ listingId }) => async (dispatch) => {
+    const res = csrfFetch(`/api/listings/${listingId}`, {
+        method: 'DELETE'
+    })
+    const listing = await res.json()
+    if (listing.ok) {
+        dispatch(deleteTheListing(listingId))
+        return
+    }
+}
+
 export const editListingThunk = ({ listingId, request }) => async (dispatch) => {
     const res = await csrfFetch(`/api/listings/${listingId}`, {
         method: 'PUT',
@@ -90,6 +101,11 @@ export default function reducer(state = initialState, action) {
         case UPDATE_LISTING:
             newState = { ...state }
             newState[action.payload.id] = action.payload
+            return newState
+        case DEL_LISTING:
+            newState = { ...state }
+            console.log(action.payload)
+            delete newState[action.payload]
             return newState
         default:
             return state;

@@ -8,6 +8,7 @@ const awss3 = require('../../awsS3')
 const db = require('../../models')
 const Item = db.Item
 const User = db.User
+const Listing = db.Listing
 
 router.post('/',
     restoreUser,
@@ -37,7 +38,12 @@ router.get('/user/:userId',
 router.delete(`/:itemId`,
     asyncHandler(async (req, res) => {
         const { itemId } = req.params
-        const item = await Item.destroy({ where: { id: itemId } })
+        const item = await Item.findOne({ where: { id: itemId } })
+        if (item.listingId) {
+            const listing = await Listing.destroy({ where: { id: item.listingId } })
+        }
+
+        await Item.destroy({ where: { id: itemId } })
         res.json({ message: 'deleted' })
         return
     })
