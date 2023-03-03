@@ -5,11 +5,21 @@ import { getItemsThunk, deleteItemThunk } from '../../store/item'
 import './yourItems.css'
 import UpdateItemsForm from './updateItemForm'
 import AddItemButton from './addItemButton'
+import { getUserThunk } from '../../store/user'
 
 const YourItems = () => {
     const dispatch = useDispatch()
     const { userId } = useParams()
-    const user = useSelector(state => state.session.user)
+
+    useEffect(() => {
+        dispatch(getItemsThunk({ userId: userId }))
+        dispatch(getUserThunk({ userId }))
+
+    }, [dispatch])
+
+    const users = useSelector(state => state.users)
+    const user = users[userId]
+
     const items = useSelector(state => state.items)
     const [itemMode, setItemMode] = useState({})
 
@@ -19,16 +29,12 @@ const YourItems = () => {
     const itemUpdateClose = () => setItemUpdateModalOpen(false);
     const itemUpdateOpen = () => setItemUpdateModalOpen(true);
 
-    useEffect(() => {
-        dispatch(getItemsThunk({ userId: userId }))
-
-    }, [dispatch])
 
     return (
         <>
             {Object.values(items).length ? <div className='itemsstorage'>
                 <AddItemButton />
-                <h1 className='h1foryouritems'>Your Items</h1>
+                <h1 className='h1foryouritems'>{user.username}'s Inventory</h1>
                 {Object.values(items).map(item => {
                     return (
                         <div className='itemframe'>
