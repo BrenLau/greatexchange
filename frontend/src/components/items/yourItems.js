@@ -6,6 +6,8 @@ import './yourItems.css'
 import UpdateItemsForm from './updateItemForm'
 import AddItemButton from './addItemButton'
 import { getUserThunk } from '../../store/user'
+import x from '../../x.png'
+import edit from '../../edit.png'
 
 const YourItems = () => {
     const dispatch = useDispatch()
@@ -34,28 +36,31 @@ const YourItems = () => {
         <>
             {Object.values(items).length ? <div className='itemsstorage'>
                 <AddItemButton />
-                <h1 className='h1foryouritems'>{user.username}'s Inventory</h1>
+                <h1 className='h1foryouritems'>{user?.username}'s Inventory</h1>
                 {Object.values(items).map(item => {
                     return (
                         <div className='itemframe'>
                             <div className='itemname'>{item?.name}</div>
 
-                            <div>
-                                {item?.userId === user?.id ? < button className='editdelbutt' onClick={async (e) => {
-                                    e.preventDefault()
-                                    await dispatch(deleteItemThunk(item.id))
-                                }}> Delete</button> : null}
-                                {item?.userId === user?.id ? < button className='editdelbutt' onClick={async (e) => {
-                                    e.preventDefault()
-                                    setItemMode(item)
-                                    itemUpdateOpen()
-                                }}> Edit</button> : null}
+                            <div id='abspos'>
+                                <div className='buttonholdersitem'>
+
+                                    {item?.userId === user?.id ? < img src={x} className='editdelbutt' onClick={async (e) => {
+                                        e.preventDefault()
+                                        await dispatch(deleteItemThunk(item.id))
+                                    }}></img> : null}
+                                    {item?.userId === user?.id ? < img src={edit} className='editdelbutt' onClick={async (e) => {
+                                        e.preventDefault()
+                                        setItemMode(item)
+                                        itemUpdateOpen()
+                                    }}></img> : null}
+                                </div>
                             </div>
 
                             {item.image ? <img className='itemimage' src={item?.image}></img> : <img className='itemimage' src='https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg'></img>}
                         </div>
                     )
-                })}</div > : <AddItemButton />}
+                })}</div > : <div className='itemstorage'><AddItemButton /></div>}
             {itemUpdateModalOpen ? <UpdateItemsForm item={itemMode} onClick={itemUpdateClose}></UpdateItemsForm> : null}
 
 
