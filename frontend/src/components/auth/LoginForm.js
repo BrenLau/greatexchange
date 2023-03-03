@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { login } from '../../store/session';
-import { redirect } from 'react-router';
+import { useNavigate } from 'react-router';
 
 const LoginForm = () => {
+  const navigate = useNavigate()
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -15,6 +16,7 @@ const LoginForm = () => {
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
+      navigate('/', { replace: true })
     }
   };
 
@@ -27,7 +29,7 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <redirect to='/' />;
+    return navigate('/', { replace: true });
   }
 
   return (
