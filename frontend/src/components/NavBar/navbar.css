@@ -26,7 +26,6 @@
     align-items: center;
     background-color: rgb(93, 92, 92);
     border: groove rgb(232, 156, 15) 1px;
-    cursor: pointer;
     border-radius: 5px;
     flex-direction: column;
 
@@ -90,7 +89,8 @@
     align-items: center;
     justify-content: center;
     position: fixed;
-    height: 90px;
+    height: 100px;
+    width: 80px;
     top: 40px;
     right: 0px;
     padding: 5px;
@@ -156,11 +156,15 @@
 }
 
 .loginsignupele {
+    display: flex;
     margin: 3px;
     border: groove rgb(232, 156, 15) 1px;
     background-color: rgb(93, 92, 92);
     height: 30px;
     width: 90%;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 2px;
 
 }
 
