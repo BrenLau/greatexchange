@@ -21,6 +21,11 @@
     cursor: pointer;
 }
 
+.buttonfix1 {
+    width: 60px;
+    margin-left: 2px;
+}
+
 .listingformlabel {
     background-color: rgb(203, 199, 199);
     display: flex;
@@ -85,6 +90,15 @@
     align-items: center;
 }
 
+.divforeditanddel {
+    position: absolute;
+    display: flex;
+    bottom: 16px;
+    left: 16px;
+    width: calc(50% - 6px);
+    justify-content: space-between;
+}
+
 
 .divforselect {
     display: flex;
@@ -99,6 +113,7 @@
     border-radius: 12px;
     margin: 12px 0px;
     width: 80%;
+    max-width: 800px;
     display: flex;
     flex-direction: row;
     height: 320px;
@@ -142,12 +157,14 @@
 }
 
 .usernamebot {
-    position: absolute;
-    bottom: 0px;
-    margin-bottom: 12px;
-    align-self: flex-end;
     font-size: large;
     font-weight: bold;
+    margin-right: 5px;
+    background-color: ghostwhite;
+    border-radius: 3px;
+    text-align: center;
+    border: groove rgb(232, 156, 15) 1px;
+    width: calc(100% - 132px);
 }
 
 .usernamebot::first-letter {

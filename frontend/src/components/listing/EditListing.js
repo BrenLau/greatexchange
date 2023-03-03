@@ -34,7 +34,7 @@ const EditListing = ({ listingId, currentRequest }) => {
     }
     return (
         <>
-            <button onClick={() => {
+            <button className='listingformsubmit buttonfix1' onClick={() => {
                 setEditModal(true)
             }}>Edit</button>
             {editModal ? <BackDrop onClick={setEditModal}>

@@ -8,7 +8,7 @@ const DeleteListing = ({ listingId }) => {
     const [deleteModal, setDeleteModal] = useState(false)
     return (
         <>
-            <button onClick={(e) => {
+            <button className='listingformsubmit buttonfix1' onClick={(e) => {
                 setDeleteModal(true)
             }}>Delete</button>
             {deleteModal ? <BackDrop onClick={setDeleteModal}><button onClick={async (e) => {

@@ -17,13 +17,15 @@ const Listings = () => {
                 return (
                     <li className="listingli">
                         <div className="divforeditanddel">
-                            <DeleteListing listingId={listing.id} />
-                            <EditListing currentRequest={listing.request} listingId={listing.id} />
+                            <div>
+                                <DeleteListing listingId={listing.id} />
+                                <EditListing currentRequest={listing.request} listingId={listing.id} />
+                            </div>
+                            <div className="usernamebot">{listing?.User?.username}</div>
                         </div>
                         <div className="infolisting">
                             <h3 className="h3listing">{listing?.Item?.name}</h3>
                             <div>Requesting: <br /><br />{listing.request}</div>
-                            <div className="usernamebot">{listing?.User?.username}</div>
                         </div>
                         <div className="listingimg">
 
