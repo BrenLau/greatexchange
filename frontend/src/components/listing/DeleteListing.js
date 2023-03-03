@@ -2,15 +2,16 @@ import BackDrop from "../modal/backdrop"
 import { useDispatch } from "react-redux"
 import { useState } from "react"
 import { deleteListingThunk } from "../../store/listing"
+import x from '../../x.png'
 
 const DeleteListing = ({ listingId }) => {
     const dispatch = useDispatch()
     const [deleteModal, setDeleteModal] = useState(false)
     return (
         <>
-            <button className='listingformsubmit buttonfix1' onClick={(e) => {
+            <img src={x} className='listingformsubmit buttonfix1' onClick={(e) => {
                 setDeleteModal(true)
-            }}>Delete</button>
+            }}></img>
             {deleteModal ? <BackDrop onClick={setDeleteModal}><button onClick={async (e) => {
                 await dispatch(deleteListingThunk({ listingId }))
             }}>Delete</button><button onClick={(e) => {

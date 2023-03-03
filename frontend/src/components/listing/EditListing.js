@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import BackDrop from "../modal/backdrop"
 import { editListingThunk } from "../../store/listing"
+import edit from '../../edit.png'
 
 const EditListing = ({ listingId, currentRequest }) => {
     const [editModal, setEditModal] = useState(false)
@@ -34,9 +35,9 @@ const EditListing = ({ listingId, currentRequest }) => {
     }
     return (
         <>
-            <button className='listingformsubmit buttonfix1' onClick={() => {
+            <img src={edit} className='listingformsubmit buttonfix1' onClick={() => {
                 setEditModal(true)
-            }}>Edit</button>
+            }}></img>
             {editModal ? <BackDrop onClick={setEditModal}>
 
                 <form onSubmit={(e) => {

@@ -22,8 +22,10 @@
 }
 
 .buttonfix1 {
-    width: 60px;
+    width: 20px;
+    height: 20px;
     margin-left: 2px;
+    padding: 0px;
 }
 
 .listingformlabel {
@@ -120,6 +122,12 @@
     position: relative;
     left: -15px;
     background-color: grey;
+}
+
+.listbutdiv {
+    position: absolute;
+    top: 16px;
+    right: 16px;
 }
 
 .infolisting {

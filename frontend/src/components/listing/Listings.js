@@ -17,10 +17,7 @@ const Listings = () => {
                 return (
                     <li className="listingli">
                         <div className="divforeditanddel">
-                            <div>
-                                <DeleteListing listingId={listing.id} />
-                                <EditListing currentRequest={listing.request} listingId={listing.id} />
-                            </div>
+
                             <div className="usernamebot">{listing?.User?.username}</div>
                         </div>
                         <div className="infolisting">
@@ -28,7 +25,10 @@ const Listings = () => {
                             <div>Requesting: <br /><br />{listing.request}</div>
                         </div>
                         <div className="listingimg">
-
+                            <div className="listbutdiv">
+                                <DeleteListing listingId={listing.id} />
+                                <EditListing currentRequest={listing.request} listingId={listing.id} />
+                            </div>
                             {listing?.Item?.image ? <img className='listingimage' src={listing?.Item?.image}></img> : <img className='listingimage' src='https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg'></img>}
                         </div>
 
