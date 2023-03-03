@@ -75,10 +75,11 @@
 }
 
 .listingimage {
-    max-height: 100%;
+    max-height: calc(100% - 24px);
     max-width: 100%;
 
 }
+
 
 .listingul {
     list-style: none;
@@ -145,7 +146,7 @@
 
 .listingimg {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     border: solid 1px black;
     height: calc(100%);
@@ -154,6 +155,7 @@
     align-self: flex-start;
     background-color: beige;
     border-radius: 0 12px 12px 0;
+    flex-direction: column;
 }
 
 .h3listing {
@@ -167,12 +169,13 @@
 .usernamebot {
     font-size: large;
     font-weight: bold;
-    margin-right: 5px;
     background-color: ghostwhite;
     border-radius: 3px;
     text-align: center;
-    border: groove rgb(232, 156, 15) 1px;
-    width: calc(100% - 132px);
+    border-top: groove rgb(232, 156, 15) 1px;
+    width: calc(100%);
+    border-radius: 0 0 12px 0;
+    height: 24px;
 }
 
 .usernamebot::first-letter {
