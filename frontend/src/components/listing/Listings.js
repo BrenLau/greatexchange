@@ -22,7 +22,8 @@ const Listings = () => {
                         </div>
                         <div className="infolisting">
                             <h3 className="h3listing">{listing?.Item?.name}</h3>
-                            <div>Requesting: {listing.request}</div>
+                            <div>Requesting: <br /><br />{listing.request}</div>
+                            <div className="usernamebot">{listing?.User?.username}</div>
                         </div>
                         <div className="listingimg">
 
