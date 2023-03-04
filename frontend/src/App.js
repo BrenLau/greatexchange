@@ -9,6 +9,7 @@ import SignUpForm from './components/auth/SignUpForm';
 import YourItems from './components/items/yourItems';
 import ListingForm from './components/listing/ListingForm';
 import Listings from './components/listing/Listings';
+import Home from './components/home/Home'
 
 function App() {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function App() {
       <Routes>
         <Route exact path='/login' element={<LoginForm />} />
         <Route exact path='/sign-up' element={<SignUpForm />} />
-        <Route exact path='/' />
+        <Route exact path='/' element={<Home />} />
         <Route exact path='/user/:userId' element={<YourItems />} />
         <Route exact path='/marketplace' element={<Listings />} />
       </Routes>

@@ -78,6 +78,14 @@
 
 }
 
+.navlinknav:hover {
+    background-color: rgb(130, 128, 128);
+}
+
+.navlinknav2:hover {
+    background-color: rgb(130, 128, 128);
+}
+
 .userbuttonsli {
     position: absolute;
     right: 15px;
