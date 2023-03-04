@@ -214,3 +214,36 @@
 
     }
 }
+
+.deletelistingdiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 200px;
+    padding: 24px;
+    color: yellow;
+    background-color: rgba(89, 55, 55, .8);
+    border-radius: 12px;
+    border: groove rgb(232, 156, 15) 1px;
+}
+
+.yndiv {
+    display: flex;
+    height: 25px;
+}
+
+.deletelistingbuttons {
+    height: 25px;
+    width: 40px;
+    background-color: rgb(93, 92, 92);
+    border: groove rgb(232, 156, 15) 1px;
+    color: yellow;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 12px;
+}
+
+.deletelistingbuttons:hover {
+    background-color: rgb(65, 62, 62);
+}

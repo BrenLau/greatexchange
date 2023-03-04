@@ -12,11 +12,20 @@ const DeleteListing = ({ listingId }) => {
             <img src={x} className='listingformsubmit buttonfix1' onClick={(e) => {
                 setDeleteModal(true)
             }}></img>
-            {deleteModal ? <BackDrop onClick={setDeleteModal}><button onClick={async (e) => {
-                await dispatch(deleteListingThunk({ listingId }))
-            }}>Delete</button><button onClick={(e) => {
-                setDeleteModal(false)
-            }}>Cancel</button></BackDrop> : null}
+            {deleteModal ? <BackDrop onClick={setDeleteModal}>
+                <div className='deletelistingdiv'>
+                    <div>Are you sure you want to delete this listing?</div>
+                    <div className="yndiv">
+
+                        <button className='deletelistingbuttons' onClick={async (e) => {
+                            await dispatch(deleteListingThunk({ listingId }))
+                        }}>Yes</button>
+
+                        <button className='deletelistingbuttons' onClick={(e) => {
+                            setDeleteModal(false)
+
+
+                        }}>No</button></div></div></BackDrop> : null}
         </>
     )
 }
