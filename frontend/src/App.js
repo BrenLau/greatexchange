@@ -29,7 +29,7 @@ function App() {
       <Routes>
         <Route exact path='/login' element={<LoginForm />} />
         <Route exact path='/sign-up' element={<SignUpForm />} />
-        <Route exact path='/' element={<Home />} />
+        <Route exact path='/' element={<Home user={user} />} />
         <Route exact path='/user/:userId' element={<YourItems />} />
         <Route exact path='/marketplace' element={<Listings />} />
       </Routes>
