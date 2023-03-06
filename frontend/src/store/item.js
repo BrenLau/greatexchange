@@ -50,6 +50,8 @@ export const addItemThunk = (payload) => async (dispatch) => {
 }
 
 export const getItemsThunk = ({ userId }) => async (dispatch) => {
+    if (!userId) return
+
     const res = await csrfFetch(`/api/items/user/${userId}`)
     const items = await res.json()
     dispatch(getTheItems(items.items))
@@ -100,7 +102,6 @@ export default function reducer(state = initialState, action) {
             newState[action.payload.id] = action.payload
             return newState;
         case GET_ITEMS:
-            newState = { ...state }
             action.payload.forEach(item => {
                 newState[item.id] = item
             })

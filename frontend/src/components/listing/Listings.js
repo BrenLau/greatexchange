@@ -19,7 +19,7 @@ const Listings = () => {
                 return (
                     <li key={listing?.id} className="listingli">
 
-                        {listing?.userId !== user?.id ? <OfferForm listingId={listing?.id} userId={listing?.userId} /> : null}
+                        {listing?.userId !== user?.id ? <OfferForm user={user} listingId={listing?.id} userId={listing?.userId} /> : null}
 
                         <div className="infolisting">
                             <h3 className="h3listing">{listing?.Item?.name}</h3>

@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 // import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
-import { redirect } from 'react-router';
+import { useNavigate } from 'react-router';
 
 const SignUpForm = () => {
+  const navigate = useNavigate()
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -40,7 +41,7 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <redirect to='/' />;
+    return navigate('/');
   }
 
   return (
