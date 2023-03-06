@@ -28,8 +28,8 @@ export default function reducer(state = initialState, action) {
     let newState = {}
     switch (action.type) {
         case GET_USER:
-            console.log(action.payload)
             newState = { ...state }
+            if (!action.payload) return newState
             newState[action.payload.id] = action.payload
             return newState
         default:
