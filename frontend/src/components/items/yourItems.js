@@ -41,7 +41,7 @@ const YourItems = () => {
                 <h1 className='h1foryouritems'>{user?.username}'s Inventory</h1>
                 {Object.values(items).map(item => {
                     return (
-                        <div className='itemframe'>
+                        <div key={item.id} className='itemframe'>
                             <div className='itemname'>{item?.name}</div>
 
                             <div id='abspos'>

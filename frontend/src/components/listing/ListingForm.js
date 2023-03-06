@@ -75,7 +75,7 @@ const ListingForm = ({ onClick, user }) => {
                     {Object.values(items).length > 0 ? Object.values(items).map(item => {
                         if (!item.listingId) {
                             return (
-                                <option value={item.id}>{item.name}</option>
+                                <option key={item.id} value={item.id}>{item.name}</option>
                             )
                         }
                     }) : null}

@@ -15,7 +15,7 @@ const Listings = () => {
         Object.values(listings).length > 0 ? <ul className="listingul">
             {Object.values(listings).map(listing => {
                 return (
-                    <li className="listingli">
+                    <li key={listing?.id} className="listingli">
                         <div className="divforeditanddel">
 
                         </div>
