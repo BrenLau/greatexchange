@@ -9,6 +9,7 @@ const OfferForm = ({ listingId, user }) => {
     const dispatch = useDispatch()
     const myItems = useSelector(state => state.items)
     const [items, setItems] = useState({})
+    const [cash, setCash] = useState(0.00)
     const [selected, setSelected] = useState(null)
     const [openOfferModal, setOpenOfferModal] = useState(false)
 
@@ -80,6 +81,9 @@ const OfferForm = ({ listingId, user }) => {
                                 </div>
                             )
                         })}</div>
+                        <label>Cash<input onChange={(e) => {
+                            setCash(e.target.value)
+                        }} value={cash} type='number' min="0.00" step=".01"></input><span>$</span></label>
                         <button type="submit">Submit</button>
                     </form>
                 </div>
