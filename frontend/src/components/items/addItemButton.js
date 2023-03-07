@@ -9,7 +9,7 @@ const AddItemButton = ({ newClass }) => {
     const addItemOpen = () => setAddItemModalOpen(true);
     return (
         <>
-            <button className={!newClass ? 'additembutton' : 'additembutton2'} onClick={(e) => {
+            <button className={!newClass ? 'additembutton' : newClass} onClick={(e) => {
                 e.stopPropagation()
                 addItemOpen()
             }}>Add Item</button>

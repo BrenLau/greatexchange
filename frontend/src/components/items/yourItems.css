@@ -148,9 +148,7 @@
     margin-top: -50px;
 }
 
-.additembutton:hover {
-    background-color: rgb(130, 128, 128);
-}
+
 
 .additembutton2 {
     cursor: pointer;
@@ -164,6 +162,27 @@
     height: 30px;
     position: relative;
     align-self: flex-end;
+}
+
+.additembutton3 {
+    cursor: pointer;
+    border-radius: 24px;
+    color: yellow;
+    background-color: rgb(93, 92, 92);
+    padding: 5px;
+    border: rgb(98, 74, 63) solid 2px;
+    outline: rgb(232, 156, 15) solid 1px;
+    width: 110px;
+    height: 30px;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}
+
+.additembutton:hover,
+.additembutton2:hover,
+.additembutton3:hover {
+    background-color: rgb(130, 128, 128);
 }
 
 .additemsubmit {
