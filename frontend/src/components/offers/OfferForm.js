@@ -22,17 +22,17 @@ const OfferForm = ({ listingId, user }) => {
     }
 
     const itemSubmit = (e) => {
-
-    }
-
-    const onSubmit = (e) => {
-        e.preventDefault()
-
         if (selected) {
             const currentItems = { ...items }
             currentItems[selected] = myItems[selected]
             setItems(currentItems)
         }
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault()
+
+
     }
 
     return (
@@ -51,6 +51,9 @@ const OfferForm = ({ listingId, user }) => {
                     <form className='formforoffers' onSubmit={onSubmit} onClick={(e) => {
                         e.stopPropagation()
                     }}>
+                        <label>Cash<input onChange={(e) => {
+                            setCash(e.target.value)
+                        }} value={cash} type='number' min="0.00" step=".01"></input><span>$</span></label>
                         <label>Items
                             <select onChange={(e) => {
                                 setSelected(e.target.value)
@@ -81,9 +84,6 @@ const OfferForm = ({ listingId, user }) => {
                                 </div>
                             )
                         })}</div>
-                        <label>Cash<input onChange={(e) => {
-                            setCash(e.target.value)
-                        }} value={cash} type='number' min="0.00" step=".01"></input><span>$</span></label>
                         <button type="submit">Submit</button>
                     </form>
                 </div>
