@@ -6,6 +6,7 @@ const db = require('../../models')
 const Item = db.Item
 const Listing = db.Listing
 const User = db.User
+const Offer = db.Offer
 
 router.post('/',
     restoreUser,
@@ -60,7 +61,22 @@ router.delete('/:listingId',
         return res.json({ message: 'list has been deleted' })
     }))
 
-
+router.post('/offers/:listingId',
+    restoreUser,
+    asyncHandler(async (req, res) => {
+        const { listingId } = req.params
+        const { user } = req
+        console.log(user)
+        const data = req.body
+        const { cash, items } = data
+        const offer = await Offer.create({ listingId, userId: user.id, cash })
+        Object.values(items).forEach(async (item) => {
+            const ite = await Item.findOne({ where: { id: item.id } })
+            ite.offerId = offer.id
+            await ite.save()
+        })
+        return res.json(offer)
+    }))
 
 
 module.exports = router

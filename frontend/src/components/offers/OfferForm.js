@@ -4,24 +4,32 @@ import BackDrop from "../modal/backdrop"
 import { getItemsThunk } from "../../store/item"
 import AddItemButton from "../items/addItemButton"
 import './offerform.css'
+import { makeOfferThunk } from "../../store/offer"
+
 
 const OfferForm = ({ listingId, user }) => {
     const dispatch = useDispatch()
     const myItems = useSelector(state => state.items)
+    const [errors, setErrors] = useState(false)
     const [items, setItems] = useState({})
     const [cash, setCash] = useState(0.00)
     const [selected, setSelected] = useState(null)
     const [openOfferModal, setOpenOfferModal] = useState(false)
 
+
     useEffect((e) => {
         dispatch(getItemsThunk({ userId: user?.id }))
+        setCash(0)
+        setItems({})
+        setSelected(null)
 
-    }, [dispatch])
+    }, [dispatch, openOfferModal])
     if (!listingId) {
         setOpenOfferModal(false)
     }
 
     const itemSubmit = (e) => {
+        e.preventDefault()
         if (selected) {
             const currentItems = { ...items }
             currentItems[selected] = myItems[selected]
@@ -31,7 +39,22 @@ const OfferForm = ({ listingId, user }) => {
 
     const onSubmit = (e) => {
         e.preventDefault()
+        if (!Number(cash) && !Object.values(items).length) {
+            setErrors(true)
+            return
+        } else {
+            setErrors(false)
+        }
+        const data = {
+            cash: Number(cash).toFixed(2),
+            items
+        }
 
+        dispatch(makeOfferThunk({ data, listingId }))
+        setCash(0)
+        setItems({})
+        setSelected(null)
+        setOpenOfferModal(false)
 
     }
 
@@ -51,6 +74,7 @@ const OfferForm = ({ listingId, user }) => {
                     <form className='formforoffers' onSubmit={onSubmit} onClick={(e) => {
                         e.stopPropagation()
                     }}>
+                        {errors ? <div>Enter an amount of cash over 0 and/or at least one item</div> : null}
                         <label>Cash<input onChange={(e) => {
                             setCash(e.target.value)
                         }} value={cash} type='number' min="0.00" step=".01"></input><span>$</span></label>

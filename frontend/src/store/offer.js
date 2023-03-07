@@ -10,9 +10,13 @@ const makeAnOffer = (offer) => ({
 
 
 
-export const makeOfferThunk = ({ listingId }) => async (dispatch) => {
+export const makeOfferThunk = ({ data, listingId }) => async (dispatch) => {
     const res = await csrfFetch(`/api/listings/offers/${listingId}`, {
-        method: 'GET'
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data)
     })
     const offer = await res.json()
     dispatch(makeAnOffer(offer))
