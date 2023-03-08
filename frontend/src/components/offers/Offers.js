@@ -9,7 +9,7 @@ const Offers = ({ offers }) => {
 
     return (
         <>
-            <button onClick={(e) => {
+            <button className='buttontoopenoffers' onClick={(e) => {
                 setOpenOffers(true)
             }}>Offers</button>
 

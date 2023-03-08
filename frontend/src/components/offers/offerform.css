@@ -138,3 +138,35 @@
     font-style: italic;
 
 }
+
+.offerformbutton {
+    position: absolute;
+    color: yellow;
+    background-color: rgb(93, 92, 92);
+    text-align: center;
+    outline: rgb(232, 156, 15) solid 1px;
+    margin: 5px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.offerformbutton:hover {
+    background-color: #837f7f;
+}
+
+.buttontoopenoffers {
+    position: absolute;
+    color: yellow;
+    right: 12px;
+    background-color: rgb(93, 92, 92);
+    text-align: center;
+    outline: rgb(232, 156, 15) solid 1px;
+    margin: 5px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.buttontoopenoffers:hover {
+    background-color: #837f7f;
+
+}

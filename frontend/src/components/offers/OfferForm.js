@@ -63,7 +63,7 @@ const OfferForm = ({ listingId, user }) => {
 
     return (
         <>
-            <button onClick={(e) => {
+            <button className="offerformbutton" onClick={(e) => {
                 e.stopPropagation()
                 setOpenOfferModal(true)
             }}>Make Offer</button>
