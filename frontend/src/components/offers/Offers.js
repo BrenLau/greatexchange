@@ -17,7 +17,7 @@ const Offers = ({ offers }) => {
                 <ul onClick={(e) => {
                     e.stopPropagation()
                 }} className="offersul">
-                    {offers ? offers.map(offer => {
+                    {offers.length ? offers.map(offer => {
                         return (
                             <li key={offer.id} className="cashli">
                                 <DeleteOffer offerId={offer.id} />
@@ -38,7 +38,7 @@ const Offers = ({ offers }) => {
 
                             </li>
                         )
-                    }) : null}
+                    }) : <div className="nonediv">No Offers Yet</div>}
                 </ul>
             </BackDrop> : null}
         </>
