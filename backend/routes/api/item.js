@@ -9,6 +9,7 @@ const db = require('../../models');
 const Item = db.Item
 const User = db.User
 const Listing = db.Listing
+const Offer = db.Offer
 
 router.post('/',
     restoreUser,
