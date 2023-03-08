@@ -1,7 +1,7 @@
 import { useState } from "react"
 import BackDrop from "../modal/backdrop"
 import './offerform.css'
-
+import DeleteOffer from "./deleteOffer"
 
 const Offers = ({ offers }) => {
     // const dispatch = useDispatch()
@@ -20,6 +20,7 @@ const Offers = ({ offers }) => {
                     {offers ? offers.map(offer => {
                         return (
                             <li key={offer.id} className="cashli">
+                                <DeleteOffer offerId={offer.id} />
                                 <div>Offered by: {offer.User.username}</div>
                                 <div>Cash: ${offer.cash}</div>
 

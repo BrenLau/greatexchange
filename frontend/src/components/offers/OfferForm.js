@@ -38,11 +38,10 @@ const OfferForm = ({ listingId, user }) => {
         }
     }
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
         if (!Number(cash) && !Object.values(items).length) {
             setErrors(true)
-            getListingsThunk()
 
             return
         } else {
@@ -53,11 +52,13 @@ const OfferForm = ({ listingId, user }) => {
             items
         }
 
-        dispatch(makeOfferThunk({ data, listingId }))
-        setCash(0)
-        setItems({})
-        setSelected(null)
-        setOpenOfferModal(false)
+        await dispatch(makeOfferThunk({ data, listingId })).then(() => {
+            dispatch(getListingsThunk())
+            setCash(0)
+            setItems({})
+            setSelected(null)
+            setOpenOfferModal(false)
+        })
 
     }
 

@@ -2,16 +2,30 @@ import { csrfFetch } from './csrf';
 
 // constants
 const MAKE_OFFER = 'offer/MAKE_OFFER'
+const DELETE_OFFER = 'offer/DELETE_OFFER'
 
-const makeAnOffer = (offer) => ({
+
+const makeAnOffer = (offerId) => ({
     type: MAKE_OFFER,
-    payload: offer
+    payload: offerId
 })
 
+const delAnOffer = (offer) => ({
+    type: DELETE_OFFER
+})
 
+export const deleteOfferThunk = ({ offerId }) => async (dispatch) => {
+
+    const res = await csrfFetch(`/api/offers/${offerId}`, {
+        method: 'DELETE'
+    })
+    const offer = await res.json()
+    dispatch(makeAnOffer(offerId))
+    return offer
+}
 
 export const makeOfferThunk = ({ data, listingId }) => async (dispatch) => {
-    console.log(data)
+
     const res = await csrfFetch(`/api/listings/offers/${listingId}`, {
         method: 'POST',
         headers: {
@@ -36,6 +50,10 @@ export default function reducer(state = initialState, action) {
             newState = { ...state }
             if (!action.payload) return newState
             newState[action.payload.listingId] = action.payload
+            return newState
+        case DELETE_OFFER:
+            newState = { ...state }
+            delete newState[action.orderId]
             return newState
         default:
             return state;
