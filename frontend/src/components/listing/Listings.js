@@ -11,12 +11,13 @@ const Listings = () => {
     const listings = useSelector(state => state.listings)
     const user = useSelector(state => state.session?.user)
 
+
     useEffect(() => {
         dispatch(getListingsThunk())
     }, [dispatch])
     return (
         Object.values(listings).length > 0 ? <ul className="listingul">
-            {Object.values(listings).map(listing => {
+            {Object.values(listings).reverse().map(listing => {
                 return (
                     <li key={listing?.id} className="listingli">
 
@@ -27,10 +28,10 @@ const Listings = () => {
                             <div><strong>Request:</strong> {listing?.request}</div>
                         </div>
                         <div className="listingimg">
-                            <div className="listbutdiv">
+                            {user && (user?.id === listing?.userId) ? <div className="listbutdiv">
                                 <DeleteListing listingId={listing?.id} />
                                 <EditListing currentRequest={listing?.request} listingId={listing?.id} />
-                            </div>
+                            </div> : null}
                             {listing?.Item?.image ? <img className='listingimage' src={listing?.Item?.image}></img> : <img className='listingimage' src='https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg'></img>}
                             <div className="usernamebot">{listing?.User?.username}</div>
                         </div>

@@ -75,8 +75,9 @@
 }
 
 .listingimage {
-    max-height: calc(100% - 24px);
+    max-height: calc(100% - 28px);
     max-width: 100%;
+    border-radius: 24px 24px 0 0;
 
 }
 
@@ -201,6 +202,7 @@
         width: calc(100% - 24px);
         border-radius: 0 0 12px 12px;
         padding: 10px;
+        border-bottom: none;
     }
 
     .listingimage {
@@ -211,6 +213,10 @@
     .usernamebot {
         border: groove rgb(232, 156, 15) 1px;
         border-radius: 0 0 12px 12px;
+        width: calc(100% + 18px);
+        position: relative;
+        margin-bottom: -10px;
+        bottom: 0px;
 
     }
 }
