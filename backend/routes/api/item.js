@@ -5,7 +5,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 const { restoreUser } = require('../../utils/auth');
 const awss3 = require('../../awsS3')
 
-const db = require('../../models')
+const db = require('../../models');
 const Item = db.Item
 const User = db.User
 const Listing = db.Listing
@@ -41,6 +41,14 @@ router.delete(`/:itemId`,
         const item = await Item.findOne({ where: { id: itemId } })
         if (item.listingId) {
             const listing = await Listing.destroy({ where: { id: item.listingId } })
+        }
+        if (item.offerId) {
+            const items = await Item.findAll({ where: { offerId: item.offerId } })
+            items.forEach(async (item) => {
+                item.offerId = null
+                await item.save()
+            })
+            await Offer.destroy({ where: { id: item.offerId } })
         }
 
         await Item.destroy({ where: { id: itemId } })

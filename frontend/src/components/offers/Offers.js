@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useState } from "react"
 import BackDrop from "../modal/backdrop"
 import './offerform.css'
 
