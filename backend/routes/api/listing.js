@@ -30,7 +30,7 @@ router.post('/',
 
 router.get('/',
     asyncHandler(async (req, res) => {
-        const listings = await Listing.findAll({ include: [Item, User, { model: Offer, include: [Item] }] })
+        const listings = await Listing.findAll({ include: [Item, User, { model: Offer, include: [Item, User] }] })
         return res.json({ listings })
     }))
 
@@ -42,7 +42,7 @@ router.put('/:listingId',
         const listing = await Listing.findOne({ where: { id: listingId } })
         listing.request = request
         await listing.save()
-        const listToSend = await Listing.findOne({ where: { id: listing.id }, include: [User, Item, { model: Offer, include: [Item] }] })
+        const listToSend = await Listing.findOne({ where: { id: listing.id }, include: [User, Item, { model: Offer, include: [Item, User] }] })
         return res.json(listToSend)
     }))
 
