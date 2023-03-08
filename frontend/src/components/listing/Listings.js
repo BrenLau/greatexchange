@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux"
 import DeleteListing from "./DeleteListing"
 import EditListing from "./EditListing"
 import OfferForm from "../offers/OfferForm"
+import Offers from "../offers/Offers"
 
 const Listings = () => {
     const dispatch = useDispatch()
@@ -33,7 +34,7 @@ const Listings = () => {
                             {listing?.Item?.image ? <img className='listingimage' src={listing?.Item?.image}></img> : <img className='listingimage' src='https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg'></img>}
                             <div className="usernamebot">{listing?.User?.username}</div>
                         </div>
-
+                        <Offers offers={listing.offers} />
                     </li>
                 )
             })}

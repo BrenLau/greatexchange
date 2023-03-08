@@ -30,7 +30,7 @@ router.post('/',
 
 router.get('/',
     asyncHandler(async (req, res) => {
-        const listings = await Listing.findAll({ include: [Item, User] })
+        const listings = await Listing.findAll({ include: [Item, User, Offer] })
         return res.json({ listings })
     }))
 
@@ -42,7 +42,7 @@ router.put('/:listingId',
         const listing = await Listing.findOne({ where: { id: listingId } })
         listing.request = request
         await listing.save()
-        const listToSend = await Listing.findOne({ where: { id: listing.id }, include: [User, Item] })
+        const listToSend = await Listing.findOne({ where: { id: listing.id }, include: [User, Item, Offer] })
         return res.json(listToSend)
     }))
 
@@ -51,11 +51,13 @@ router.delete('/:listingId',
     asyncHandler(async (req, res) => {
 
         const { listingId } = req.params
+
         const listing = await Listing.findOne({ where: { id: listingId } })
         if (listing) {
-            const item = await Item.findOne({ where: { listingId: listing.id } })
-            item.listingId = null
-            await item.save()
+            // const item = await Item.findOne({ where: { listingId: listing.id } })
+            // item.listingId = null
+            // await item.save()
+            await Offer.destroy({ where: { listingId } })
             await Listing.destroy({ where: { id: listingId } })
         }
         return res.json({ message: 'list has been deleted' })
@@ -66,7 +68,6 @@ router.post('/offers/:listingId',
     asyncHandler(async (req, res) => {
         const { listingId } = req.params
         const { user } = req
-        console.log(user)
         const data = req.body
         const { cash, items } = data
         const offer = await Offer.create({ listingId, userId: user.id, cash })
