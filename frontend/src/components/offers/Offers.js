@@ -5,9 +5,8 @@ import './offerform.css'
 
 
 const Offers = ({ offers }) => {
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const [openOffers, setOpenOffers] = useState(false)
-
 
     return (
         <>
@@ -17,7 +16,14 @@ const Offers = ({ offers }) => {
 
             {openOffers ? <BackDrop onClick={setOpenOffers}>
                 <ul className="offersul">
+                    {offers ? offers.map(offer => {
+                        return (
+                            <li key={offer.id} className="cashli">
+                                <div>${offer.cash}</div>
 
+                            </li>
+                        )
+                    }) : null}
                 </ul>
             </BackDrop> : null}
         </>

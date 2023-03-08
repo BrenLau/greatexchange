@@ -11,6 +11,7 @@ const makeAnOffer = (offer) => ({
 
 
 export const makeOfferThunk = ({ data, listingId }) => async (dispatch) => {
+    console.log(data)
     const res = await csrfFetch(`/api/listings/offers/${listingId}`, {
         method: 'POST',
         headers: {

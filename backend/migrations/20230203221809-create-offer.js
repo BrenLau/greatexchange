@@ -29,7 +29,7 @@ module.exports = {
         allowNull: false
       },
       cash: {
-        type: Sequelize.DECIMAL(0, 2)
+        type: Sequelize.DECIMAL(13, 2)
       },
       createdAt: {
         allowNull: false,

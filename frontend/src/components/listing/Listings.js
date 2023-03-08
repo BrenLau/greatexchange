@@ -11,7 +11,6 @@ const Listings = () => {
     const listings = useSelector(state => state.listings)
     const user = useSelector(state => state.session?.user)
 
-
     useEffect(() => {
         dispatch(getListingsThunk())
     }, [dispatch])
@@ -35,7 +34,7 @@ const Listings = () => {
                             {listing?.Item?.image ? <img className='listingimage' src={listing?.Item?.image}></img> : <img className='listingimage' src='https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg'></img>}
                             <div className="usernamebot">{listing?.User?.username}</div>
                         </div>
-                        <Offers offers={listing.offers} />
+                        <Offers offers={listing.Offers} />
                     </li>
                 )
             })}

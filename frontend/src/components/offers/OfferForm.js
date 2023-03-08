@@ -5,6 +5,7 @@ import { getItemsThunk } from "../../store/item"
 import AddItemButton from "../items/addItemButton"
 import './offerform.css'
 import { makeOfferThunk } from "../../store/offer"
+import { getListingsThunk } from "../../store/listing"
 
 
 const OfferForm = ({ listingId, user }) => {
@@ -41,6 +42,8 @@ const OfferForm = ({ listingId, user }) => {
         e.preventDefault()
         if (!Number(cash) && !Object.values(items).length) {
             setErrors(true)
+            getListingsThunk()
+
             return
         } else {
             setErrors(false)
