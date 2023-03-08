@@ -11,6 +11,7 @@ const AddItemButton = ({ newClass }) => {
         <>
             <button className={!newClass ? 'additembutton' : newClass} onClick={(e) => {
                 e.stopPropagation()
+                e.preventDefault()
                 addItemOpen()
             }}>Add Item</button>
             {addItemModalOpen ? <AddItem onClick={addItemClose}></AddItem> : null}

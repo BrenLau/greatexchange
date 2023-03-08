@@ -11,7 +11,6 @@ function AddItem({ onClick }) {
     const [image, setImage] = useState(null)
 
     const onSubmit = async (e) => {
-        e.preventDefault()
         const formData = { name, file: image }
 
         await dispatch(addItemThunk(formData)).then(() => {
@@ -23,7 +22,7 @@ function AddItem({ onClick }) {
 
     return (
         <BackDrop onClick={onClick}>
-            <form className='itemform' onSubmit={onSubmit} onClick={(e) => {
+            <form className='itemform' onClick={(e) => {
                 e.preventDefault()
                 e.stopPropagation()
             }}>
@@ -44,6 +43,8 @@ function AddItem({ onClick }) {
                 </label>
                 <button className='additemsubmit' onClick={(e) => {
                     e.stopPropagation()
+                    e.preventDefault()
+                    onSubmit()
                 }}>Submit</button>
             </form>
         </BackDrop>
