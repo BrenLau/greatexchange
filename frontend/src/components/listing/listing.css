@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
-    border: black 1px solid;
+    border: rgb(232, 156, 15) solid 1px;
     border-radius: 25px;
     justify-content: space-around;
 }
@@ -68,10 +68,15 @@
     color: rgb(255, 255, 0);
     justify-self: center;
     align-self: center;
-    background-color: rgba(98, 74, 63, 1);
-    border-radius: 25px;
+    background-color: rgb(93, 92, 92);
+    width: calc(100% + 16px);
+    /* border-radius: 25px; */
     padding: 5px 12px;
-    border: solid rgba(89, 55, 55, 0.714) 1px;
+    text-align: center;
+
+    border: rgb(232, 156, 15) solid 1px;
+    border-left: none;
+    border-right: none;
 }
 
 .listingimage {

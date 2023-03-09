@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import './navbar.css'
 import UserButtons from './UserButtons';
@@ -12,6 +12,7 @@ import auction from './auction.png'
 import marketplace from './online-shopping.png'
 
 const NavBar = ({ isLoaded, setOpenListingForm }) => {
+  const navigate = useNavigate()
   const user = useSelector(state => state.session.user)
   const [loginbutts, setloginbutts] = useState(false)
   const [openBag, setOpenBag] = useState(false)
@@ -36,13 +37,17 @@ const NavBar = ({ isLoaded, setOpenListingForm }) => {
         setOpenBag(false)
       }
       } id='dropdown' className={openBag ? 'dropdown' : null}>
-        <li className='navbarli2'>
+        <li onClick={() => {
+          navigate('/marketplace')
+        }} className='navbarli2'>
           <img className='boximage2' src={marketplace}></img>
-          <NavLink to='/marketplace' className='navlinknav'>Market</NavLink>
+          <NavLink to='/marketplace' className='navlinknav5'>Market</NavLink>
         </li>
-        <li className='navbarli2'>
+        <li onClick={() => {
+          navigate('/seekings')
+        }} className='navbarli2'>
           <img className='boximage2' src={auction}></img>
-          <NavLink to='/seekings' className='navlinknav'>Seekings</NavLink>
+          <NavLink to='/seekings' className='navlinknav5'>Seekings</NavLink>
         </li>
       </ul> : null}
 

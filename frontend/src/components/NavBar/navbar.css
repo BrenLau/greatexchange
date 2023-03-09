@@ -35,12 +35,12 @@
     color: black;
     list-style: none;
     height: 50px;
-    width: 50px;
+    width: 60px;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(93, 92, 92);
+    background-color: rgb(146, 144, 144);
     border: groove rgb(232, 156, 15) 1px;
     cursor: pointer;
     padding: 8px;
@@ -62,6 +62,23 @@
     backdrop-filter: blur(.60px);
     cursor: pointer;
     background-color: rgb(93, 92, 92);
+    border: none;
+}
+
+.navlinknav5 {
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    backdrop-filter: blur(.60px);
+    cursor: pointer;
+    /* background-color: rgb(222, 219, 219); */
+    z-index: 2;
+    position: relative;
     border: none;
 }
 
@@ -107,8 +124,9 @@
 }
 
 .boximage2 {
-    height: 31px;
-    width: 31px;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
 }
 
 .boximage {
@@ -139,7 +157,7 @@
     position: absolute;
     z-index: 100;
     align-self: center;
-    background-color: rgb(199, 200, 195);
+    background-color: rgb(93, 92, 92);
     border-radius: 0 0 12px 12px;
     border: groove rgb(232, 156, 15) 1px;
     border-top: 0;
