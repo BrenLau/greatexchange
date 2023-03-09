@@ -28,16 +28,18 @@ router.post('/',
     })
 )
 
-router.get('/user/:userId',
+router.get('/',
+    restoreUser,
     asyncHandler(async (req, res) => {
-        const { userId } = req.params
-        const items = await Item.findAll({ where: { userId } })
-        return res.json({ items })
+        // const { userId } = req.params
+        const seekings = await Seeking.findAll()
+        return res.json(seekings)
     })
 
 )
 
 router.delete(`/:itemId`,
+    restoreUser,
     asyncHandler(async (req, res) => {
         const { itemId } = req.params
         const item = await Item.findOne({ where: { id: itemId } })

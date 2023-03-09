@@ -50,13 +50,11 @@ export const addSeekingThunk = (payload) => async (dispatch) => {
     return item
 }
 
-export const getSeekingsThunk = ({ userId }) => async (dispatch) => {
-    if (!userId) return
-
+export const getSeekingsThunk = () => async (dispatch) => {
     const res = await csrfFetch(`/api/seekings`)
-    const items = await res.json()
-    dispatch(getTheSeekings(items.items))
-    return items.items
+    const seekings = await res.json()
+    dispatch(getTheSeekings(seekings))
+    return seekings
 }
 
 export const deleteSeekingThunk = (itemId) => async (dispatch) => {
@@ -103,8 +101,8 @@ export default function reducer(state = initialState, action) {
             newState[action.payload.id] = action.payload
             return newState;
         case GET_SEEKING:
-            action.payload.forEach(item => {
-                newState[item.id] = item
+            action.payload.forEach(seeking => {
+                newState[seeking.id] = seeking
             })
             return newState
         case DEL_SEEKING:

@@ -5,12 +5,15 @@ import items from './item'
 import listings from './listing'
 import users from './user'
 import offers from './offer'
+import seekings from './seeking'
+
 const rootReducer = combineReducers({
   session,
   items,
   listings,
   users,
-  offers
+  offers,
+  seekings
 });
 
 
