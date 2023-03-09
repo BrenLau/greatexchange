@@ -21,19 +21,20 @@ const Offers = ({ offers }) => {
                         return (
                             <li key={offer.id} className="cashli">
                                 <DeleteOffer offerId={offer.id} />
-                                <div>Offered by: {offer.User.username}</div>
-                                <div>Cash: ${offer.cash}</div>
+                                <div className="divlineoffer">Offered by: <div>{offer.User.username}</div></div>
+                                <div className="divlineoffer">Cash: <div>${offer.cash}</div></div>
 
-                                <div>Items Offered:</div>
-                                <div className="offeritems">
-                                    {offer.Items.length ? offer.Items.map(item => {
-                                        return (
-                                            <div className="eachofferitem">
-                                                <div>{item.name}</div>
-                                                <img className='itemimage5' src={item.image || 'https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg'}></img>
-                                            </div>
-                                        )
-                                    }) : <div className="nonediv">None</div>}
+                                <div className="divlineoffer">Items Offered:
+                                    <div className="offeritems">
+                                        {offer.Items.length ? offer.Items.map(item => {
+                                            return (
+                                                <div className="eachofferitem">
+                                                    <div>{item.name}</div>
+                                                    <img className='itemimage5' src={item.image || 'https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg'}></img>
+                                                </div>
+                                            )
+                                        }) : <div className="nonediv">None</div>}
+                                    </div>
                                 </div>
 
                             </li>

@@ -6,3 +6,27 @@
 .seekingform label {
     margin-bottom: 10px;
 }
+
+.allseekings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    padding: 24px;
+    border: groove rgb(232, 156, 15) 1px;
+    width: 80%;
+    color: yellow;
+    background: linear-gradient(90deg, rgb(44, 31, 9) 0%, rgb(30, 24, 5) 35%, rgba(36, 21, 5, 1) 83%);
+}
+
+.eachseeking {
+    border: groove rgb(232, 156, 15) 1px;
+    width: 100%;
+    display: flex;
+    background-color: rgba(98, 74, 63, 1);
+    flex-direction: column;
+    padding: 12px;
+    border-radius: 12px;
+    margin: 6px;
+}
