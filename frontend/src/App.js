@@ -10,6 +10,7 @@ import YourItems from './components/items/yourItems';
 import ListingForm from './components/listing/ListingForm';
 import Listings from './components/listing/Listings';
 import Home from './components/home/Home'
+import Seeking from './components/seeking/Seekings';
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,8 @@ function App() {
         <Route exact path='/' element={<Home user={user} />} />
         <Route exact path='/user/:userId' element={<YourItems />} />
         <Route exact path='/marketplace' element={<Listings />} />
+        <Route exact path='/seekings' element={<Seeking />} />
+
       </Routes>
     </BrowserRouter>
   );

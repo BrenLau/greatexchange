@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Seeking.init({
     name: DataTypes.STRING,
+    summary: DataTypes.STRING,
     image: DataTypes.STRING,
     userId: DataTypes.INTEGER,
     status: DataTypes.BOOLEAN

@@ -42,7 +42,7 @@ const NavBar = ({ isLoaded, setOpenListingForm }) => {
         </li>
         <li className='navbarli2'>
           <img className='boximage2' src={auction}></img>
-          <NavLink to='/offers' className='navlinknav'>Offers</NavLink>
+          <NavLink to='/seekings' className='navlinknav'>Seekings</NavLink>
         </li>
       </ul> : null}
 
@@ -51,10 +51,12 @@ const NavBar = ({ isLoaded, setOpenListingForm }) => {
           <img className='boximage2' src={house}></img>
         </NavLink>
       </li>
+
       {user ? <li className='navbarli housebox3' ><button className='navlinknav' onClick={(e) => {
         e.preventDefault()
         setOpenListingForm(true)
       }}>Create Listing</button></li> : null}
+
       <li className='navbarli housebox2'>
         <NavLink className='navlinknav' to='/users'  >
           Users
