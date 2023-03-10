@@ -2,6 +2,7 @@ import CreateSeeking from "./CreateSeeking";
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getSeekingsThunk } from '../../store/seeking'
+import DeleteSeeking from "./DeleteSeeking";
 
 const Seeking = () => {
     const dispatch = useDispatch()
@@ -17,6 +18,7 @@ const Seeking = () => {
                 {Object.values(seekings).reverse().map((seeking) => {
                     return (
                         <div className="eachseeking">
+                            <DeleteSeeking seekingId={seeking.id} />
                             <div>Seeker: {seeking.User.username}</div>
                             <div>Item Name: {seeking.name}</div>
                             <div>Summary: {seeking.summary}</div>

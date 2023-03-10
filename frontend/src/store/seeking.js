@@ -57,12 +57,12 @@ export const getSeekingsThunk = () => async (dispatch) => {
     return seekings
 }
 
-export const deleteSeekingThunk = (itemId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/seekings/${itemId}`, {
+export const deleteSeekingThunk = ({ seekingId }) => async (dispatch) => {
+    const res = await csrfFetch(`/api/seekings/${seekingId}`, {
         method: 'DELETE'
     })
     if (res.ok) {
-        dispatch(deleteTheSeeking(itemId))
+        dispatch(deleteTheSeeking(seekingId))
     }
 
     return

@@ -38,24 +38,12 @@ router.get('/',
 
 )
 
-router.delete(`/:itemId`,
+router.delete(`/:seekingId`,
     restoreUser,
     asyncHandler(async (req, res) => {
-        const { itemId } = req.params
-        const item = await Item.findOne({ where: { id: itemId } })
-        if (item.listingId) {
-            const listing = await Listing.destroy({ where: { id: item.listingId } })
-        }
-        if (item.offerId) {
-            const items = await Item.findAll({ where: { offerId: item.offerId } })
-            items.forEach(async (item) => {
-                item.offerId = null
-                await item.save()
-            })
-            await Offer.destroy({ where: { id: item.offerId } })
-        }
+        const { seekingId } = req.params
+        const seeking = await Seeking.destroy({ where: { id: seekingId } })
 
-        await Item.destroy({ where: { id: itemId } })
         res.json({ message: 'deleted' })
         return
     })
