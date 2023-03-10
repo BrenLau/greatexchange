@@ -61,7 +61,7 @@ const YourItems = () => {
                             {item.image ? <img className='itemimage' src={item?.image}></img> : <img className='itemimage' src='https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg'></img>}
                         </div>
                     )
-                })}</div > : <div className='itemsstorage'><h1 className='h1foryouritems'>{user?.username}'s Inventory</h1></div>}
+                })}</div > : <div className='itemsstorage'><h1 className='h1foryouritems'>{user?.username}'s Inventory</h1><div className='noitems'>No items</div></div>}
             {itemUpdateModalOpen ? <UpdateItemsForm item={itemMode} onClick={itemUpdateClose}></UpdateItemsForm> : null}
 
 
