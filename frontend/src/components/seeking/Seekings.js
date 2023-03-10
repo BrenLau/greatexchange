@@ -18,7 +18,7 @@ const Seeking = () => {
                 {Object.values(seekings).reverse().map((seeking) => {
                     return (
                         <div className="eachseeking">
-                            <DeleteSeeking seekingId={seeking.id} />
+                            <DeleteSeeking seekingId={seeking.id} userId={seeking.userId} />
                             <div>Seeker: {seeking.User.username}</div>
                             <div>Item Name: {seeking.name}</div>
                             <div>Summary: {seeking.summary}</div>

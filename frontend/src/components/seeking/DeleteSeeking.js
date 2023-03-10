@@ -1,16 +1,17 @@
 import { deleteSeekingThunk } from "../../store/seeking"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import BackDrop from "../modal/backdrop"
 import { useState } from "react"
 
-const DeleteSeeking = ({ seekingId }) => {
+const DeleteSeeking = ({ seekingId, userId }) => {
     const dispatch = useDispatch()
+    const user = useSelector(state => state.session.user)
     const [deleteSeekModal, setDeleteSeekModal] = useState(false)
     return (
         <>
-            <button onClick={(e) => {
+            {user?.id === userId ? <button onClick={(e) => {
                 setDeleteSeekModal(true)
-            }}>X</button>
+            }}>X</button> : null}
             {deleteSeekModal ? <BackDrop onClick={setDeleteSeekModal}>
                 <div onClick={(e) => {
                     e.stopPropagation()
