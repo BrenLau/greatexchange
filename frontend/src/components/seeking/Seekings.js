@@ -13,7 +13,6 @@ const Seeking = () => {
 
     return (
         <>
-            <CreateSeeking />
             <div className="allseekings">
                 {Object.values(seekings).reverse().map((seeking) => {
                     return (

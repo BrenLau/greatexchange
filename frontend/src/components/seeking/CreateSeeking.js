@@ -26,11 +26,11 @@ function CreateSeeking() {
 
     return (
         <>
-            <button onClick={(e) => {
+            <button className='navlinknav' onClick={(e) => {
                 e.stopPropagation()
                 e.preventDefault()
                 setSeekingModal(true)
-            }}>Seek something new</button>
+            }}>Seek</button>
             {seekingModal ? <BackDrop onClick={setSeekingModal}>
                 <form className='loginform seekingform' onClick={(e) => {
                     e.preventDefault()

@@ -1,5 +1,4 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
 import './navbar.css'
 import UserButtons from './UserButtons';
 import { useState } from 'react';
@@ -10,12 +9,23 @@ import house from './house.png'
 import userimage from './user.png'
 import auction from './auction.png'
 import marketplace from './online-shopping.png'
+import CreateSeeking from '../seeking/CreateSeeking';
+import { Route, Routes } from 'react-router-dom';
+
 
 const NavBar = ({ isLoaded, setOpenListingForm }) => {
   const navigate = useNavigate()
   const user = useSelector(state => state.session.user)
   const [loginbutts, setloginbutts] = useState(false)
   const [openBag, setOpenBag] = useState(false)
+
+  const CreateListing = () => {
+    return user ? <li className='navbarli housebox3' ><button className='navlinknav' onClick={(e) => {
+      e.preventDefault()
+      setOpenListingForm(true)
+    }}>Create Listing</button></li> : null
+  }
+
 
   return (
     <nav className='navbar-container' >
@@ -57,16 +67,18 @@ const NavBar = ({ isLoaded, setOpenListingForm }) => {
         </NavLink>
       </li>
 
-      {user ? <li className='navbarli housebox3' ><button className='navlinknav' onClick={(e) => {
-        e.preventDefault()
-        setOpenListingForm(true)
-      }}>Create Listing</button></li> : null}
+      <Routes>
+        <Route exact path='/marketplace' element={<CreateListing />}>
+        </Route>
+        <Route exact path='/seekings' element={<li className='navbarli housebox3'><CreateSeeking /></li>}>
+        </Route>
+      </Routes>
 
-      <li className='navbarli housebox2'>
+      {/* <li className='navbarli housebox2'>
         <NavLink className='navlinknav' to='/users'  >
           Users
         </NavLink>
-      </li>
+      </li> */}
 
       <li className='navbarli bagicon' onMouseOver={(e) => {
         e.preventDefault()
