@@ -22,7 +22,7 @@ router.post('/',
 
         const imageURL = await awss3.singlePublicFileUpload(req.file);
         const seeking = await Seeking.create({ userId, summary, name, image: imageURL })
-        const seekingSent = await Seeking.findOne({ where: { id: seeking.id, include: [User] } })
+        const seekingSent = await Seeking.findOne({ where: { id: seeking.id }, include: [User] })
         return res.json(seekingSent)
 
     })
