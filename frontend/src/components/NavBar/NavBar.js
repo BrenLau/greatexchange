@@ -11,6 +11,7 @@ import auction from './auction.png'
 import marketplace from './online-shopping.png'
 import CreateSeeking from '../seeking/CreateSeeking';
 import { Route, Routes } from 'react-router-dom';
+import AddItemButton from '../items/addItemButton';
 
 
 const NavBar = ({ isLoaded, setOpenListingForm }) => {
@@ -68,6 +69,7 @@ const NavBar = ({ isLoaded, setOpenListingForm }) => {
       </li>
 
       <Routes>
+        <Route path={`/user/${user?.id}`} element={<li className='navbarli housebox3'><AddItemButton /></li>}></Route>
         <Route exact path='/marketplace' element={<CreateListing />}>
         </Route>
         <Route exact path='/seekings' element={<li className='navbarli housebox3'><CreateSeeking /></li>}>

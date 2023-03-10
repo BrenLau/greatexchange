@@ -9,7 +9,7 @@ const AddItemButton = ({ newClass }) => {
     const addItemOpen = () => setAddItemModalOpen(true);
     return (
         <>
-            <button className={!newClass ? 'additembutton' : newClass} onClick={(e) => {
+            <button className={!newClass ? 'navlinknav' : newClass} onClick={(e) => {
                 e.stopPropagation()
                 e.preventDefault()
                 addItemOpen()

@@ -37,7 +37,6 @@ const YourItems = () => {
     return (
         <>
             {Object.values(items).length ? <div className='itemsstorage'>
-                {(currentUser && (user?.id === currentUser?.id)) ? <AddItemButton /> : null}
                 <h1 className='h1foryouritems'>{user?.username}'s Inventory</h1>
                 {Object.values(items).map(item => {
                     return (
@@ -62,8 +61,7 @@ const YourItems = () => {
                             {item.image ? <img className='itemimage' src={item?.image}></img> : <img className='itemimage' src='https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg'></img>}
                         </div>
                     )
-                })}</div > : <div className='itemstorage'>                {(currentUser && (user?.id === currentUser?.id)) ? <AddItemButton /> : null}
-            </div>}
+                })}</div > : <div className='itemsstorage'><h1 className='h1foryouritems'>{user?.username}'s Inventory</h1></div>}
             {itemUpdateModalOpen ? <UpdateItemsForm item={itemMode} onClick={itemUpdateClose}></UpdateItemsForm> : null}
 
 
