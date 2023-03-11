@@ -9,19 +9,19 @@ const DeleteSeeking = ({ seekingId, userId }) => {
     const [deleteSeekModal, setDeleteSeekModal] = useState(false)
     return (
         <>
-            {user?.id === userId ? <button onClick={(e) => {
+            {user?.id === userId ? <button className='deleteseekingbutton' onClick={(e) => {
                 setDeleteSeekModal(true)
-            }}>X</button> : null}
+            }}>x</button> : null}
             {deleteSeekModal ? <BackDrop onClick={setDeleteSeekModal}>
-                <div onClick={(e) => {
+                <div className='deletedivseeking' onClick={(e) => {
                     e.stopPropagation()
-                }}>
-                    <button onClick={async (e) => {
+                }}>Are you sure?
+                    <button className='seekingbut' onClick={async (e) => {
                         await dispatch(deleteSeekingThunk({ seekingId })).then(() => {
                             setDeleteSeekModal(false)
                         })
                     }}>Delete</button>
-                    <button onClick={(e) => {
+                    <button className='seekingbut' onClick={(e) => {
                         setDeleteSeekModal(false)
                     }}>Cancel</button>
                 </div>
