@@ -91,6 +91,7 @@
     width: 100%;
     text-align: center;
     margin-bottom: 6px;
+    margin-top: 6px;
     border-radius: 12px;
     background: linear-gradient(90deg, rgb(44, 31, 9) 0%, rgb(30, 24, 5) 35%, rgba(36, 21, 5, 1) 83%);
 }
