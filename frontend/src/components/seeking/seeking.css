@@ -133,10 +133,11 @@
 
 .noseekingsdiv {
     width: calc(100% + 48px);
+    min-width: 450px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 30px;
+    font-size: 50px;
     height: 100px;
     background-color: black;
     margin-top: -200px;
