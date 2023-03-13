@@ -16,6 +16,7 @@ const Listings = () => {
     }, [dispatch])
     return (
         Object.values(listings).length > 0 ? <ul className="listingul">
+            <h2 className="listingtitle">Marketplace</h2>
             {Object.values(listings).reverse().map(listing => {
                 return (
                     <li key={listing?.id} className="listingli">

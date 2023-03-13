@@ -15,6 +15,10 @@ const Seeking = () => {
     return (
         <>
             <div className="allseekings">
+                <div className="fullwidth">
+
+                    <h2 className="seekingtitle">Seeking</h2>
+                </div>
                 {Object.values(seekings).reverse().map((seeking) => {
                     return (
                         <div className="eachseeking">
