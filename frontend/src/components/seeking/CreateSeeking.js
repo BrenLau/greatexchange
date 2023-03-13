@@ -19,6 +19,9 @@ function CreateSeeking() {
 
         await dispatch(addSeekingThunk(formData)).then(() => {
             setSeekingModal(false)
+            setName('')
+            setSummary('')
+            setImage(null)
         })
 
         return
