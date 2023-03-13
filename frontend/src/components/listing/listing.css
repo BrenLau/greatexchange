@@ -406,8 +406,6 @@
     background-color: rgba(89, 55, 55, 1);
     color: yellow;
     height: calc(100% + 10px);
-    margin-top: -5px;
-    margin-right: -5px;
     border-left: groove rgb(232, 156, 15) 1px;
 
     width: 20%;
@@ -415,4 +413,7 @@
 
 .contentcomment {
     width: 80%;
+    max-width: calc(100% - 100px);
+    overflow-wrap: break-word;
+    font-size: 14px;
 }
