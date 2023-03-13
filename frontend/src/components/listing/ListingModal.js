@@ -50,16 +50,19 @@ const ListingModal = ({ listing, user, onClick }) => {
                     <h3 className="h3listingmodal">Comments</h3>
                     {listing.Comments.map(comment => {
                         return (
-                            <div>{comment.content}</div>
+                            <div className="eachcomment">
+                                <div className="contentcomment">{comment.content}</div>
+                                <div className="usernamecomment">{comment.username}</div>
+                            </div>
                         )
                     })}
-                    <form onSubmit={onSubmit} className="commentform">
-                        <input value={content} onChange={(e) => {
-                            setContent(e.target.value)
-                        }} className="commentinput"></input>
-                        <button className="commententer">Enter</button>
-                    </form>
                 </div>
+                <form onSubmit={onSubmit} className="commentform">
+                    <input value={content} onChange={(e) => {
+                        setContent(e.target.value)
+                    }} className="commentinput"></input>
+                    <button className="commententer">Enter</button>
+                </form>
 
             </div>
         </BackDrop>

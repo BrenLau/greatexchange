@@ -330,10 +330,10 @@
 .requestdiv {
     width: calc(100% - 20px);
     background: rgb(246, 246, 246);
-    height: 230px;
+    min-height: 230px;
     padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 5px;
+    border: groove rgb(232, 156, 15) 1px;
+    border-radius: 10px 10px 0 0;
     display: flex;
     flex-direction: column;
 }
@@ -368,13 +368,11 @@
 }
 
 .commentform {
-    width: calc(100% + 30px);
-    position: relative;
-    margin-left: -10px;
+    width: calc(100% + 2px);
     display: flex;
     /* justify-content: center; */
     align-items: center;
-    top: calc(100% - 40px);
+    margin-top: 0px;
 }
 
 .commentinput {
@@ -385,6 +383,36 @@
 }
 
 .commententer {
-    width: 43px;
+    width: 60px;
     height: 36px;
+}
+
+.eachcomment {
+    border: solid black 1px;
+    padding: 5px;
+    display: flex;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: groove rgba(232, 156, 15, .2) 1px;
+    box-shadow: 0 0 1px rgb(232, 156, 15);
+
+}
+
+.usernamecomment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+    background-color: rgba(89, 55, 55, 1);
+    color: yellow;
+    height: calc(100% + 10px);
+    margin-top: -5px;
+    margin-right: -5px;
+    border-left: groove rgb(232, 156, 15) 1px;
+
+    width: 20%;
+}
+
+.contentcomment {
+    width: 80%;
 }
