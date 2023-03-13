@@ -336,6 +336,8 @@
     border-radius: 10px 10px 0 0;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    max-height: 300px;
 }
 
 .listbutdivmodal {
