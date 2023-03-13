@@ -39,7 +39,10 @@ const Listings = () => {
                     </li>
                 )
             })}
-        </ul> : null
+        </ul> : <ul className="listingul">
+            <h2 className="listingtitle">Marketplace</h2>
+            <div className="nolistingsdiv">No Listings Yet</div>
+        </ul>
     )
 }
 
