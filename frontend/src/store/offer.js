@@ -20,7 +20,7 @@ export const deleteOfferThunk = ({ offerId }) => async (dispatch) => {
         method: 'DELETE'
     })
     const offer = await res.json()
-    dispatch(makeAnOffer(offerId))
+    dispatch(delAnOffer(offerId))
     return offer
 }
 

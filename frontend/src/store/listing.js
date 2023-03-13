@@ -48,7 +48,7 @@ export const editListingThunk = ({ listingId, request }) => async (dispatch) => 
     const listing = await res.json()
     if (listing.error) return listing
     dispatch(updateAnListing(listing))
-    return listing
+    return { listing }
 }
 
 export const getListingsThunk = () => async (dispatch) => {

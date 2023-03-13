@@ -281,6 +281,10 @@
     background-color: rgb(65, 62, 62);
 }
 
+.clickable {
+    cursor: pointer;
+}
+
 .nolistingsdiv {
     margin-top: 150px;
     font-size: 50px;
@@ -293,4 +297,94 @@
     justify-content: center;
     border-top: groove rgb(232, 156, 15) 1px;
     border-bottom: groove rgb(232, 156, 15) 1px;
+}
+
+.listinglimodal {
+    background-color: grey;
+    width: 85%;
+    border: groove rgb(232, 156, 15) 1px;
+    min-width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    max-height: 85%;
+    overflow: auto;
+}
+
+.h3listingmodal {
+    position: relative;
+    border-radius: 10px 10px 0 0;
+    border-bottom: groove rgb(232, 156, 15) 1px;
+
+    margin-top: -10px;
+    top: 0px;
+    left: 0px;
+    width: calc(100% + 20px);
+    margin-left: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darkgrey;
+    height: 30px;
+}
+
+.requestdiv {
+    width: calc(100% - 20px);
+    background: rgb(246, 246, 246);
+    height: 230px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.listbutdivmodal {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 5px;
+    margin-top: -10px;
+}
+
+.listingimagemodal {
+    max-width: 100%;
+    max-height: 350px;
+}
+
+.usernamebotmodal {
+    width: calc(100% - 20px);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    background: rgb(246, 246, 246);
+    padding: 10px;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.bottom {
+    padding-bottom: 30px;
+    position: static;
+}
+
+.commentform {
+    width: calc(100% + 30px);
+    position: relative;
+    margin-left: -10px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    top: calc(100% - 40px);
+}
+
+.commentinput {
+    width: calc(100% - 60px);
+    height: 30px;
+    position: relative;
+    border-radius: 0px 0px 0px 10px;
+}
+
+.commententer {
+    width: 43px;
+    height: 36px;
 }

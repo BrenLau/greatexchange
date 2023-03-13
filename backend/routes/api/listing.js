@@ -7,6 +7,7 @@ const Item = db.Item
 const Listing = db.Listing
 const User = db.User
 const Offer = db.Offer
+const Comment = db.Comment
 
 router.post('/',
     restoreUser,
@@ -22,7 +23,7 @@ router.post('/',
         const listing = await Listing.create({ userId, request, status: true })
         updatedItem.listingId = listing.id
         await updatedItem.save()
-        const listToSend = await Listing.findOne({ where: { id: listing.id }, include: [User, Item] })
+        const listToSend = await Listing.findOne({ where: { id: listing.id }, include: [User, Item, Comment] })
         return res.json({ listing: listToSend })
 
     })
@@ -30,7 +31,7 @@ router.post('/',
 
 router.get('/',
     asyncHandler(async (req, res) => {
-        const listings = await Listing.findAll({ include: [Item, User, { model: Offer, include: [Item, User] }] })
+        const listings = await Listing.findAll({ include: [Item, User, Comment, { model: Offer, include: [Item, User] }] })
         return res.json({ listings })
     }))
 
@@ -42,7 +43,7 @@ router.put('/:listingId',
         const listing = await Listing.findOne({ where: { id: listingId } })
         listing.request = request
         await listing.save()
-        const listToSend = await Listing.findOne({ where: { id: listing.id }, include: [User, Item, { model: Offer, include: [Item, User] }] })
+        const listToSend = await Listing.findOne({ where: { id: listing.id }, include: [User, Item, Comment, { model: Offer, include: [Item, User] }] })
         return res.json(listToSend)
     }))
 
