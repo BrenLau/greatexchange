@@ -18,6 +18,7 @@ const Seeking = () => {
                 <div className="fullwidth22">
                     <h2 className="seekingtitle">Seeking</h2>
                 </div>
+                {!Object.values(seekings).length ? <div className="noseekingsdiv">No Seeking</div> : null}
                 {Object.values(seekings).reverse().map((seeking) => {
                     return (
                         <div className="eachseeking">
