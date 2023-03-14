@@ -390,27 +390,29 @@
 }
 
 .eachcomment {
-    border: solid black 1px;
+    display: flex;
+    flex-direction: column;
     padding: 5px;
     display: flex;
     margin-top: 2px;
     margin-bottom: 2px;
-    border: groove rgba(232, 156, 15, .2) 1px;
-    box-shadow: 0 0 1px rgb(232, 156, 15);
+    border: groove rgba(12, 11, 11, 0.2) 1px;
+    box-shadow: 0 0 1px rgb(7, 7, 7);
 
 }
 
 .usernamecomment {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     min-width: 100px;
-    background-color: rgba(89, 55, 55, 1);
-    color: yellow;
+    /* background-color: rgba(89, 55, 55, 1); */
+    color: black;
     height: calc(100% + 10px);
-    border-left: groove rgb(232, 156, 15) 1px;
+    font-weight: bold;
+    font-size: 20px;
 
-    width: 20%;
+    width: 100%;
 }
 
 .contentcomment {

@@ -48,8 +48,8 @@ const SeekingModal = ({ seeking, user, onClick }) => {
                     {seeking.Comments.map(comment => {
                         return (
                             <div className="eachcomment">
-                                <div className="contentcomment">{comment.content}</div>
                                 <div className="usernamecomment">{comment.username}</div>
+                                <div className="contentcomment">{comment.content}</div>
                             </div>
                         )
                     })}
