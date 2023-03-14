@@ -11,6 +11,7 @@ const User = db.User
 const Listing = db.Listing
 const Offer = db.Offer
 const Seeking = db.Seeking
+const Comment = db.Comment
 
 router.post('/',
     restoreUser,
@@ -22,7 +23,7 @@ router.post('/',
 
         const imageURL = await awss3.singlePublicFileUpload(req.file);
         const seeking = await Seeking.create({ userId, summary, name, image: imageURL })
-        const seekingSent = await Seeking.findOne({ where: { id: seeking.id }, include: [User] })
+        const seekingSent = await Seeking.findOne({ where: { id: seeking.id }, include: [User, Comment] })
         return res.json(seekingSent)
 
     })
@@ -32,7 +33,7 @@ router.get('/',
     restoreUser,
     asyncHandler(async (req, res) => {
         // const { userId } = req.params
-        const seekings = await Seeking.findAll({ include: [User] })
+        const seekings = await Seeking.findAll({ include: [User, Comment] })
         return res.json(seekings)
     })
 

@@ -10,6 +10,7 @@ const DeleteSeeking = ({ seekingId, userId }) => {
     return (
         <>
             {user?.id === userId ? <button className='deleteseekingbutton' onClick={(e) => {
+                e.stopPropagation()
                 setDeleteSeekModal(true)
             }}>x</button> : null}
             {deleteSeekModal ? <BackDrop onClick={setDeleteSeekModal}>
