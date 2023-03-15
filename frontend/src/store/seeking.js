@@ -34,7 +34,9 @@ export const addSeekingThunk = (payload) => async (dispatch) => {
 
     formData.append("name", name)
     formData.append("summary", summary)
-    formData.append("file", file)
+    if (file) {
+        formData.append("file", file)
+    }
 
     const res = await csrfFetch(`/api/seekings`, {
         method: 'POST',
