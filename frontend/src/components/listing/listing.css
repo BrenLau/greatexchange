@@ -300,7 +300,7 @@
 }
 
 .listinglimodal {
-    background-color: grey;
+    background: linear-gradient(90deg, rgb(44, 31, 9) 0%, rgb(30, 24, 5) 35%, rgba(36, 21, 5, 1) 83%);
     width: 85%;
     border: groove rgb(232, 156, 15) 1px;
     min-width: 300px;

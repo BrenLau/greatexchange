@@ -33,18 +33,18 @@ const SeekingModal = ({ seeking, user, onClick }) => {
         <BackDrop onClick={onClick}>
             <div onClick={(e) => {
                 e.stopPropagation()
-            }} key={seeking?.id} className="">
+            }} key={seeking?.id} className="seekmodal">
 
-                <h3 className="">{seeking?.Item?.name}</h3>
+                <h3 className="h3seekmodal">{seeking?.name}</h3>
                 <DeleteSeeking />
 
-                <div className="requestdiv"><strong>Seeking:</strong> {seeking?.name}</div>
+                <div className="seekmodalsummary"><strong>Seeking:</strong> {seeking?.summary}</div>
 
-                {seeking?.image ? <img className='listingimagemodal' src={seeking?.image}></img> : <img className='listingimagemodal' src='https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg'></img>}
+                {seeking?.image ? <img className='' src={seeking?.image}></img> : null}
 
                 <div className="">Seeker: {seeking?.User?.username}</div>
-                <div className="requestdiv bottom">
-                    <h3 className="h3listingmodal">Comments</h3>
+                <div className="seekingcommentform">
+                    <h3 className="h3listingmodalseek">Comments</h3>
                     {seeking.Comments.map(comment => {
                         return (
                             <div className="eachcomment">
