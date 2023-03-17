@@ -1,20 +1,26 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { csrfFetch } from "../../store/csrf"
 import './groupchat.css'
 
 const GroupChat = ({ socket }) => {
     const [message, setMessage] = useState('')
     const [groupChat, setGroupChat] = useState([])
+    const bottomRef = useRef(null);
 
     useEffect(() => {
         csrfFetch('/api/groupmessages').then(async (messages) => {
             return await messages.json()
         }).then(({ messages }) => {
             setGroupChat(messages)
+        }).then(() => {
+            console.log(bottomRef.current)
+            bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
         })
 
 
     }, [groupChat])
+
+
     socket.on('connect', () => {
         console.log('you connected with id', socket.id)
     })
@@ -51,9 +57,10 @@ const GroupChat = ({ socket }) => {
             <div className="groupchatmessages">
                 {groupChat.map(mess => {
                     return (
-                        <div>{mess.content}</div>
+                        <div key={mess.id}>{mess.content}</div>
                     )
                 })}
+                <div ref={bottomRef} />
             </div>
             <form className='groupchatform' onSubmit={onSubmit}>
                 <input className="groupchatinput" value={message} onChange={(e) => {
