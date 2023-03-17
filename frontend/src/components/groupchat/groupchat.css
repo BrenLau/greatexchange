@@ -1,0 +1,39 @@
+.groupchatdiv {
+    background: rgb(176, 173, 173);
+    height: 400px;
+    padding: 20px;
+    max-width: 650px;
+    background: lighten(brown, 20%);
+    border: 5px dashed brown;
+    box-shadow: 0 0 0 (2.5) darken(brown, 20%),
+        0 0 0 (12.5px) #fff,
+        inset 0 0 0 (2.5px) darken(brown, 20%),
+        0 5px (10px) (15px) rgba(0, 0, 0, 0.5),
+        inset 0 0 0 (5px * 1.2) #fff,
+        inset 0 0 100vw 100vw beige;
+    color: brown;
+    font-family: Marcellus,
+        serif;
+    text-shadow: 0 2px #fff;
+    text-align: center;
+}
+
+.groupchatmessages {
+    height: 330px;
+    background-color: rgb(244, 240, 240);
+    overflow-y: scroll;
+    display: flex;
+    color: black;
+    box-shadow: none;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: none;
+    flex-direction: column;
+}
+
+.h2pubchat {
+    margin-top: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

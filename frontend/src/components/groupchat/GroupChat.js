@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { csrfFetch } from "../../store/csrf"
-
+import './groupchat.css'
 
 const GroupChat = ({ socket }) => {
     const [message, setMessage] = useState('')
@@ -12,6 +12,8 @@ const GroupChat = ({ socket }) => {
         }).then(({ messages }) => {
             setGroupChat(messages)
         })
+
+
     }, [groupChat])
     socket.on('connect', () => {
         console.log('you connected with id', socket.id)
@@ -44,21 +46,22 @@ const GroupChat = ({ socket }) => {
     }
 
     return (
-        <>
-            <div>
+        <div className="groupchatdiv">
+            <h2 className="h2pubchat">Public Chat</h2>
+            <div className="groupchatmessages">
                 {groupChat.map(mess => {
                     return (
                         <div>{mess.content}</div>
                     )
                 })}
             </div>
-            <form onSubmit={onSubmit}>
+            <form className='groupchatinput' onSubmit={onSubmit}>
                 <input value={message} onChange={(e) => {
                     setMessage(e.target.value)
                 }}></input>
                 <button>Enter</button>
             </form>
-        </>
+        </div>
     )
 }
 
