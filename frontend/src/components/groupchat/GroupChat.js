@@ -13,7 +13,6 @@ const GroupChat = ({ socket }) => {
         }).then(({ messages }) => {
             setGroupChat(messages)
         }).then(() => {
-            console.log(bottomRef.current)
             bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
         })
 
