@@ -11,6 +11,12 @@ import ListingForm from './components/listing/ListingForm';
 import Listings from './components/listing/Listings';
 import Home from './components/home/Home'
 import Seeking from './components/seeking/Seekings';
+import { io } from 'socket.io-client'
+
+const socket = io("http://localhost:7000")
+socket.on('connect', () => {
+  console.log('you connected with id', socket.id)
+})
 
 function App() {
   const dispatch = useDispatch();
