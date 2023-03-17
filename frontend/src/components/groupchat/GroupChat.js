@@ -55,11 +55,11 @@ const GroupChat = ({ socket }) => {
                     )
                 })}
             </div>
-            <form className='groupchatinput' onSubmit={onSubmit}>
-                <input value={message} onChange={(e) => {
+            <form className='groupchatform' onSubmit={onSubmit}>
+                <input className="groupchatinput" value={message} onChange={(e) => {
                     setMessage(e.target.value)
                 }}></input>
-                <button>Enter</button>
+                <button className="groupchatbutton">Enter</button>
             </form>
         </div>
     )
