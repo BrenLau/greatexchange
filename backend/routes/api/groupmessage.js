@@ -19,13 +19,17 @@ router.post('/',
             return null
         }
 
-        const groupmessage = await Groupmessage.create({ content: message, userId: user.id })
+        const groupmessage = await Groupmessage.create({ content: message, userId: user.id }, { include: [User] })
         res.json(groupmessage)
 
     }))
 
 
-
+router.get('/',
+    asyncHandler(async (req, res) => {
+        const messages = await Groupmessage.findAll({ include: [User] })
+        res.json({ messages })
+    }))
 
 
 module.exports = router
