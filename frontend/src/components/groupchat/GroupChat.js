@@ -5,6 +5,7 @@ import './groupchat.css'
 const GroupChat = ({ socket }) => {
     const [message, setMessage] = useState('')
     const [groupChat, setGroupChat] = useState([])
+    const [update, setUpdate] = useState(false)
     const bottomRef = useRef(null);
 
     useEffect(() => {
@@ -12,21 +13,18 @@ const GroupChat = ({ socket }) => {
             return await messages.json()
         }).then(({ messages }) => {
             setGroupChat(messages)
-        }).then(() => {
-            bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
         })
 
 
-    }, [groupChat])
+    }, [])
 
 
-    socket.on('connect', () => {
-        console.log('you connected with id', socket.id)
-    })
+
     socket.on('receive-message', message => {
         const newGroup = [...groupChat]
         newGroup.push(message)
         setGroupChat(newGroup)
+        setUpdate(!update)
     })
 
     const onSubmit = async (e) => {
@@ -49,6 +47,9 @@ const GroupChat = ({ socket }) => {
         await setMessage('')
 
     }
+    useEffect(() => {
+        bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, [update])
 
     return (
         <div className="groupchatdiv">
@@ -56,7 +57,10 @@ const GroupChat = ({ socket }) => {
             <div className="groupchatmessages">
                 {groupChat.map(mess => {
                     return (
-                        <div key={mess.id}>{mess.content}</div>
+                        <div>
+                            <div key={mess.id}>{mess.content}</div>
+                            <div>{mess?.User?.username}</div>
+                        </div>
                     )
                 })}
                 <div ref={bottomRef} />

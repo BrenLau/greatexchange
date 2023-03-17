@@ -19,8 +19,10 @@ router.post('/',
             return null
         }
 
-        const groupmessage = await Groupmessage.create({ content: message, userId: user.id }, { include: [User] })
-        res.json(groupmessage)
+        const groupmessage = await Groupmessage.create({ content: message, userId: user.id })
+        const groupmessage1 = await Groupmessage.findOne({ where: { id: groupmessage.id }, include: [User] })
+        console.log(groupmessage1)
+        res.json(groupmessage1)
 
     }))
 

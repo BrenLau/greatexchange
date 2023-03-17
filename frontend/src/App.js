@@ -15,7 +15,9 @@ import { io } from 'socket.io-client'
 import GroupChat from './components/groupchat/GroupChat';
 
 export const socket = io("http://localhost:7000")
-
+socket.on('connect', () => {
+  console.log('you connected with id', socket.id)
+})
 
 function App() {
   const dispatch = useDispatch();
