@@ -15,6 +15,9 @@ const GroupChat = ({ socket }) => {
             return await messages.json()
         }).then(({ messages }) => {
             setGroupChat(messages)
+        }).then(() => {
+            bottomRef.current?.scrollIntoView({ behavior: 'auto' });
+
         })
 
 
