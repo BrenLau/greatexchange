@@ -69,6 +69,8 @@
     background: #fff;
     border-radius: 40px;
     padding: 24px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     text-align: center;
     color: #000;
     margin-top: 20px;
@@ -98,6 +100,7 @@
 .messageholder {
     display: flex;
     flex-direction: column;
+    margin-top: -17px;
 }
 
 .wronguser {
@@ -110,9 +113,9 @@
     height: 0px;
     position: absolute;
     border-left: 12px solid transparent;
-    border-right: 24px solid #fff;
+    border-right: 12px solid #fff;
     border-bottom: 12px solid transparent;
-    border-top: 20px solid #fff;
+    border-top: 12px solid #fff;
     left: 430px;
     bottom: -24px;
 }
