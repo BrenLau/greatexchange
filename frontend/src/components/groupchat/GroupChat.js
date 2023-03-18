@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react"
 import { csrfFetch } from "../../store/csrf"
 import './groupchat.css'
+import { useSelector } from "react-redux"
 
 const GroupChat = ({ socket }) => {
+    const user = useSelector(state => state.session.user)
     const [message, setMessage] = useState('')
     const [groupChat, setGroupChat] = useState([])
     const [update, setUpdate] = useState(false)
@@ -57,9 +59,9 @@ const GroupChat = ({ socket }) => {
             <div className="groupchatmessages">
                 {groupChat.map(mess => {
                     return (
-                        <div>
-                            <div key={mess.id}>{mess.content}</div>
-                            <div>{mess?.User?.username}</div>
+                        <div className="messageholder">
+                            {user.id == mess?.User?.id ? <div className='groupchatmessage rightusermess' key={mess.id}>{mess.content}</div> : <div className='groupchatmessage' key={mess.id}>{mess.content}</div>}
+                            {user.id == mess?.User?.id ? <div className="groupchatuser wronguser">{mess?.User?.username}</div> : <div className="groupchatuser">{mess?.User?.username}</div>}
                         </div>
                     )
                 })}
