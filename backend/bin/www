@@ -4,7 +4,18 @@ const { port } = require('../config');
 
 const app = require('../app');
 const db = require('../models');
-
+const io = require('socket.io')(7000, {
+  cors: {
+    origin: ['http://localhost:3000']
+  }
+})
+io.on('connection', socket => {
+  console.log(socket.id)
+  socket.on("send-message", (message) => {
+    console.log(message)
+    socket.emit('receive-message', message)
+  })
+})
 // Check the database connection before starting the app
 db.sequelize
   .authenticate()

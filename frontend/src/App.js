@@ -11,11 +11,19 @@ import ListingForm from './components/listing/ListingForm';
 import Listings from './components/listing/Listings';
 import Home from './components/home/Home'
 import Seeking from './components/seeking/Seekings';
+import { io } from 'socket.io-client'
+import GroupChat from './components/groupchat/GroupChat';
+
+export const socket = io("http://localhost:7000")
+socket.on('connect', () => {
+  console.log('you connected with id', socket.id)
+})
 
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user)
 
+  const [groupchatopen, setgroupchatopen] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.authenticate()).then(() => setIsLoaded(true));
@@ -27,6 +35,11 @@ function App() {
     <BrowserRouter className="App">
       <NavBar isLoaded={isLoaded} setOpenListingForm={setOpenListingForm} />
       {openListingForm ? <ListingForm user={user} onClick={(e) => setOpenListingForm(false)} /> : null}
+      {groupchatopen ? <GroupChat closeChat={setgroupchatopen} socket={socket} /> : null}
+      <button className='buttongroupchat' onClick={(e) => {
+        e.preventDefault()
+        setgroupchatopen(!groupchatopen)
+      }}>Chat</button>
       <Routes>
         <Route exact path='/login' element={<LoginForm />} />
         <Route exact path='/sign-up' element={<SignUpForm />} />

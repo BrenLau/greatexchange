@@ -47,7 +47,7 @@ const SeekingModal = ({ seeking, user, onClick }) => {
                     <h3 className="h3listingmodalseek">Comments</h3>
                     {seeking.Comments.map(comment => {
                         return (
-                            <div className="eachcomment">
+                            <div key={comment.id} className="eachcomment">
                                 <div className="usernamecomment">{comment.username}</div>
                                 <div className="contentcomment">{comment.content}</div>
                             </div>

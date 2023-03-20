@@ -51,7 +51,7 @@ function CreateSeeking() {
                         <input className='itemforminput' value={summary} onChange={(e) => {
                             e.preventDefault()
                             setSummary(e.target.value)
-                        }} placeholder="item name"></input>
+                        }} placeholder="summary/description"></input>
                     </label>
 
                     <label >Image
