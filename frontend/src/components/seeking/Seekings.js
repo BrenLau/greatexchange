@@ -24,7 +24,7 @@ const Seeking = () => {
                 {!Object.values(seekings).length ? <div className="noseekingsdiv">No Seeking</div> : null}
                 {Object.values(seekings).reverse().map((seeking) => {
                     return (
-                        <div onClick={(e) => {
+                        <div key={seeking.id} onClick={(e) => {
                             e.stopPropagation()
                             setSeekingModal(seeking.id)
                         }} className="eachseeking">

@@ -66,7 +66,7 @@ const GroupChat = ({ socket, closeChat }) => {
             <div className="groupchatmessages">
                 {groupChat.map(mess => {
                     return (
-                        <div className="messageholder">
+                        <div key={mess.id} className="messageholder">
                             {user.id == mess?.User?.id ? <div className='groupchatmessage rightusermess' key={mess.id}>{mess.content}</div> : <div className='groupchatmessage' key={mess.id}>{mess.content}</div>}
                             {user.id == mess?.User?.id ? <div className="groupchatuser wronguser">{mess?.User?.username}</div> : <div className="groupchatuser">{mess?.User?.username}</div>}
                         </div>
