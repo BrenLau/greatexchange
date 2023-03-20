@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class groupmessage extends Model {
+  class GroupMessage extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -14,12 +14,12 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.User, { foreignKey: 'userId' })
     }
   }
-  groupmessage.init({
+  GroupMessage.init({
     content: DataTypes.STRING,
     userId: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'groupmessage',
+    modelName: 'GroupMessage',
   });
-  return groupmessage;
+  return GroupMessage;
 };

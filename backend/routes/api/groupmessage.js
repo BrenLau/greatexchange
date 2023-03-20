@@ -7,7 +7,7 @@ const Item = db.Item
 const Listing = db.Listing
 const User = db.User
 const Offer = db.Offer
-const Groupmessage = db.groupmessage
+const GroupMessage = db.GroupMessage
 
 router.post('/',
     restoreUser,
@@ -19,8 +19,8 @@ router.post('/',
             return null
         }
 
-        const groupmessage = await Groupmessage.create({ content: message, userId: user.id })
-        const groupmessage1 = await Groupmessage.findOne({ where: { id: groupmessage.id }, include: [User] })
+        const groupmessage = await GroupMessage.create({ content: message, userId: user.id })
+        const groupmessage1 = await GroupMessage.findOne({ where: { id: groupmessage.id }, include: [User] })
         console.log(groupmessage1)
         res.json(groupmessage1)
 
@@ -29,7 +29,7 @@ router.post('/',
 
 router.get('/',
     asyncHandler(async (req, res) => {
-        const messages = await Groupmessage.findAll({ include: [User] })
+        const messages = await GroupMessage.findAll({ include: [User] })
         res.json({ messages })
     }))
 
