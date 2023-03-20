@@ -35,7 +35,7 @@ function App() {
     <BrowserRouter className="App">
       <NavBar isLoaded={isLoaded} setOpenListingForm={setOpenListingForm} />
       {openListingForm ? <ListingForm user={user} onClick={(e) => setOpenListingForm(false)} /> : null}
-      {groupchatopen ? <GroupChat socket={socket} /> : null}
+      {groupchatopen ? <GroupChat closeChat={setgroupchatopen} socket={socket} /> : null}
       <button className='buttongroupchat' onClick={(e) => {
         e.preventDefault()
         setgroupchatopen(!groupchatopen)

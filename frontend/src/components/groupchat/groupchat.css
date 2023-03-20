@@ -119,3 +119,12 @@
     left: 430px;
     bottom: -24px;
 }
+
+.groupchatclose {
+    position: absolute;
+    color: red;
+    font-weight: bold;
+    background-color: black;
+    right: 2px;
+    top: 2px;
+}

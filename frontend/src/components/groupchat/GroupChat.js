@@ -3,7 +3,7 @@ import { csrfFetch } from "../../store/csrf"
 import './groupchat.css'
 import { useSelector } from "react-redux"
 
-const GroupChat = ({ socket }) => {
+const GroupChat = ({ socket, closeChat }) => {
     const user = useSelector(state => state.session.user)
     const [message, setMessage] = useState('')
     const [groupChat, setGroupChat] = useState([])
@@ -58,6 +58,10 @@ const GroupChat = ({ socket }) => {
 
     return (
         <div className="groupchatdiv">
+            <button className="groupchatclose" onClick={(e) => {
+                e.preventDefault()
+                closeChat(false)
+            }}>X</button>
             <h2 className="h2pubchat">Public Chat</h2>
             <div className="groupchatmessages">
                 {groupChat.map(mess => {
