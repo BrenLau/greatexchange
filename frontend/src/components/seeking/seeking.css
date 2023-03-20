@@ -195,6 +195,7 @@
     border: groove rgb(232, 156, 15) 1px;
     border-radius: 10px 10px 0 0;
     background: whitesmoke;
+    overflow-y: scroll;
 }
 
 .h3listingmodalseek {
