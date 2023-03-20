@@ -127,4 +127,10 @@
     background-color: black;
     right: 2px;
     top: 2px;
+    cursor: pointer;
+}
+
+.groupchatclose:hover {
+    background: red;
+    color: black;
 }
