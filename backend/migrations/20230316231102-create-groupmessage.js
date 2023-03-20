@@ -1,4 +1,10 @@
 'use strict';
+let options = {};
+options.tableName = 'Item'
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -29,6 +35,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('groupmessages');
+    await queryInterface.dropTable('groupmessages', options);
   }
 };
