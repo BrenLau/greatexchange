@@ -25,7 +25,7 @@ const LoginForm = () => {
     if (errors.length) return
 
     const data = await dispatch(login(email, password));
-    console.log(data)
+
     if (data === 'Login failed') {
       newErrors.push(data)
       setErrors(newErrors);

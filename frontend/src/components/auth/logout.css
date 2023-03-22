@@ -35,6 +35,10 @@
 
 }
 
+.loginform2 {
+    width: 210px;
+}
+
 .errors {
     color: red;
     font-weight: bold;
