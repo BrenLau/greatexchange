@@ -44,7 +44,7 @@ export const login = (email, password) => async (dispatch) => {
   });
 
   const res = await response.json()
-  console.log(res)
+
 
   if (res.user) {
     dispatch(setUser(res.user))
