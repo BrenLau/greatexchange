@@ -72,7 +72,7 @@ const NavBar = ({ isLoaded, setOpenListingForm }) => {
         <Route path={`/user/${user?.id}`} element={<li className='navbarli housebox3'><AddItemButton /></li>}></Route>
         <Route exact path='/marketplace' element={<CreateListing />}>
         </Route>
-        <Route exact path='/seekings' element={<li className='navbarli housebox3'><CreateSeeking /></li>}>
+        <Route exact path='/seekings' element={user ? <li className='navbarli housebox3'><CreateSeeking /></li> : null}>
         </Route>
       </Routes>
 

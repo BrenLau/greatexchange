@@ -66,16 +66,16 @@ const GroupChat = ({ socket, closeChat }) => {
             <div className="groupchatmessages">
                 {groupChat.map(mess => {
                     return (
-                        <div key={mess.id} className="messageholder">
-                            {user.id == mess?.User?.id ? <div className='groupchatmessage rightusermess' key={mess.id}>{mess.content}</div> : <div className='groupchatmessage' key={mess.id}>{mess.content}</div>}
-                            {user.id == mess?.User?.id ? <div className="groupchatuser wronguser">{mess?.User?.username}</div> : <div className="groupchatuser">{mess?.User?.username}</div>}
+                        <div key={mess?.id} className="messageholder">
+                            {user?.id == mess?.User?.id ? <div className='groupchatmessage rightusermess' key={mess?.id}>{mess?.content}</div> : <div className='groupchatmessage' key={mess?.id}>{mess?.content}</div>}
+                            {user?.id == mess?.User?.id ? <div className="groupchatuser wronguser">{mess?.User?.username}</div> : <div className="groupchatuser">{mess?.User?.username}</div>}
                         </div>
                     )
                 })}
                 <div ref={bottomRef} />
             </div>
             <form className='groupchatform' onSubmit={onSubmit}>
-                <input className="groupchatinput" value={message} onChange={(e) => {
+                <input disabled={!user ? true : false} className="groupchatinput" placeholder={!user ? 'Must be logged in to chat' : null} value={message} onChange={(e) => {
                     setMessage(e.target.value)
                 }}></input>
                 <button className="groupchatbutton">Enter</button>
