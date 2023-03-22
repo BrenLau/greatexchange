@@ -26,13 +26,22 @@
     align-items: center;
     justify-content: center;
     padding: 20px;
-    width: 200px;
+    width: 234px;
     height: 350px;
     background: linear-gradient(90deg, rgb(44, 31, 9) 0%, rgb(30, 24, 5) 35%, rgba(36, 21, 5, 1) 83%);
     color: yellow;
     border-radius: 24px;
     border: groove rgb(232, 156, 15) 1px;
 
+}
+
+.errors {
+    color: red;
+    font-weight: bold;
+    background: black;
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    margin-bottom: 10px;
 }
 
 .loginform input {

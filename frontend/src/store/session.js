@@ -43,16 +43,14 @@ export const login = (email, password) => async (dispatch) => {
     })
   });
 
+  const res = await response.json()
+  console.log(res)
 
-  if (response.ok) {
-    const data = await response.json();
-    dispatch(setUser(data.user))
-    return null;
-  } else if (response.status < 500) {
-    const data = await response.json();
-    if (data.errors) {
-      return data.errors;
-    }
+  if (res.user) {
+    dispatch(setUser(res.user))
+    return res;
+  } else if (res.errors) {
+    return res.title;
   } else {
     return ['An error occurred. Please try again.']
   }

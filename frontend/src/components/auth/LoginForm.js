@@ -14,11 +14,26 @@ const LoginForm = () => {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login(email, password));
-    if (data) {
-      setErrors(data);
-      navigate('/', { replace: true })
+    const newErrors = []
+    if (password.trim().length < 5) {
+      newErrors.push('Password must be at least 5 characters')
     }
+    if (email.trim().length < 5) {
+      newErrors.push('Email/User must be at least 5 characters')
+    }
+    setErrors(newErrors)
+    if (errors.length) return
+
+    const data = await dispatch(login(email, password));
+    console.log(data)
+    if (data === 'Login failed') {
+      newErrors.push(data)
+      setErrors(newErrors);
+      // navigate('/', { replace: true })
+    }
+    setEmail('')
+    setPassword('')
+    return
   };
 
   const updateEmail = (e) => {
@@ -40,7 +55,7 @@ const LoginForm = () => {
         <h2 className='logintitle'>Login</h2>
         <div>
           {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+            <div className='errors' key={ind}>{error}</div>
           ))}
         </div>
         <div>
