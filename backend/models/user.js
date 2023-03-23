@@ -18,6 +18,8 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.Offer, { foreignKey: 'userId' })
       this.hasMany(models.Item, { foreignKey: 'userId' })
       this.hasMany(models.GroupMessage, { foreignKey: 'userId' })
+      this.hasMany(models.PrivateMessage, { foreignKey: 'senderId' })
+      this.hasMany(models.PrivateMessage, { foreignKey: 'receiverId' })
     }
   }
 
