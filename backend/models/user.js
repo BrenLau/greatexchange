@@ -88,8 +88,8 @@ module.exports = (sequelize, DataTypes) => {
       image: null,
       summary: '',
       transactions: 0,
-      usernameLower: username.toLower(),
-      emailLower: email.toLower(),
+      usernameLower: username.toLowerCase(),
+      emailLower: email.toLowerCase(),
       createdAt: new Date(),
       updatedAt: new Date()
     });
