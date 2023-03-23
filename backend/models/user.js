@@ -29,7 +29,9 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     image: DataTypes.STRING,
     summary: DataTypes.STRING,
-    transactions: DataTypes.INTEGER
+    transactions: DataTypes.INTEGER,
+    usernameLower: DataTypes.STRING,
+    emailLower: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'User',
@@ -82,7 +84,14 @@ module.exports = (sequelize, DataTypes) => {
     const user = await User.create({
       username,
       email,
-      password: hashedPassword
+      password: hashedPassword,
+      image: null,
+      summary: '',
+      transactions: 0,
+      usernameLower: username.toLower(),
+      emailLower: email.toLower(),
+      createdAt: new Date(),
+      updatedAt: new Date()
     });
     return await User.scope('currentUser').findByPk(user.id);
   };
