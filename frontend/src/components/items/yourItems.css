@@ -26,7 +26,8 @@
     font-weight: bold;
     width: 100%;
     text-align: center;
-    margin: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     background-color: whitesmoke;
     border-radius: 12px;
     border: groove rgba(232, 156, 15, .1) 1px;
@@ -238,4 +239,22 @@
     top: 0px;
     margin-top: -100px;
 
+}
+
+.itemstatus {
+    font-weight: bold;
+    width: calc(100% + 20px);
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: -10px;
+    background-color: whitesmoke;
+    /* border-radius: 12px; */
+    border: groove rgba(232, 156, 15, .1) 1px;
+}
+
+.itemstatus:hover {
+    background: gray;
+    color: yellow;
+    border: groove rgba(232, 156, 15, .5) 1px;
 }
