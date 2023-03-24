@@ -206,6 +206,11 @@
     height: 24px;
 }
 
+.usernamebot:hover {
+    background: rgb(75, 74, 74);
+    color: yellow;
+}
+
 .usernamebot::first-letter {
     text-transform: capitalize;
 }

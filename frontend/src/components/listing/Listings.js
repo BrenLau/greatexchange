@@ -6,8 +6,10 @@ import EditListing from "./EditListing"
 import OfferForm from "../offers/OfferForm"
 import Offers from "../offers/Offers"
 import ListingModal from "./ListingModal"
+import { useNavigate } from 'react-router-dom'
 
 const Listings = () => {
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const listings = useSelector(state => state.listings)
     const user = useSelector(state => state.session?.user)
@@ -41,7 +43,10 @@ const Listings = () => {
                                 <EditListing currentRequest={listing?.request} listingId={listing?.id} />
                             </div> : null}
                             {listing?.Item?.image ? <img className='listingimage' src={listing?.Item?.image}></img> : <img className='listingimage' src='https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg'></img>}
-                            <div className="usernamebot">{listing?.User?.username}</div>
+                            <div className="usernamebot" onClick={(e) => {
+                                e.stopPropagation()
+                                navigate(`/user/${listing?.User?.id}`, { replace: true })
+                            }}>{listing?.User?.username}</div>
                         </div>
                         <Offers offers={listing.Offers} />
                     </li>
