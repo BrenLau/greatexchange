@@ -2,13 +2,20 @@ import { useEffect, useRef, useState } from "react"
 import { csrfFetch } from "../../store/csrf"
 import './groupchat.css'
 import { useSelector } from "react-redux"
+import { useNavigate } from "react-router"
+
 
 const GroupChat = ({ socket, closeChat }) => {
+    const navigate = useNavigate()
     const user = useSelector(state => state.session.user)
     const [message, setMessage] = useState('')
     const [groupChat, setGroupChat] = useState([])
     const [update, setUpdate] = useState(false)
     const bottomRef = useRef(null);
+
+    const onClick = (mess) => {
+        navigate(`/user/${mess.User.id}`, { replace: true })
+    }
 
     useEffect(() => {
         csrfFetch('/api/groupmessages').then(async (messages) => {
@@ -68,7 +75,7 @@ const GroupChat = ({ socket, closeChat }) => {
                     return (
                         <div key={mess?.id} className="messageholder">
                             {user?.id == mess?.User?.id ? <div className='groupchatmessage rightusermess' key={mess?.id}>{mess?.content}</div> : <div className='groupchatmessage' key={mess?.id}>{mess?.content}</div>}
-                            {user?.id == mess?.User?.id ? <div className="groupchatuser wronguser">{mess?.User?.username}</div> : <div className="groupchatuser">{mess?.User?.username}</div>}
+                            {user?.id == mess?.User?.id ? <div className="groupchatuser wronguser" onClick={(e) => onClick(mess)}>{mess?.User?.username}</div> : <div className="groupchatuser" onClick={(e) => onClick(mess)}>{mess?.User?.username}</div>}
                         </div>
                     )
                 })}

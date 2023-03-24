@@ -73,8 +73,8 @@
     padding-bottom: 5px;
     text-align: center;
     color: #000;
-    margin-top: 20px;
-    margin-bottom: 25px;
+    margin-top: 2px;
+    margin-bottom: 22px;
 
 }
 
@@ -95,12 +95,18 @@
 .groupchatuser {
     width: 100%;
     display: flex;
+    margin-bottom: 15px;
+}
+
+.groupchatuser:hover {
+    color: brown;
+    font-weight: bold;
 }
 
 .messageholder {
     display: flex;
     flex-direction: column;
-    margin-top: -17px;
+    /* margin-top: -17px; */
 }
 
 .wronguser {
