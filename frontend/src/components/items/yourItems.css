@@ -70,7 +70,7 @@
     border: rgb(232, 156, 15) solid 1px;
 
     padding: 30px;
-    box-shadow: inset 0 0 15px rgba(33, 22, 1, 0.8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
     background: linear-gradient(90deg, rgb(44, 31, 9) 0%, rgb(30, 24, 5) 35%, rgba(36, 21, 5, 1) 83%);
     position: relative;
     padding-top: 100px;

@@ -45,7 +45,7 @@ const YourItems = () => {
                     return (
                         <div key={item.id} className='itemframe'>
                             <div className='itemname'>{item?.name}</div>
-                            {item?.listingId || item?.offerId ? <div className='itemstatus'>{item?.listingId ? `Listed` : item?.offerId ? 'Offered' : null}</div> : null}
+                            {item?.listingId || item?.offerId ? <div className='itemstatus'>{item?.listingId ? `Status: Listed` : item?.offerId ? 'Status: Offered' : null}</div> : null}
 
                             <div id='abspos'>
                                 <div className='buttonholdersitem'>
