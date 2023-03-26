@@ -20,6 +20,8 @@
     width: 80%;
     margin-left: calc(10% - 30px);
     margin-right: calc(10% - 30px);
+    box-shadow: 0 0 10px rgba(33, 22, 1, 1);
+
     min-width: 400px;
     color: yellow;
     background: linear-gradient(90deg, rgb(44, 31, 9) 0%, rgb(30, 24, 5) 35%, rgba(36, 21, 5, 1) 83%);
@@ -32,6 +34,8 @@
     max-width: 400px;
     display: flex;
     background-color: rgb(119, 103, 94);
+    box-shadow: 0 0 5px rgb(255, 255, 255, .5);
+
     flex-direction: column;
     padding: 12px;
     border-radius: 12px;
