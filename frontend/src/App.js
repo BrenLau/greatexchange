@@ -6,13 +6,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import NavBar from './components/NavBar/NavBar'
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import YourItems from './components/items/yourItems';
 import ListingForm from './components/listing/ListingForm';
 import Listings from './components/listing/Listings';
 import Home from './components/home/Home'
 import Seeking from './components/seeking/Seekings';
 import { io } from 'socket.io-client'
 import GroupChat from './components/groupchat/GroupChat';
+import User from './components/user/User';
 
 export const socket = io("http://localhost:7000")
 socket.on('connect', () => {
@@ -44,7 +44,7 @@ function App() {
         <Route exact path='/login' element={<LoginForm />} />
         <Route exact path='/sign-up' element={<SignUpForm />} />
         <Route exact path='/' element={<Home user={user} />} />
-        <Route exact path='/user/:userId' element={<YourItems />} />
+        <Route exact path='/user/:userId' element={<User />} />
         <Route exact path='/marketplace' element={<Listings />} />
         <Route exact path='/seekings' element={<Seeking />} />
 

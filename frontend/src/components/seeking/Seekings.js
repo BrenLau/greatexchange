@@ -38,7 +38,7 @@ const Seeking = () => {
                                 e.stopPropagation()
                                 navigate(`/user/${seeking?.User?.id}`, { replace: true })
 
-                            }} className="outsidedivseeking">Seeker: <div>{seeking.User.username}</div></div>
+                            }} className="outsidedivseeking outsidedivseekinghover">Seeker: <div>{seeking.User.username}</div></div>
                         </div>)
                 })}
             </div>
