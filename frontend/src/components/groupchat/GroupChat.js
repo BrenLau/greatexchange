@@ -85,7 +85,7 @@ const GroupChat = ({ socket, closeChat }) => {
                 <input disabled={!user ? true : false} className="groupchatinput" placeholder={!user ? 'Must be logged in to chat' : null} value={message} onChange={(e) => {
                     setMessage(e.target.value)
                 }}></input>
-                <button className="groupchatbutton">Enter</button>
+                <button disabled={!user ? true : false} className="groupchatbutton">Enter</button>
             </form>
         </div>
     )
