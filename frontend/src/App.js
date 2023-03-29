@@ -13,6 +13,7 @@ import Seeking from './components/seeking/Seekings';
 import { io } from 'socket.io-client'
 import GroupChat from './components/groupchat/GroupChat';
 import User from './components/user/User';
+import Messages from './components/messages/messages';
 
 export const socket = io("http://localhost:7000")
 socket.on('connect', () => {
@@ -22,6 +23,7 @@ socket.on('connect', () => {
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user)
+  const [messageId, setMessageId] = useState(0)
 
   const [groupchatopen, setgroupchatopen] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false);
@@ -44,9 +46,10 @@ function App() {
         <Route exact path='/login' element={<LoginForm />} />
         <Route exact path='/sign-up' element={<SignUpForm />} />
         <Route exact path='/' element={<Home user={user} />} />
-        <Route exact path='/user/:userId' element={<User />} />
+        <Route exact path='/user/:userId' element={<User messageId={messageId} setMessageId={setMessageId} />} />
         <Route exact path='/marketplace' element={<Listings />} />
         <Route exact path='/seekings' element={<Seeking />} />
+        <Route exact path='/messages' element={<Messages />} />
 
       </Routes>
     </BrowserRouter>

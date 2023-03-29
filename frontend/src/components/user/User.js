@@ -1,10 +1,10 @@
 import YourItems from "../items/yourItems";
 import UserData from "./UserData";
 
-const User = () => {
+const User = ({ messageId, setMessageId }) => {
     return (
         <>
-            <UserData />
+            <UserData messageId={messageId} setMessageId={setMessageId} />
             <YourItems />
         </>
     )
