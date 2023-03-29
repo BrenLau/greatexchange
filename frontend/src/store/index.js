@@ -6,6 +6,7 @@ import listings from './listing'
 import users from './user'
 import offers from './offer'
 import seekings from './seeking'
+import messages from './messages'
 
 const rootReducer = combineReducers({
   session,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   listings,
   users,
   offers,
-  seekings
+  seekings,
+  messages
 });
 
 
