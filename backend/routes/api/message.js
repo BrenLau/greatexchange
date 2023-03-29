@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 const { restoreUser } = require('../../utils/auth');
+const { Op } = require("sequelize")
 
 const db = require('../../models')
 const Item = db.Item
@@ -14,13 +15,14 @@ router.post('/',
     restoreUser,
     asyncHandler(async (req, res) => {
         const { user } = req
-        const { message } = req.body
-        if (!user) {
+        const { content, receiverId, senderId } = req.body
+        console.log(receiverId)
+        if (!user || user.id != senderId) {
             res.json({ message: 'Must be logged in' })
             return null
         }
 
-        const privatemessage = await PrivateMessage.create({ content: message, userId: user.id })
+        const privatemessage = await PrivateMessage.create({ content, senderId: user.id, receiverId })
         const privatemessage1 = await PrivateMessage.findOne({ where: { id: privatemessage.id }, include: [User] })
         console.log(privatemessage1)
         res.json(privatemessage1)
@@ -30,9 +32,8 @@ router.post('/',
 
 router.get('/user/:userId',
     asyncHandler(async (req, res) => {
-        console.log('hit')
         const { userId } = req.params
-        const messages = await PrivateMessage.findAll({ where: [{ senderId: userId }, { receiverId: userId }], include: [User] })
+        const messages = await PrivateMessage.findAll({ where: { [Op.or]: [{ senderId: userId }, { receiverId: userId }] }, include: [User] })
         res.json({ messages })
     }))
 
