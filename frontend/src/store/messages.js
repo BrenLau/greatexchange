@@ -8,9 +8,9 @@ const getMessageAction = ({ messages, userId }) => ({
     payload: { messages, userId }
 })
 
-const sendMessageAction = (message) => ({
+const sendMessageAction = ({ message, userId }) => ({
     type: sendMessage,
-    payload: message
+    payload: { message, userId }
 })
 
 export const getMessagesThunk = ({ userId }) => async (dispatch) => {
@@ -37,8 +37,12 @@ export const sendMessageThunk = ({ content, userId, messageId }) => async (dispa
                 senderId: userId,
                 receiverId: messageId
             })
-
     })
+    const message = await res.json()
+
+    if (message) {
+        dispatch(sendMessageAction({ message, userId }))
+    }
 }
 
 
@@ -47,21 +51,27 @@ const initialState = {};
 
 export default function reducer(state = initialState, action) {
     let newState = {}
+    let userId
     switch (action.type) {
         case getMessage:
             if (!action.payload) return newState
-            const { userId } = action.payload
-            console.log(action.payload.messages)
+            userId = action.payload.userId
             action.payload.messages.forEach(message => {
-
-                const setId = message.senderId == userId ? message.receiverId : message.senderId
+                const setId = message.senderId === userId ? message.receiverId : message.senderId
                 if (!newState[setId]) {
                     newState[setId] = []
                 }
                 newState[setId].push(message)
-
             })
-
+            return newState
+        case sendMessage:
+            newState = { ...state }
+            userId = action.payload.userId
+            const setId = action.payload.message.senderId === userId ? action.payload.message.receiverId : action.payload.message.senderId
+            if (!newState[setId]) {
+                newState[setId] = []
+            }
+            newState[setId].push(action.payload)
             return newState
 
         default:
