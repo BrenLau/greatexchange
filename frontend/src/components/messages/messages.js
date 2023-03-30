@@ -9,7 +9,17 @@ const Messages = ({ messageId, setMessageId }) => {
 
     const user = useSelector(state => state.session.user)
     const messages = useSelector(state => state.messages)
-    console.log(messages)
+
+    let messagesArray = Object.values(messages).sort((a, b) => {
+        if (b[b.length - 1].createdAt < a[a.length - 1].createdAt) {
+            return 1
+        } else {
+            return -1
+        }
+    })
+
+
+
     const [content, setContent] = useState('')
     const onContentChange = (e) => {
         setContent(e.target.value)
@@ -19,7 +29,15 @@ const Messages = ({ messageId, setMessageId }) => {
     const onSubmit = async (e) => {
         e.preventDefault()
         if (content.trim().length > 0) {
-            await dispatch(sendMessageThunk({ userId: user.id, messageId, content }))
+            await dispatch(sendMessageThunk({ userId: user.id, messageId, content })).then((e) => {
+                messagesArray = Object.values(messages).sort((a, b) => {
+                    if (b[b.length - 1].createdAt < a[a.length - 1].createdAt) {
+                        return 1
+                    } else {
+                        return -1
+                    }
+                })
+            })
         }
     }
 
