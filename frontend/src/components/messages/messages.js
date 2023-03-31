@@ -8,35 +8,59 @@ const Messages = ({ messageId, setMessageId }) => {
     const dispatch = useDispatch()
 
     const user = useSelector(state => state.session.user)
-    const messages = useSelector(state => state.messages)
+    const messagers = useSelector(state => state.messages)
 
-    let messagesArray = Object.values(messages).sort((a, b) => {
-        if (b[b.length - 1].createdAt < a[a.length - 1].createdAt) {
-            return 1
-        } else {
-            return -1
-        }
-    })
+    const sortByLast = (messages) => {
+        return Object.values(messages).sort((a, b) => {
+            if (b[b.length - 1].createdAt < a[a.length - 1].createdAt) {
+                return -1
+            } else {
+                return 1
+            }
+        })
+    }
+    let messagesArray = sortByLast(messagers)
+
+    // let messagesArray = Object.values(messagers).sort((a, b) => {
+    //     if (Object.entries(messagers).length <= 1) {
+    //         return
+    //     }
+    //     if (b[b.length - 1].createdAt < a[a.length - 1].createdAt) {
+    //         return -1
+    //     } else {
+    //         return 1
+    //     }
+    // })
+    console.log(messagers)
+    console.log(messagesArray)
 
 
 
     const [content, setContent] = useState('')
     const onContentChange = (e) => {
         setContent(e.target.value)
-
     }
 
     const onSubmit = async (e) => {
         e.preventDefault()
         if (content.trim().length > 0) {
             await dispatch(sendMessageThunk({ userId: user.id, messageId, content })).then((e) => {
-                messagesArray = Object.values(messages).sort((a, b) => {
-                    if (b[b.length - 1].createdAt < a[a.length - 1].createdAt) {
-                        return 1
-                    } else {
-                        return -1
-                    }
-                })
+                messagesArray = sortByLast(messagers)
+                if (messagesArray) {
+                    return messagesArray
+                }
+                // Object.values(messagers).sort((a, b) => {
+                //     if (b[b.length - 1].createdAt < a[a.length - 1].createdAt) {
+                //         return 1
+                //     } else {
+                //         return -1
+                //     }
+                // })
+            }).then((e) => {
+                if (e) {
+                    setContent('')
+                    return
+                }
             })
         }
     }
@@ -46,13 +70,31 @@ const Messages = ({ messageId, setMessageId }) => {
     }, [dispatch, user])
     return (
         <div>
+            <div>{
+                messagesArray.map((messages) => {
+                    if (messages.receiverId == user.id) {
+                        return (
+                            <div onClick={() => {
+                                setMessageId(messages[0].senderId)
+                            }}>{messages[0].sender.username}</div>
+                        )
+                    } else {
+                        return (
+                            <div onClick={() => {
+                                setMessageId(messages[0].receiverId)
+                            }}>{messages[0].receiver.username}</div>
+
+                        )
+                    }
+                })
+            }</div>
             <div>
                 <form onSubmit={onSubmit}>
                     <input value={content} onChange={onContentChange}></input>
                     <button>Submit</button>
                 </form>
             </div>
-            hello
+
         </div>
     )
 }

@@ -23,7 +23,7 @@ router.post('/',
         }
 
         const privatemessage = await PrivateMessage.create({ content, senderId: user.id, receiverId })
-        const privatemessage1 = await PrivateMessage.findOne({ where: { id: privatemessage.id }, include: [User] })
+        const privatemessage1 = await PrivateMessage.findOne({ where: { id: privatemessage.id }, include: [{ model: User, as: 'sender' }, { model: User, as: 'receiver' }] })
         console.log(privatemessage1)
         res.json(privatemessage1)
 
@@ -33,7 +33,8 @@ router.post('/',
 router.get('/user/:userId',
     asyncHandler(async (req, res) => {
         const { userId } = req.params
-        const messages = await PrivateMessage.findAll({ where: { [Op.or]: [{ senderId: userId }, { receiverId: userId }] }, include: [User] })
+        const messages = await PrivateMessage.findAll({ where: { [Op.or]: [{ senderId: userId }, { receiverId: userId }] }, include: [{ model: User, as: 'sender' }, { model: User, as: 'receiver' }] })
+        console.log(messages)
         res.json({ messages })
     }))
 
