@@ -91,8 +91,8 @@ const Messages = ({ messageId, setMessageId }) => {
             }</div>
             <div className="messagebottom">
                 <form onSubmit={onSubmit}>
-                    <input value={content} onChange={onContentChange}></input>
-                    <button>Submit</button>
+                    <input disabled={!messageId} placeholder={!messageId ? 'Select a recipient' : null} value={content} onChange={onContentChange}></input>
+                    <button disabled={!messageId} >Submit</button>
                 </form>
             </div>
 
