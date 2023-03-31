@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router"
 import { getMessagesThunk, sendMessageThunk } from "../../store/messages"
+import './messages.css'
 
 const Messages = ({ messageId, setMessageId }) => {
     const navigate = useNavigate()
@@ -69,18 +70,18 @@ const Messages = ({ messageId, setMessageId }) => {
         dispatch(getMessagesThunk({ userId: user?.id }))
     }, [dispatch, user])
     return (
-        <div>
-            <div>{
+        <div className='messenger'>
+            <div className="chatusernames">{
                 messagesArray.map((messages) => {
                     if (messages.receiverId == user.id) {
                         return (
-                            <div onClick={() => {
+                            <div className='indivname' onClick={() => {
                                 setMessageId(messages[0].senderId)
                             }}>{messages[0].sender.username}</div>
                         )
                     } else {
                         return (
-                            <div onClick={() => {
+                            <div className='indivname' onClick={() => {
                                 setMessageId(messages[0].receiverId)
                             }}>{messages[0].receiver.username}</div>
 
@@ -88,7 +89,7 @@ const Messages = ({ messageId, setMessageId }) => {
                     }
                 })
             }</div>
-            <div>
+            <div className="messagebottom">
                 <form onSubmit={onSubmit}>
                     <input value={content} onChange={onContentChange}></input>
                     <button>Submit</button>
