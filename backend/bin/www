@@ -4,16 +4,17 @@ const { port } = require('../config');
 
 const app = require('../app');
 const db = require('../models');
+let origin
+origin = process.env.NODE_ENV === 'production' ? 'https://the-great-exchange.onrender.com/' : 'http://localhost:3000'
 const io = require('socket.io')(7000, {
   cors: {
-    origin: process.env.NODE_ENV === 'production' ? 'http://localhost:3000' : 'https://the-great-exchange.onrender.com/',
+    origin,
     methods: ["GET", "POST"]
   }
 })
 io.on('connection', socket => {
-  console.log(socket.id)
+  console.log(socket)
   socket.on("send-message", (message) => {
-    console.log(message)
     socket.emit('receive-message', message)
   })
 })
