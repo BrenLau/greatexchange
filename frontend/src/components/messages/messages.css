@@ -1,9 +1,9 @@
 .messenger {
     background-color: whitesmoke;
-    padding: 20px;
     max-height: 80vh;
     height: 600px;
     position: relative;
+    display: flex;
 }
 
 .messagebottom {
@@ -15,13 +15,13 @@
 .chatusernames {
     border: solid 1px black;
     width: 200px;
-    margin-left: -20px;
-    margin-top: -20px;
-    height: 640px;
+
+    height: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .indivname {
@@ -36,4 +36,11 @@
 
 .indivname:hover {
     background-color: grey;
+}
+
+.chatarea {
+    background: blue;
+    padding: 10px;
+    width: 100%;
+    height: 530px;
 }
