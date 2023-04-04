@@ -8,7 +8,6 @@ import DeleteSeeking from "./DeleteSeeking";
 const SeekingModal = ({ seeking, user, onClick }) => {
     const dispatch = useDispatch()
     const [content, setContent] = useState('')
-    console.log(seeking)
 
 
     const onSubmit = async (e) => {

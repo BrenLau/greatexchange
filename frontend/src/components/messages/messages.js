@@ -32,8 +32,8 @@ const Messages = ({ messageId, setMessageId }) => {
     //         return 1
     //     }
     // })
-    console.log(messagers)
-    console.log(messagesArray)
+    // console.log(messagers)
+    // console.log(messagesArray)
 
 
 

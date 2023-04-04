@@ -38,7 +38,6 @@ router.post(
         const checkUsernameExists = await User.findOne({ where: { usernameLower: username.toLowerCase() } })
 
         if (!checkEmailExists || checkUsernameExists) {
-            console.log('exists')
             return
         }
 

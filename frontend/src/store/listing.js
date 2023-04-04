@@ -102,7 +102,6 @@ export default function reducer(state = initialState, action) {
             return newState
         case DEL_LISTING:
             newState = { ...state }
-            console.log(action.payload)
             delete newState[action.payload]
             return newState
         default:

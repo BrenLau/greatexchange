@@ -18,7 +18,6 @@ router.post('/',
     awss3.singleMulterUpload('file'),
     asyncHandler(async (req, res) => {
         const { user } = req
-        console.log(user)
         const { name, summary } = req.body
         const userId = user.id
 
