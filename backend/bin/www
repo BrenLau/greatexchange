@@ -8,7 +8,7 @@ let origin
 origin = process.env.NODE_ENV === 'production' ? 'https://the-great-exchange.onrender.com/' : 'http://localhost:3000'
 const io = require('socket.io')(7000, {
   cors: {
-    origin,
+    origin: '*',
     methods: ["GET", "POST"]
   }
 })
