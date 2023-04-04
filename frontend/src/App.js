@@ -15,7 +15,7 @@ import GroupChat from './components/groupchat/GroupChat';
 import User from './components/user/User';
 import Messages from './components/messages/messages';
 
-export const socket = io(process.env === 'production' ? 'https://the-great-exchange.onrender.com:7000' : "http://localhost:7000")
+export const socket = io(process.env === 'production' ? 'http://localhost:7000' : "http://localhost:7000")
 socket.on('connect', () => {
   console.log('you connected with id', socket.id)
 })
