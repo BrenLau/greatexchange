@@ -78,14 +78,17 @@ const Messages = ({ messageId, setMessageId }) => {
             }</div>
             {messagers[messageId] ? <div className="chatarea">{messagers[messageId].map(message => {
                 return (
-                    <div>{message.content}</div>
+                    <div className="eachmessageprivate">
+                        <div>{message.content}</div>
+                        <div>{message.sender.username}</div>
+                    </div>
                 )
             })}
                 <div ref={bottomRef} />
             </div> : <div className="chatarea">Who are you chatting with?</div>}
             <div className="messagebottom">
-                <form onSubmit={onSubmit}>
-                    <input disabled={!messageId} placeholder={!messageId ? 'Select a recipient' : null} value={content} onChange={onContentChange}></input>
+                <form className='messageformbox' onSubmit={onSubmit}>
+                    <input className='messageformboxinput' disabled={!messageId} placeholder={!messageId ? 'Select a recipient' : null} value={content} onChange={onContentChange}></input>
                     <button disabled={!messageId} >Submit</button>
                 </form>
             </div>
