@@ -11,19 +11,19 @@ const UserData = ({ messageId, setMessageId }) => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        dispatch(getUserThunk({ userId }))
+        if (userId) {
+            dispatch(getUserThunk({ userId }))
+        }
     }, [dispatch])
 
     const onClick = (e) => {
         e.preventDefault()
         setMessageId(Number(userId))
         navigate('/messages', { replace: true })
-        console.log(messageId)
         return
     }
     return (
         user ? <div>
-            <div>{user.username}</div>
             {user ? <img src={user.image}></img> : null}
             <div>{user.summary}</div>
             {session && session.id !== user.id ? <button onClick={onClick}>Send Message</button> : null}

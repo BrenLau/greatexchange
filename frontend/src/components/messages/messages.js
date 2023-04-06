@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router"
 import { getMessagesThunk, sendMessageThunk } from "../../store/messages"
@@ -10,6 +10,9 @@ const Messages = ({ messageId, setMessageId }) => {
 
     const user = useSelector(state => state.session.user)
     const messagers = useSelector(state => state.messages)
+    const bottomRef = useRef(null);
+
+
 
     const sortByLast = (messages) => {
         return Object.values(messages).sort((a, b) => {
@@ -21,20 +24,6 @@ const Messages = ({ messageId, setMessageId }) => {
         })
     }
     let messagesArray = sortByLast(messagers)
-
-    // let messagesArray = Object.values(messagers).sort((a, b) => {
-    //     if (Object.entries(messagers).length <= 1) {
-    //         return
-    //     }
-    //     if (b[b.length - 1].createdAt < a[a.length - 1].createdAt) {
-    //         return -1
-    //     } else {
-    //         return 1
-    //     }
-    // })
-    // console.log(messagers)
-    // console.log(messagesArray)
-
 
 
     const [content, setContent] = useState('')
@@ -50,13 +39,6 @@ const Messages = ({ messageId, setMessageId }) => {
                 if (messagesArray) {
                     return messagesArray
                 }
-                // Object.values(messagers).sort((a, b) => {
-                //     if (b[b.length - 1].createdAt < a[a.length - 1].createdAt) {
-                //         return 1
-                //     } else {
-                //         return -1
-                //     }
-                // })
             }).then((e) => {
                 if (e) {
                     setContent('')
@@ -69,6 +51,11 @@ const Messages = ({ messageId, setMessageId }) => {
     useEffect(() => {
         dispatch(getMessagesThunk({ userId: user?.id }))
     }, [dispatch, user])
+
+    useEffect(() => {
+        bottomRef.current?.scrollIntoView({ behavior: 'auto' });
+    }, [messageId, dispatch])
+
     return (
         user ? <div className='messenger'>
             <div className="chatusernames">{
@@ -93,7 +80,9 @@ const Messages = ({ messageId, setMessageId }) => {
                 return (
                     <div>{message.content}</div>
                 )
-            })}</div> : <div className="chatarea">Who are you chatting with?</div>}
+            })}
+                <div ref={bottomRef} />
+            </div> : <div className="chatarea">Who are you chatting with?</div>}
             <div className="messagebottom">
                 <form onSubmit={onSubmit}>
                     <input disabled={!messageId} placeholder={!messageId ? 'Select a recipient' : null} value={content} onChange={onContentChange}></input>
