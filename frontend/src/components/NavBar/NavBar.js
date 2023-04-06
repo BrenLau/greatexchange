@@ -60,6 +60,12 @@ const NavBar = ({ isLoaded, setOpenListingForm }) => {
           <img className='boximage2' src={auction}></img>
           <NavLink to='/seekings' className='navlinknav5'>Seekings</NavLink>
         </li>
+        {user ? <li onClick={() => {
+          navigate('/messages')
+        }} className='navbarli2'>
+          <img className='boximage2' src={marketplace}></img>
+          <NavLink to='/messages' className='navlinknav5'>Messages</NavLink>
+        </li> : null}
       </ul> : null}
 
       <li className='navbarli housebox'>

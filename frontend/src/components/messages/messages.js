@@ -70,10 +70,10 @@ const Messages = ({ messageId, setMessageId }) => {
         dispatch(getMessagesThunk({ userId: user?.id }))
     }, [dispatch, user])
     return (
-        <div className='messenger'>
+        user ? <div className='messenger'>
             <div className="chatusernames">{
                 messagesArray.map((messages) => {
-                    if (messages.receiverId == user.id) {
+                    if (messages[0].receiverId == user.id) {
                         return (
                             <div className='indivname' onClick={() => {
                                 setMessageId(messages[0].senderId)
@@ -101,7 +101,7 @@ const Messages = ({ messageId, setMessageId }) => {
                 </form>
             </div>
 
-        </div>
+        </div> : null
     )
 }
 

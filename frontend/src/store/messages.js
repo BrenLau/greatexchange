@@ -71,7 +71,11 @@ export default function reducer(state = initialState, action) {
             if (!newState[setId]) {
                 newState[setId] = []
             }
-            newState[setId].push(action.payload)
+            const newMessages = [...newState[setId]]
+
+            newMessages.push(action.payload.message)
+
+            newState[setId] = newMessages
             return newState
 
         default:
