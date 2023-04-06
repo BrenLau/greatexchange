@@ -31,9 +31,12 @@
 .indivname {
     width: 100%;
     text-align: center;
+    border-top: groove 1px black;
+
     border-bottom: groove 1px black;
     font-size: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    margin-top: 10px;
     padding-top: 3px;
     padding-bottom: 3px;
 }
@@ -64,4 +67,9 @@
 .messageformboxinput {
     width: 70%;
     height: 45px;
+}
+
+#selected {
+    background-color: rgb(64, 64, 67);
+    color: yellow;
 }

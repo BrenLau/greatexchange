@@ -62,13 +62,13 @@ const Messages = ({ messageId, setMessageId }) => {
                 messagesArray.map((messages) => {
                     if (messages[0].receiverId == user.id) {
                         return (
-                            <div className='indivname' onClick={() => {
+                            <div className='indivname' id={messageId == messages[0].sender.id ? 'selected' : null} onClick={() => {
                                 setMessageId(messages[0].senderId)
                             }}>{messages[0].sender.username}</div>
                         )
                     } else {
                         return (
-                            <div className='indivname' onClick={() => {
+                            <div className='indivname' id={messageId == messages[0].receiver.id ? 'selected' : null} onClick={() => {
                                 setMessageId(messages[0].receiverId)
                             }}>{messages[0].receiver.username}</div>
 
