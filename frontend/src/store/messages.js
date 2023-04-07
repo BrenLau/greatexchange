@@ -46,6 +46,11 @@ export const sendMessageThunk = ({ content, userId, messageId }) => async (dispa
     }
 }
 
+export const receiveMessageThunk = ({ message, userId }) => async (dispatch) => {
+    dispatch(sendMessageAction({ message, userId }))
+    return message
+}
+
 
 
 const initialState = {};

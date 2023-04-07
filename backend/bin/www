@@ -20,10 +20,10 @@ server.listen(7000), () => {
 io.on('connection', socket => {
 
   socket.on("send-message", (message) => {
-    socket.emit('receive-message', message)
+    io.sockets.emit('receive-message', message)
   })
   socket.on("send-pm", (message) => {
-    socket.emit('receive-pm', message)
+    io.sockets.emit('receive-pm', message)
   })
 })
 // Check the database connection before starting the app

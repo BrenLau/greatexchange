@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getMessagesThunk, sendMessageThunk } from "../../store/messages"
+import { getMessagesThunk, receiveMessageThunk, sendMessageThunk } from "../../store/messages"
 import './messages.css'
 
 const Messages = ({ messageId, setMessageId, socket }) => {
@@ -29,11 +29,15 @@ const Messages = ({ messageId, setMessageId, socket }) => {
         setContent(e.target.value)
     }
 
-    socket.on('receive-pm', message => {
-        console.log(message)
+    socket.on('receive-pm', async (message) => {
 
         if (message.receiverId === user.id) {
-            dispatch()
+            await dispatch(receiveMessageThunk({ message, userId: user.id })).then((e) => {
+                messagesArray = sortByLast(messagers)
+                if (messagesArray) {
+                    return e
+                }
+            })
         }
     })
 
@@ -67,15 +71,15 @@ const Messages = ({ messageId, setMessageId, socket }) => {
         user ? <div className='messenger'>
             <div className="chatusernames">{
                 messagesArray.map((messages) => {
-                    if (messages[0].receiverId == user.id) {
+                    if (messages[0].receiverId === user.id) {
                         return (
-                            <div className='indivname' id={messageId == messages[0].sender.id ? 'selected' : null} onClick={() => {
+                            <div className='indivname' id={messageId === messages[0].sender.id ? 'selected' : null} onClick={() => {
                                 setMessageId(messages[0].senderId)
                             }}>{messages[0].sender.username}</div>
                         )
                     } else {
                         return (
-                            <div className='indivname' id={messageId == messages[0].receiver.id ? 'selected' : null} onClick={() => {
+                            <div className='indivname' id={messageId === messages[0].receiver.id ? 'selected' : null} onClick={() => {
                                 setMessageId(messages[0].receiverId)
                             }}>{messages[0].receiver.username}</div>
 
