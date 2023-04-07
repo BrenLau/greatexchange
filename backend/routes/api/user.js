@@ -32,12 +32,13 @@ router.post(
     '/signup',
     validateSignup,
     asyncHandler(async (req, res) => {
+
         const { email, password, username } = req.body;
 
         const checkEmailExists = await User.findOne({ where: { emailLower: email.toLowerCase() } })
         const checkUsernameExists = await User.findOne({ where: { usernameLower: username.toLowerCase() } })
 
-        if (!checkEmailExists || checkUsernameExists) {
+        if (checkEmailExists || checkUsernameExists) {
             return
         }
 
