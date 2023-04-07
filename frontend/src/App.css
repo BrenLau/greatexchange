@@ -10,7 +10,7 @@ html {
 
 .buttongroupchat {
   cursor: pointer;
-  position: absolute;
+  position: sticky;
   bottom: 30px;
   font-family: sans-serif;
   font-size: 12px;
