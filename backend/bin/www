@@ -5,27 +5,27 @@ const { port } = require('../config');
 const app = require('../app');
 const db = require('../models');
 const http = require("http")
-// const { Server } = require("socket.io")
+const { Server } = require("socket.io")
 
-// const server = http.createServer(app)
-// const io = new Server(server, {
-//   cors: {
-//     origin: '*',
-//     methods: ["GET", "POST"]
-//   }
-// })
-// server.listen(7000), () => {
-//   console.log('websockets')
-// }
-// io.on('connection', socket => {
+const server = http.createServer(app)
+const io = new Server(server, {
+  cors: {
+    origin: '*',
+    methods: ["GET", "POST"]
+  }
+})
+server.listen(7000), () => {
+  console.log('websockets')
+}
+io.on('connection', socket => {
 
-//   socket.on("send-message", (message) => {
-//     io.sockets.emit('receive-message', message)
-//   })
-//   socket.on("send-pm", (message) => {
-//     io.sockets.emit('receive-pm', message)
-//   })
-// })
+  socket.on("send-message", (message) => {
+    io.sockets.emit('receive-message', message)
+  })
+  socket.on("send-pm", (message) => {
+    io.sockets.emit('receive-pm', message)
+  })
+})
 // Check the database connection before starting the app
 db.sequelize
   .authenticate()
