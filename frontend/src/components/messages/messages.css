@@ -12,7 +12,7 @@
     position: absolute;
     bottom: 0px;
     /* left: 200px; */
-    width: 100%;
+    width: calc(100% - 150px);
 }
 
 .chatusernames {
@@ -51,7 +51,7 @@
 .chatarea {
     /* background: blue; */
     padding: 10px;
-    width: 100%;
+    width: calc(100% - 150px);
     height: 530px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -63,15 +63,22 @@
 
 .messageformbox {
     position: relative;
-    left: 150px;
+    left: -10px;
+    width: calc(100% - 10px)
 }
 
 .messageformboxinput {
-    width: 70%;
+    width: 80%;
     height: 45px;
 }
 
 #selected {
     background-color: rgb(64, 64, 67);
     color: yellow;
+}
+
+.sendmessagebut {
+    width: calc(20% - 10px);
+    height: 50px;
+    cursor: pointer;
 }

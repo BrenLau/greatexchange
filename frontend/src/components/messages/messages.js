@@ -54,7 +54,7 @@ const Messages = ({ messageId, setMessageId }) => {
 
     useEffect(() => {
         bottomRef.current?.scrollIntoView({ behavior: 'auto' });
-    }, [messageId, dispatch])
+    }, [messageId, dispatch, messagers])
 
     return (
         user ? <div className='messenger'>
@@ -85,13 +85,19 @@ const Messages = ({ messageId, setMessageId }) => {
                 )
             })}
                 <div ref={bottomRef} />
-            </div> : <div className="chatarea">Who are you chatting with?</div>}
-            <div className="messagebottom">
+                <div className="messagebottom">
+                    <form className='messageformbox' onSubmit={onSubmit}>
+                        <input className='messageformboxinput' disabled={!messageId} placeholder={!messageId ? 'Select a recipient' : null} value={content} onChange={onContentChange}></input>
+                        <button className="sendmessagebut" disabled={!messageId} >Submit</button>
+                    </form>
+                </div>
+            </div> : <div className="chatarea">Who are you chatting with?            <div className="messagebottom">
                 <form className='messageformbox' onSubmit={onSubmit}>
                     <input className='messageformboxinput' disabled={!messageId} placeholder={!messageId ? 'Select a recipient' : null} value={content} onChange={onContentChange}></input>
-                    <button disabled={!messageId} >Submit</button>
+                    <button className='sendmessagebut' disabled={!messageId} >Submit</button>
                 </form>
-            </div>
+            </div></div>}
+
 
         </div> : null
     )
