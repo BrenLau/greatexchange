@@ -42,6 +42,7 @@ export const sendMessageThunk = ({ content, userId, messageId }) => async (dispa
 
     if (message) {
         dispatch(sendMessageAction({ message, userId }))
+        return message
     }
 }
 

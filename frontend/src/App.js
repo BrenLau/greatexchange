@@ -49,7 +49,7 @@ function App() {
         <Route exact path='/user/:userId' element={<User messageId={messageId} setMessageId={setMessageId} />} />
         <Route exact path='/marketplace' element={<Listings />} />
         <Route exact path='/seekings' element={<Seeking />} />
-        <Route exact path='/messages' element={<Messages messageId={messageId} setMessageId={setMessageId} />} />
+        <Route exact path='/messages' element={<Messages socket={socket} messageId={messageId} setMessageId={setMessageId} />} />
 
       </Routes>
     </BrowserRouter>

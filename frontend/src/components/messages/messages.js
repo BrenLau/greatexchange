@@ -1,11 +1,9 @@
 import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router"
 import { getMessagesThunk, sendMessageThunk } from "../../store/messages"
 import './messages.css'
 
-const Messages = ({ messageId, setMessageId }) => {
-    const navigate = useNavigate()
+const Messages = ({ messageId, setMessageId, socket }) => {
     const dispatch = useDispatch()
 
     const user = useSelector(state => state.session.user)
@@ -31,17 +29,26 @@ const Messages = ({ messageId, setMessageId }) => {
         setContent(e.target.value)
     }
 
+    socket.on('receive-pm', message => {
+        console.log(message)
+
+        if (message.receiverId === user.id) {
+            dispatch()
+        }
+    })
+
     const onSubmit = async (e) => {
         e.preventDefault()
         if (content.trim().length > 0) {
             await dispatch(sendMessageThunk({ userId: user.id, messageId, content })).then((e) => {
                 messagesArray = sortByLast(messagers)
                 if (messagesArray) {
-                    return messagesArray
+                    return e
                 }
             }).then((e) => {
                 if (e) {
                     setContent('')
+                    socket.emit("send-pm", e)
                     return
                 }
             })
