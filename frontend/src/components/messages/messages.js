@@ -30,14 +30,15 @@ const Messages = ({ messageId, setMessageId, socket }) => {
     }
 
     socket.on('receive-pm', async (message) => {
+        console.log(message)
+        if (message.receiverId === user?.id) {
 
-        if (message.receiverId === user.id) {
             await dispatch(receiveMessageThunk({ message, userId: user.id })).then((e) => {
                 messagesArray = sortByLast(messagers)
-                if (messagesArray) {
-                    return e
-                }
+
+
             })
+
         }
     })
 
