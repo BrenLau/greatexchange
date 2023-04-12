@@ -87,7 +87,8 @@ const Messages = ({ messageId, setMessageId, socket }) => {
                         )
                     }
                 })
-            }</div>
+            }
+                <div className="indivname searchname">Search</div></div>
             {messagers[messageId] ? <div className="chatarea">{messagers[messageId].map(message => {
                 return (
                     <div className="eachmessageprivate">
