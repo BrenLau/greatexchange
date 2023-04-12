@@ -74,8 +74,8 @@ const Messages = ({ messageId, setMessageId, socket }) => {
                 messagesArray.map((messages) => {
                     if (messages[0].receiverId === user.id) {
                         return (
-                            <div className='indivname' id={messageId === messages[0].sender.id ? 'selected' : null} onClick={() => {
-                                setMessageId(messages[0].senderId)
+                            <div className='indivname' id={messageId === messages[0]?.sender.id ? 'selected' : null} onClick={() => {
+                                setMessageId(messages[0]?.senderId)
                             }}>{messages[0].sender.username}</div>
                         )
                     } else {
@@ -103,7 +103,7 @@ const Messages = ({ messageId, setMessageId, socket }) => {
                         <button className="sendmessagebut" disabled={!messageId} >Submit</button>
                     </form>
                 </div>
-            </div> : <div className="chatarea">Who are you chatting with?            <div className="messagebottom">
+            </div> : <div className="chatarea">{messageId ? 'Send a message to start a chat with this user' : 'Who are you chatting with?'}<div className="messagebottom">
                 <form className='messageformbox' onSubmit={onSubmit}>
                     <input className='messageformboxinput' disabled={!messageId} placeholder={!messageId ? 'Select a recipient' : null} value={content} onChange={onContentChange}></input>
                     <button className='sendmessagebut' disabled={!messageId} >Submit</button>
