@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getMessagesThunk, receiveMessageThunk, sendMessageThunk } from "../../store/messages"
 import './messages.css'
+import SearchUser from "./searchuser"
 
 const Messages = ({ messageId, setMessageId, socket }) => {
     const dispatch = useDispatch()
@@ -10,6 +11,7 @@ const Messages = ({ messageId, setMessageId, socket }) => {
     const messagers = useSelector(state => state.messages)
     const bottomRef = useRef(null);
 
+    const [usersList, setUsersList] = useState(false)
 
 
     const sortByLast = (messages) => {
@@ -69,50 +71,55 @@ const Messages = ({ messageId, setMessageId, socket }) => {
     }, [messageId, dispatch, messagers])
 
     return (
-        user ? <div className='messenger'>
-            <div className="chatusernames">{
-                messagesArray.map((messages) => {
-                    if (messages[0].receiverId === user.id) {
-                        return (
-                            <div className='indivname' id={messageId === messages[0]?.sender.id ? 'selected' : null} onClick={() => {
-                                setMessageId(messages[0]?.senderId)
-                            }}>{messages[0].sender.username}</div>
-                        )
-                    } else {
-                        return (
-                            <div className='indivname' id={messageId === messages[0].receiver.id ? 'selected' : null} onClick={() => {
-                                setMessageId(messages[0].receiverId)
-                            }}>{messages[0].receiver.username}</div>
+        <>
+            {usersList ? <SearchUser currentUser={user} onClick={setUsersList} /> : null}
+            {user ? <div className='messenger'>
+                <div className="chatusernames">{
+                    messagesArray.map((messages) => {
+                        if (messages[0].receiverId === user.id) {
+                            return (
+                                <div className='indivname' id={messageId === messages[0]?.sender.id ? 'selected' : null} onClick={() => {
+                                    setMessageId(messages[0]?.senderId)
+                                }}>{messages[0].sender.username}</div>
+                            )
+                        } else {
+                            return (
+                                <div className='indivname' id={messageId === messages[0].receiver.id ? 'selected' : null} onClick={() => {
+                                    setMessageId(messages[0].receiverId)
+                                }}>{messages[0].receiver.username}</div>
 
-                        )
-                    }
-                })
-            }
-                <div className="indivname searchname">Search</div></div>
-            {messagers[messageId] ? <div className="chatarea">{messagers[messageId].map(message => {
-                return (
-                    <div className="eachmessageprivate">
-                        <div>{message.content}</div>
-                        <div>{message.sender.username}</div>
+                            )
+                        }
+                    })
+                }
+                    <div className="indivname searchname" onClick={(e) => {
+                        setUsersList(true)
+                    }}>Search</div></div>
+                {messagers[messageId] ? <div className="chatarea">{messagers[messageId].map(message => {
+                    return (
+                        <div className="eachmessageprivate">
+                            <div>{message.content}</div>
+                            <div>{message.sender.username}</div>
+                        </div>
+                    )
+                })}
+                    <div ref={bottomRef} />
+                    <div className="messagebottom">
+                        <form className='messageformbox' onSubmit={onSubmit}>
+                            <input className='messageformboxinput' disabled={!messageId} placeholder={!messageId ? 'Select a recipient' : null} value={content} onChange={onContentChange}></input>
+                            <button className="sendmessagebut" disabled={!messageId} >Enter</button>
+                        </form>
                     </div>
-                )
-            })}
-                <div ref={bottomRef} />
-                <div className="messagebottom">
+                </div> : <div className="chatarea">{messageId ? 'Send a message to start a chat with this user' : 'Who are you chatting with?'}<div className="messagebottom">
                     <form className='messageformbox' onSubmit={onSubmit}>
                         <input className='messageformboxinput' disabled={!messageId} placeholder={!messageId ? 'Select a recipient' : null} value={content} onChange={onContentChange}></input>
-                        <button className="sendmessagebut" disabled={!messageId} >Enter</button>
+                        <button className='sendmessagebut' disabled={!messageId} >Enter</button>
                     </form>
-                </div>
-            </div> : <div className="chatarea">{messageId ? 'Send a message to start a chat with this user' : 'Who are you chatting with?'}<div className="messagebottom">
-                <form className='messageformbox' onSubmit={onSubmit}>
-                    <input className='messageformboxinput' disabled={!messageId} placeholder={!messageId ? 'Select a recipient' : null} value={content} onChange={onContentChange}></input>
-                    <button className='sendmessagebut' disabled={!messageId} >Enter</button>
-                </form>
-            </div></div>}
+                </div></div>}
 
 
-        </div> : null
+            </div> : null}
+        </>
     )
 }
 

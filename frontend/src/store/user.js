@@ -44,7 +44,7 @@ export default function reducer(state = initialState, action) {
             newState[action.payload.id] = action.payload
             return newState
         case GET_USERS:
-            action.payload.users.forEach(user => {
+            action.payload.forEach(user => {
                 newState[user.id] = user
             })
             return newState
