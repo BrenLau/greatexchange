@@ -91,3 +91,39 @@
     width: 100%;
     border-radius: 0px 0px 0px 12px;
 }
+
+.searchuserbackground {
+    background: linear-gradient(90deg, rgba(44, 31, 9, 1) 0%, rgba(30, 24, 5, 1) 35%, rgba(36, 21, 5, 1) 82%);
+    width: 300px;
+    padding: 20px;
+    overflow-y: scroll;
+    max-height: 500px;
+    border-radius: 12px;
+}
+
+.eachuserinsearchuser {
+    color: yellow;
+    width: 100%;
+    position: relative;
+    /* margin-top: 5px; */
+    /* margin-bottom: 5px; */
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    height: 30px;
+    border-bottom: solid orange 1px;
+    border-top: solid orange 1px;
+}
+
+.eachuserinsearchuser:hover {
+    background-color: rgb(139, 91, 91);
+
+}
+
+.buttontomessage {
+    position: absolute;
+    right: 5px;
+    cursor: pointer;
+    width: 80px;
+    height: 25px;
+}

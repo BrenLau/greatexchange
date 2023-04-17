@@ -72,7 +72,7 @@ const Messages = ({ messageId, setMessageId, socket }) => {
 
     return (
         <>
-            {usersList ? <SearchUser currentUser={user} onClick={setUsersList} /> : null}
+            {usersList ? <SearchUser setMessageId={setMessageId} currentUser={user} onClick={setUsersList} /> : null}
             {user ? <div className='messenger'>
                 <div className="chatusernames">{
                     messagesArray.map((messages) => {
