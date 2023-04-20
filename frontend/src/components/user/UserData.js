@@ -1,9 +1,10 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router"
 import { getUserThunk } from "../../store/user"
 import userimage from "../NavBar/user.png"
 import "./user.css"
+import EditProfile from "./EditProfile"
 
 const UserData = ({ messageId, setMessageId }) => {
     const dispatch = useDispatch()
@@ -11,6 +12,7 @@ const UserData = ({ messageId, setMessageId }) => {
     const session = useSelector(state => state.session.user)
     const user = useSelector(state => state.users[userId])
     const navigate = useNavigate()
+    const [editProfile, setEditProfile] = useState(false)
 
     useEffect(() => {
         if (userId) {
@@ -26,6 +28,10 @@ const UserData = ({ messageId, setMessageId }) => {
     }
     return (
         user ? <div className="userdatacontainer">
+            {editProfile ? <EditProfile onClick={setEditProfile}></EditProfile> : null}
+            {user.id === session.id ? <button onClick={() => {
+                setEditProfile(true)
+            }}>Edit Profile</button> : null}
 
             {user.image ? <div className="imageandname">{user.username}<img className='userimageprofile' src={user.image}></img></div> : <div className="imageandname">{user.username}<img className='userimageprofile' src={userimage}></img></div>}
             <div>{user.summary}</div>

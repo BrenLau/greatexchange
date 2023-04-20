@@ -39,7 +39,7 @@ const YourItems = () => {
             {Object.values(items).length ? <div className='itemsstorage'>
                 <div className='fullwidth fullwidth2'>
 
-                    <h1 className='h1foryouritems'>{user?.username}'s Inventory</h1>
+                    <h1 className='h1foryouritems'>Inventory</h1>
                 </div>
                 {Object.values(items).map(item => {
                     return (
@@ -67,7 +67,7 @@ const YourItems = () => {
                     )
                 })}</div > : <div className='itemsstorage'>
                 <div className='fullwidth fullwidth2'>
-                    <h1 className='h1foryouritems'>{user?.username}'s Inventory</h1>
+                    <h1 className='h1foryouritems'>Inventory</h1>
                 </div>
                 <div className='noitems'>No items</div></div>}
             {itemUpdateModalOpen ? <UpdateItemsForm item={itemMode} onClick={itemUpdateClose}></UpdateItemsForm> : null}
