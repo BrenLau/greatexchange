@@ -28,8 +28,8 @@ const UserData = ({ messageId, setMessageId }) => {
     }
     return (
         user ? <div className="userdatacontainer">
-            {editProfile ? <EditProfile onClick={setEditProfile}></EditProfile> : null}
-            {user.id === session.id ? <button onClick={() => {
+            {editProfile ? <EditProfile user={user} onClick={setEditProfile}></EditProfile> : null}
+            {user?.id === session?.id ? <button onClick={() => {
                 setEditProfile(true)
             }}>Edit Profile</button> : null}
 
