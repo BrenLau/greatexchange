@@ -13,7 +13,9 @@ const EditProfile = ({ onClick, user }) => {
     const onSubmit = async (e) => {
         e.preventDefault()
         const data = { summary, image }
-        await dispatch(editUserThunk({ summary, image, userId: user.id }))
+        await dispatch(editUserThunk({ summary, image, userId: user.id })).then((e) => {
+            onClick()
+        })
     }
 
     return (
