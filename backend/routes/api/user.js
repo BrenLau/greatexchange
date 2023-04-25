@@ -2,6 +2,8 @@ const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const awss3 = require('../../awsS3')
+
 
 const { setTokenCookie } = require('../../utils/auth');
 const db = require('../../models');
@@ -65,4 +67,24 @@ router.get('/',
 
     }))
 
+router.put('/:userId',
+    awss3.singleMulterUpload('image'),
+    asyncHandler(async (req, res) => {
+        const { userId } = req.params
+        const { summary } = req.body
+        const imageURL = await awss3.singlePublicFileUpload(req.file)
+
+        const user = await User.findOne({ where: { id: userId } })
+        if (summary) {
+            user.summary = summary
+        }
+        if (imageURL) {
+            user.image = imageURL
+        }
+        await user.save()
+        return res.json(user)
+
+    })
+
+)
 module.exports = router;

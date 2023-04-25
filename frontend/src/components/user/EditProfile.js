@@ -2,6 +2,7 @@ import { useState } from "react"
 import BackDrop from "../modal/backdrop"
 import './user.css'
 import { useDispatch } from "react-redux"
+import { editUserThunk } from "../../store/user"
 
 const EditProfile = ({ onClick, user }) => {
     const dispatch = useDispatch()
@@ -9,9 +10,10 @@ const EditProfile = ({ onClick, user }) => {
     const [summary, setSummary] = useState(user.summary ? user.summary : '')
     const [image, setImage] = useState(null)
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
         const data = { summary, image }
+        await dispatch(editUserThunk({ summary, image, userId: user.id }))
     }
 
     return (

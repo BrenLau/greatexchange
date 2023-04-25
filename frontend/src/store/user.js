@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf';
 // constants
 const GET_USER = 'user/getuser'
 const GET_USERS = 'user/getusers'
+const EDIT_USER = 'user/edituser'
 
 const getTheUser = (user) => ({
     type: GET_USER,
@@ -12,6 +13,11 @@ const getTheUser = (user) => ({
 const getAllUsers = (users) => ({
     type: GET_USERS,
     payload: users
+})
+
+const editAUser = (user) => ({
+    type: EDIT_USER,
+    payload: user
 })
 
 
@@ -28,6 +34,27 @@ export const getUsersThunk = () => async (dispatch) => {
     const res = await csrfFetch(`/api/users`)
     const users = await res.json()
     dispatch(getAllUsers(users))
+}
+
+export const editUserThunk = ({ userId, summary, image }) => async (dispatch) => {
+    const formData = new FormData()
+    if (!summary && !image) return
+    if (image) {
+        formData.append('image', image)
+    }
+    if (summary) {
+        formData.append('summary', summary)
+    }
+
+    const res = await csrfFetch(`/api/users/${userId}`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+        body:
+            formData
+    },
+    )
 }
 
 
@@ -47,6 +74,8 @@ export default function reducer(state = initialState, action) {
             action.payload.forEach(user => {
                 newState[user.id] = user
             })
+            return newState
+        case EDIT_USER:
             return newState
         default:
             return state;
