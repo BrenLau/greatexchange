@@ -43,3 +43,8 @@
 .editprofilebutton:hover {
     background-color: rgb(130, 128, 128);
 }
+
+.userimageprofile {
+    max-width: 500px;
+    max-height: 500px;
+}

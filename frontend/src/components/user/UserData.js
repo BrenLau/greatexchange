@@ -33,7 +33,7 @@ const UserData = ({ setMessageId }) => {
                 setEditProfile(true)
             }}>Edit Profile</button> : null}
 
-            {user.image ? <div className="imageandname">{user.username}<img className='userimageprofile' src={user.image}></img></div> : <div className="imageandname">{user.username}<img className='userimageprofile' src={userimage}></img></div>}
+            {<div className="imageandname">{user.username}<img className='userimageprofile' src={user.image ? user.image : userimage}></img></div>}
             <div>{user.summary}</div>
             {session && session.id !== user.id ? <button onClick={onClick}>Send Message</button> : null}
         </div> : null
