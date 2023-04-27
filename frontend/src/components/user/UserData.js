@@ -6,7 +6,7 @@ import userimage from "../NavBar/user.png"
 import "./user.css"
 import EditProfile from "./EditProfile"
 
-const UserData = ({ messageId, setMessageId }) => {
+const UserData = ({ setMessageId }) => {
     const dispatch = useDispatch()
     const { userId } = useParams()
     const session = useSelector(state => state.session.user)
@@ -29,7 +29,7 @@ const UserData = ({ messageId, setMessageId }) => {
     return (
         user ? <div className="userdatacontainer">
             {editProfile ? <EditProfile user={user} onClick={setEditProfile}></EditProfile> : null}
-            {user?.id === session?.id ? <button onClick={() => {
+            {user?.id === session?.id ? <button className='editprofilebutton' onClick={() => {
                 setEditProfile(true)
             }}>Edit Profile</button> : null}
 

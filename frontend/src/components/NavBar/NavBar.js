@@ -113,7 +113,7 @@ const NavBar = ({ isLoaded, setOpenListingForm }) => {
         {loginbutts ? <div>
           <UserButtons setloginbutts={setloginbutts} />
         </div> : null}
-        <img className='boximage2' src={userimage}></img>
+        <img className='boximage2' src={user.image ? user.image : userimage}></img>
       </li>
     </nav>
   );

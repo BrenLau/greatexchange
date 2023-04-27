@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import './navbar.css'
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import LogoutButton from '../auth/LogoutButton';
 
 const UserButtons = ({ setloginbutts }) => {
