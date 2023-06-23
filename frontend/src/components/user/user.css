@@ -54,3 +54,10 @@
     max-width: 500px;
     max-height: 500px;
 }
+
+.summary {
+    color: yellow;
+    text-align: center;
+    margin: 15px;
+    margin-top: 40px;
+}

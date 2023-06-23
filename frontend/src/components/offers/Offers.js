@@ -10,6 +10,7 @@ const Offers = ({ offers }) => {
     return (
         <>
             <button className='buttontoopenoffers' onClick={(e) => {
+                e.stopPropagation()
                 setOpenOffers(true)
             }}>Offers</button>
 
