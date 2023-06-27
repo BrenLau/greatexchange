@@ -126,4 +126,14 @@
     cursor: pointer;
     width: 80px;
     height: 25px;
+    border-radius: 25px;
+    /* padding: 5px; */
+    text-align: center;
+    background-color: rgb(230, 224, 224);
+    font-weight: bold;
+}
+
+.buttontomessage:hover {
+    background-color: rgb(44, 44, 42);
+    color: whitesmoke;
 }
