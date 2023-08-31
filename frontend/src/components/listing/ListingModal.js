@@ -48,14 +48,14 @@ const ListingModal = ({ listing, user, onClick }) => {
                 <div className="usernamebotmodal">Listed by: {listing?.User?.username}</div>
                 <div className="requestdiv bottom">
                     <h3 className="h3listingmodal">Comments</h3>
-                    {listing.Comments.map(comment => {
+                    {listing.Comments.length ? listing.Comments.map(comment => {
                         return (
                             <div key={comment.id} className="eachcomment">
                                 <div className="usernamecomment">{comment.username}</div>
                                 <div className="contentcomment">{comment.content}</div>
                             </div>
                         )
-                    })}
+                    }) : <div className="nocomment">No comments</div>}
                 </div>
                 <form onSubmit={onSubmit} className="commentform">
                     <input value={content} onChange={(e) => {

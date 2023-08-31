@@ -312,8 +312,9 @@
     border: groove rgb(232, 156, 15) 1px;
     min-width: 300px;
     padding: 10px;
+    padding-top: 30px;
     border-radius: 10px;
-    max-height: 85%;
+    /* max-height: 85%; */
     overflow: auto;
     display: flex;
     flex-direction: column;
@@ -341,7 +342,7 @@
 .requestdiv {
     width: calc(100% - 20px);
     background: rgb(246, 246, 246);
-    min-height: 230px;
+    /* min-height: 230px; */
     padding: 10px;
     border: groove rgb(232, 156, 15) 1px;
     border-radius: 10px 10px 0 0;
@@ -365,6 +366,7 @@
     /* max-width: 500px; */
     max-height: 500px;
     margin: 10px;
+    /* height: 100%; */
 
 }
 
@@ -435,4 +437,12 @@
     max-width: calc(100% - 100px);
     overflow-wrap: break-word;
     font-size: 14px;
+}
+
+.nocomment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
 }
